@@ -57,7 +57,8 @@ The liquid bleaching protocol is below:
 * Take a full plate
 * Rinse the worms off with M9
 * Wash twice with M9
-* Bleach with *Alkaline Liquid Solution* for 5min or so (until bodies are well-dissolved)
+* Bleach with *Alkaline Liquid Solution* for 5min or so (until bodies are
+  well-dissolved)
 * Rinse with M9
 * Plate
 
@@ -84,14 +85,31 @@ On all strains except MT4866 were gravid adults (mainly 1 line of eggs, but some
 **MT4866** did not survive the starvation process well. Out of 50 or so larvae
 picked, 2 adult animals remained, suggesting a 4% survival rate.
 
-These results argue against synchronization by starvation. Instead, I must synchronize by double or triple synchronization.
+These results argue against synchronization by starvation. Instead, I must
+synchronize by double or triple synchronization.
 
 ### April 27, 2017
 
-At 4.30pm, I bleached **MT4866** nematodes in liquid. With these, I will roughly monitor time to adulthood and I will bleach again once most worms are gravid. I expect they will reach adulthood 10 hours later than wild-type worms.
+At 4.30pm, I bleached **MT4866** nematodes in liquid. With these, I will roughly
+monitor time to adulthood and I will bleach again once most worms are gravid. I
+expect they will reach adulthood 10 hours later than wild-type worms.
 
 ### April 28, 2017
 
-Today I had a committee meeting with Dianne Newman, Elliot Meyerowitz and Matt Thompson. Lior Pachter was supposed to be there, but did not attend for unknown reasons. We had a pleasant conversation, and they suggested many things, mainly that I should graduate faster, although I have no desire to do so at this moment.
+Today I had a committee meeting with Dianne Newman, Elliot Meyerowitz and Matt
+Thompson. Lior Pachter was supposed to be there, but did not attend for unknown
+reasons. We had a pleasant conversation, and they suggested many things, mainly
+that I should graduate faster, although I have no desire to do so at this moment.
 
-At 1:25pm, I bleached four strains, **EW15, MT2124, PS4187** and **PS4087**. I will double bleach at 60 hours in order to harvest well-synchronized eggs. 
+At 1:25pm, I bleached four strains, **EW15, MT2124, PS4187** and **PS4087**. I
+will double bleach at 60 hours in order to harvest well-synchronized eggs.
+
+### April 29, 2017
+
+4:44pm: Checked **MT4866** that I bleached on April 27 at 4.30pm. Most worms
+were early to late L4, with no gravid adults at 48hrs post-bleach. I saw one
+or two very young adults out of a population of hundreds. Worryingly, there were
+a substantial number of L1-L3 worms. I worry that these populations will persist even
+after the second synchronization. If they do, I will
+have to find a way to pick adults that is not dependent
+on the vulval formation.
