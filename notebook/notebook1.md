@@ -109,7 +109,21 @@ will double bleach at 60 hours in order to harvest well-synchronized eggs.
 4:44pm: Checked **MT4866** that I bleached on April 27 at 4.30pm. Most worms
 were early to late L4, with no gravid adults at 48hrs post-bleach. I saw one
 or two very young adults out of a population of hundreds. Worryingly, there were
-a substantial number of L1-L3 worms. I worry that these populations will persist even
-after the second synchronization. If they do, I will
-have to find a way to pick adults that is not dependent
-on the vulval formation.
+a substantial number of L1-L3 worms. I worry that these populations will persist
+even after the second synchronization. If they do, I will have to find a way to
+pick adults that is not dependent on the vulval formation.
+
+
+### April 30, 2017
+
+At 00:15am, I liquid bleached **MT4866**. When I looked at the plate, I could only
+see a small number of gravid adults (20 or so). I bleached them anyways, but after
+bleaching I could only see a small number of eggs (about 20) outside carcasses.
+Including eggs inside carcasses, I expect I obtained 50--70 eggs. All in all,
+this is not a good number for collection, but it may be enough to score
+synchronicity.
+
+At 1:00pm, I looked at **EW15, MT2124, PS4187** and **PS4087**, which I bleached
+on April 28, 2017. Strains **MT2124** and **PS4187** were starved by the time I
+looked at them, because I plated too many eggs. **EW15** and **PS4087** had a
+lot of worms at L4 stage.
