@@ -79,8 +79,8 @@ before they are transferred.
 At 9:30am (71 hours post-bleach), I checked all the worm strains for growth.
 On all strains except MT4866 were gravid adults (mainly 1 line of eggs, but some
   adults were already egg-laying). This suggests that
-  they reached adulthood almost 16 hours earlier
-  (at 55hrs post-starvation).
+  they reached adulthood almost 5 hours earlier
+  (at 65hrs post-starvation).
 
 **MT4866** did not survive the starvation process well. Out of 50 or so larvae
 picked, 2 adult animals remained, suggesting a 4% survival rate.
@@ -127,3 +127,54 @@ At 1:00pm, I looked at **EW15, MT2124, PS4187** and **PS4087**, which I bleached
 on April 28, 2017. Strains **MT2124** and **PS4187** were starved by the time I
 looked at them, because I plated too many eggs. **EW15** and **PS4087** had a
 lot of worms at L4 stage.
+
+At 4.34pm, I bleached all strains one more time. I modified the bleaching
+protocol as shown below (increased bleaching time):
+
+**Bleaching protocol**:
+* Take a full plate
+* Rinse the worms off with M9
+* Wash twice with M9
+* Bleach with *Alkaline Liquid Solution* for **10min, shaking constantly**
+* Rinse with M9
+* Plate on/off food (depending on the strain).
+
+After plating, I observed only one or two carcasses that still had eggs inside.
+I believe I could probably increase bleaching even further to remove carcasses
+even more. This time, one of the strains had a number of dauers. These dauers
+were still moving thoroughly after plating, which makes me worried they survived
+treatment. Tomorrow, I will check all strains again.
+
+At 5:00pm I checked the April 28 strains. I saw mainly late L4s and no gravid
+adults. My guess is that gravid adults will be available around midnight.
+
+At midnight, I came back to look at the April 28 strains. No gravid adults were
+visible, but the majority of worms were at the late L4 stage. That said, due to
+an overconcentration of worms in the plate, it was impossible to tell exactly
+what stage these animals were at.
+
+At 10am, plates had laid the very first eggs (less than 50). This suggests that
+the first eggs were fertilized almost 3hours earlier. This would place the
+growth rate of these animals at 64hours and agrees well with my previous estimates.
+**To be clear, 64 hours appears to be the last moment when these animals are YA.**
+
+### May 1, 2017
+
+At approximately 4.45pm, I bleached **EW15** and **MT2124** and left them in
+virgin M9 (no cholesterol or ethanol added). I will plate them tomorrow when
+all eggs have hatched at 6pm. If they cease to be young adults at 65 hours, this
+means that worms plated at 7pm on May 2nd will be YA on May 5th until midday.
+The worms were placed in plastic 5mL tubes with the caps on and allowed to lie
+on their side to maximize oxygenation of water. Given the small number of eggs
+in the
+tube, I don't expect them to turn hypoxic, but before I leave tonight I will
+place them on a shaker.
+I will try to plate 100 or so worms per plate into 3 plates.
+
+
+### May 2, 2017
+
+At 8:30, plated **EW15, MT2124** on food. They had been on Virgin M9 for 28 hours
+at 20C prior to this. Before plating, I checked worms for motion while on liquid
+before opening the tubes. Lack of motion is a sign of hypoxia, but all worms were
+thrashing vigorously.
