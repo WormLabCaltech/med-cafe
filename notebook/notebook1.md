@@ -178,3 +178,66 @@ At 8:30, plated **EW15, MT2124** on food. They had been on Virgin M9 for 28 hour
 at 20C prior to this. Before plating, I checked worms for motion while on liquid
 before opening the tubes. Lack of motion is a sign of hypoxia, but all worms were
 thrashing vigorously.
+
+From 10-11pm, I heat-shocked **PS4087** for 1hr (a bit over) at 33C.
+
+
+### May 4, 2017
+I plated some worms I bleached yesterday (**PS4087**) and am preparing to
+bleach N2, **EW15** and **MT2124** again today.
+
+### May 5, 2017
+Starting at 6am in the morning, I collected **MT2124** young adults, which was
+very easy due to their conspicuous Muv phenotype. I tried to pick worms that
+had a MacDonald-shaped vulva though in some cases the Muv phenotype makes
+this very hard to observe. A very small number of worms (less than 1% of the
+  population) were gravid by the time I got to the plates, but no eggs had yet
+  been laid.
+
+I collected 50 worms per plate and I collected 4 plates in total. After collection
+was finished, I transferred the worms to Eppendorf tubes using
+ice cold **TE buffer** (not M9!!!!). I then spun down using a PicoFuge and
+rinsed the worms again in TE buffer. I spun down once more, then transferred
+the worms to 0.5mL collection tubes. I spun down all Eppendorfs and
+transferred the bottom 100-200uL twice into the collection tubes. Then, I
+removed most of the TE, and rinsed using 300uL Ambion TE. I spun in a
+centrifuge, and accidentally spun above 10k RPM for a second, which destroyed
+one of my four samples. Always spin at 6k RPM, that's plenty for worms that
+are not moving any more. I removed the supernatant, then rinsed again using
+300uL of Ambion TE. After spin-down, I removed most of the TE down to a volume
+of approximately 20uL. I visually verified that 30 or so worms remained in the tube,
+then flash froze them.
+
+The entire procedure took about 2.5hours. Each plate was ready within 15 minutes
+of picking. Washing and spinning took a significant amount of time.
+
+I also picked **EW15** worms. This strain has a Pvul phenotype, and as a result
+it was very hard to tell young adults from adults. I picked slightly older adults
+on average than for **MT2124**. At the end of the TE wash steps, I checked to
+visually confirm there were worms on each tube. Unfortunately, 2/4 samples had
+lost the majority of worms. To address this, I combined three samples. I will
+need to collect worms at a later time.
+
+### May 6, 2017
+I looked at **MT4866** today at 11:10 or so. The worms had been placed on food on
+May 4, at 1:43pm. This plate contained predominantly young adults that had just
+exited the molt stage, which means their growth rate is approximately 57 hours.
+This agrees well with my previous estimates of 56 hours.
+I tried to use a goose-neck to select worms based on alae morphology, which should
+be unique to adults.
+
+I picked 8 worms and looked under Nomarski. All 8 worms had alae, but half or so
+had still not exited the molt. However, they were moving actively and pumping,
+suggesting that they were at the tail end of the molt. I will need to check with
+Paul whether this stage is appropriate. I feel it is close enough, but he might
+feel differently.
+
+### May 7, 2017
+Today at 6pm I picked **EW15** worms that had been seeded at 10am on May 5.
+This would put their age at 56 hours. The worms were much younger than last time,
+and the Pvul phenotype was proportionately weaker. I picked ~150 worms. After I
+transferred the worms to the final tube, I made the mistake of spinning them down.
+This has the unwanted effect of making the worms stick to the tube and they could
+not be readily unstuck, which caused me to lose a lot of worms. In the future,
+do not spin down 0.5mL tubes in a large centrifuge. Wait for worms to gravitate
+down. This should only take a couple of minutes if they are kept ice cold.
