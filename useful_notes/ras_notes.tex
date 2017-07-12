@@ -1,0 +1,372 @@
+\documentclass[10pt, onecolumn]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{lmodern}% http://ctan.org/pkg/lm
+\usepackage{authblk} % adds affiliations
+
+\usepackage[utf8x]{inputenc}
+\usepackage{nameref}
+\usepackage[right]{lineno}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage[numbers,super]{natbib}
+\usepackage{changepage}
+
+% adjust caption style
+\usepackage[aboveskip=1pt,labelfont=bf,
+            labelsep=period,singlelinecheck=off]{caption}
+
+% remove brackets from references
+\makeatletter
+\renewcommand{\@biblabel}[1]{\quad#1.}
+\makeatother
+
+\usepackage[colorinlistoftodos]{todonotes}
+
+% headrule, footrule and page numbers
+\usepackage{lastpage,fancyhdr,graphicx}
+\usepackage{epstopdf}
+\pagestyle{myheadings}
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{\thepage/\pageref{LastPage}}
+\renewcommand{\footrule}{\hrule height 2pt \vspace{2mm}}
+
+% use \textcolor{color}{text} for colored text (e.g. highlight to-do areas)
+\usepackage{color}
+
+\definecolor{Gray}{gray}{.25}
+
+\usepackage{graphicx}
+
+% use if you want to put caption to the side of the figure
+\usepackage{sidecap}
+
+\usepackage{xcolor}
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+
+% ####################################################
+% ####################################################
+% ####################################################
+\usepackage[colorinlistoftodos]{todonotes}
+% ####################################################
+% ####################################################
+% ####################################################
+
+
+
+
+
+% use for have text wrap around figures
+\usepackage{wrapfig}
+\usepackage[pscoord]{eso-pic}
+\usepackage[fulladjust]{marginnote}
+\reversemarginpar{}
+
+\usepackage{gensymb}
+\usepackage{siunitx}
+
+% new commands
+% q value
+\newcommand{\qval}[1]{$q<10^{-#1}$}
+
+% species names
+\newcommand{\cel}{\emph{C.~elegans}}
+\newcommand{\dicty}{\emph{D.~discoideum}}
+\newcommand{\ecol}{\emph{E.~coli}}
+
+% gene names
+\newcommand{\gene}[1]{\mbox{\emph{#1}}}
+\newcommand{\ras}{\gene{let-60} (\emph{ras})}
+% \newcommand{\gene}[1]{\emph{#1}} # for MS word typesetting
+\newcommand{\letgfn}{3,021}
+\newcommand{\letlfn}{857}
+\newcommand{\letgf}{\gene{let-60(gf)}}
+\newcommand{\letlf}{\gene{let-60(lf)}}
+\newcommand{\strongn}{2,821}
+\newcommand{\weakn}{434}
+\newcommand{\transn}{2,930}
+
+% protein names
+
+% DE genes numbers:
+
+% downstream targets
+
+% website commands
+
+
+% more space between rows
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+
+\title{Useful notes on \ras{}}
+
+\author[1,2]{David Angeles-Albores}
+\author[1,2,*]{Paul W. Sterberg}
+\affil[1]{Division of Biology and Biological Engineering, Caltech,
+Pasadena, CA, 91125, USA}
+\affil[2]{Howard Hughes Medical Institute, Caltech, Pasadena, CA, 91125, USA}
+\affil[*]{Corresponding author. Contact: pws@caltech.edu}
+\renewcommand\Affilfont{\itshape\small{}}
+
+% document begins here
+\begin{document}
+% title
+\maketitle
+% author info
+% \textbf{1} Division of Biology and Biological Engineering, Caltech,
+% Pasadena, CA, 91125, USA\\
+% \textbf{2} Howard Hughes Medical Institute, Caltech, Pasadena, CA, 91125, USA\\
+% \textbf{*} Corresponding author. Contact: pws@caltech.edu
+
+
+\linenumbers{}
+
+\section*{Analysis of dominant-negative mutations of \ras{}}
+See paper by Min Han and Sternberg~\cite{Han1991}. Briefly, Min Han found two
+classes of dominant negative mutations: \emph{dn} mutations that would cause a
+weakly penetrant Muv phenotype when injected into wild type animals and \emph{dn}
+mutations that never cause a Muv phenotype when injected into wild type animals.
+
+From studying one allele in each class, they show:
+Non-Muv alleles:
+\begin{enumerate}
+  \item (sy99, s101), (sy92, sy95, sy100). Parentheses signify different strains
+  containing the same mutations.
+  \item Are lethal dominant. This lethality is strongly suppressed in a dosage-independent
+  manner by \letlf{}.
+  \item Vulval differentiation increases with decreasing \emph{dn} dosage:
+  $dn/dn/+ < dn/+ < dn/+/+ = 1$.
+\end{enumerate}
+
+Muv alleles (AA 119 and 16):
+\begin{enumerate}
+  \item (sy93), (sy94)
+  \item Are recessive viable, so $+/Df$ is dead.
+  \item Are toxic to wild-type product, so vulval differentiation looks strange:
+  $dn/+ < dn/dn \sim dn/+/+ < wt < dn/dn/+$.
+  \item In $dn/dn/+$ animals, signaling is partially signal-independent.
+\end{enumerate}
+
+\section*{sur-1/mpk-1 acts downstream of \ras{}}
+See Yan Wu and Min Han~\cite{Wu1994}. 10\% of \gene{sur-1} (ku1) homozygotes
+have a P6.p non-differentiation phenotype. \gene{sur-1} is partially dominant
+over \ras{}. Null homozygotes are dead.
+
+
+\section*{\gene{ksr-1} encodes a novel raf-related kinase involved in Ras-mediated
+signal transduction}
+See paper by Sundaram and Han~\cite{Sundaram1995}. \gene{ksr-1} appears to be a
+parallele signal transduction pathway to \gene{lin-45} (Raf) and MAPK. Interestingly
+\gene{ksr-1} mutants do not have obvious vulval phenotypes by themselves, but
+loss-of-function mutants suppress \letgf{} phenotypes. Double mutants of
+\gene{ksr-1} and MAPK are synthetically dead.
+
+\section*{A Ras-mediated signal transduction pathway is involved in control of sex
+myoblast migration in \cel{}}
+See paper by Sundaram and Han~\cite{Sundaram1996}. \letlf{} have posteriorly
+positioned sex myoblasts (SM) relative to wild-type. \letgf{} mutants also have
+posteriorly positioned SMs but the phenotype is less severe. Similarly, \gene{ksr-1}
+mutants have posterior SMs. Loss of \gene{egl-15}, an FGF receptor, turns gonad from
+attractive to repulsive. The \gene{ksr-1; egl-15} double has the same phenotype
+as the \gene{egl-15} single.
+
+$
+egl-15; ksr-1 = egl-15 < ksr-1 < WT
+$
+
+\letgf{} causes a weak (10\%) SM migration phenotype (posterior). Unpublished:
+\letgf{} coupled with \gene{lin-45}, \gene{ksr-1}, \gene{mek-2} or \gene{sur-1}
+dramatically enhances SM positionining defects. Surprisingly, increasing
+\ras{} function by injection of wild-type or \letgf{} genes into a +/+ background
+does not cause positioning defects.
+
+Increased \ras{} activity partially suppresses \gene{egl-15} or \gene{egl-17}
+phenotypes. n1046gf allele can't suppress, but transgenes can. n1046gf also does
+not suppress \gene{sem-5} migratory defects, whereas injected wild-type transgenes
+do suppress (but the GF allele does NOT suppress [they argue it does, but small
+numbers]).
+
+
+\section*{SUR-5 Negatively Regulates \ras{} activity during Vulval induction}
+See Gu and Han~\cite{Gu1998}.
+\gene{sur-5} does not suppress all \emph{dn} mutants. It does not suppress
+\emph{sy93} and \emph{sy100} (no association with Muv/nonMuv classes).
+
+Take-home: \gene{sur-5} genetically inhibits \ras{} and the mutations suggest
+there may be multiple modes of interaction between \ras{} and effectors.
+
+\section*{SUR-8 Positively Regulates RAS-Mediated signaling in \cel{}}
+See Sieburth and Han~\cite{Sieburth1998}. \gene{sur-8}, a conserved Ras-binding protein acts
+to promote \ras{} (found via suppressor screen of \letgf{}), although
+\gene{sur-8} by itself has no phenotype. \gene{sur-8} is synthetically lethal
+with other downstream \ras{} effectors. \gene{sur-8(ku167); ksr-1(ku68)} has a
+P6.p non-induction phenotype at a 10\% rate, identical to \gene{sur-1}.
+
+\section*{The Ras-MAPK pathway is important for olfaction in \cel{}}
+See paper by Hirosu and Iino~\cite{Iino2000}. Note that there is an important corrigendum
+to this paper. In theory, \ras{} is shown to be important for AWA- and
+AWC-mediated attraction to odors. Notably, gf and lf mutations are said to affect
+odor detection in the same direction. However, the results are weak and not
+satisfactory to believe in (to my mind).
+
+\section*{SOS-1 is necessary for multiple RAS signals}
+See paper by Chieh-Chang and Sternberg~\cite{Chang2000}. A very confusing paper, albeit
+with a lot of data. Need to read again. SOS-1 is ID'ed as the GEF for \ras{} in
+many situations.
+
+\section*{EGL-15 Signaling Pathway Implicates\ldots{} in FGF Signal Transduction}
+See paper by Schutzman and Stern~\cite{Schutzman2001}. \letgf{} suppresses a a Clr phenotype
+(Soc), similarly to \gene{egl-15(gf)}. They found a gain of function mutation
+(G60R). This mutant is partially Muv and has a protruding excretory pore. As
+hets, these animals are Clr at 25\degree{}C, though normal at 15\degree{}C.
+
+Strangely, the canonical gf mutation, \emph{n1046}, does not show a Clr phenotype.
+
+Claim is that EGL-15 acts through SEM-5 in one pathway or through SOC-1/PTP-2
+in another to prevent the Clr phenotype. PTP-2 and SOC-1 may talk to RAS themselves.
+
+\section*{EOR-1 and EOR-2 regulate Ras and Wnt redundantly with SUR-2(Mediator)}
+See paper by Howard and Sundaram~\cite{Howard2002}. In this paper, the claim is that
+\gene{eor-1} and \gene{eor-2} act downstream of Ras and Wnt to modulate signal
+from these things. They show a number of synthetic effects, namely rod-like
+lethality with Ras pathway components, though evidence for involvement in Ras
+signaling is weak when considering Ras pathway loss-of-function (almost no Vul).
+However, Ras gain-of-function mutations leading to Muv phenotypes are strongly
+attenuated by mutations in \gene{eor-1} and \gene{eor-2}. This is true even
+for \gene{lin-1}, suggesting these genes act downstream of Ras.
+
+Somewhat surprisingly, \gene{eor-1} and \gene{eor-2} are unable to suppress even
+partially the synMuv phenotype of \gene{lin-15}, although they do inhibit the
+0 P11.p phenotype of \gene{lin-15}.
+
+Evidence for interaction with Wnt is mainly based on suppression of a 2 P11.p
+phenotype of \gene{pry-1}, but no other phenotype.
+
+\gene{lin-1} is claimed to act both positively and negatively with the Ras pathway
+because although \gene{lin-1(lf)} mutants are alive, double mutants with either
+\gene{eor-1} or \gene{eor-2} are completely dead; whereas maternally rescued
+doubles have a double Muv/Vul phenotype reminiscent of \gene{lin-25}. Based on
+these two phenotypes, the claim is that \gene{lin-1} acts bidirectionally on
+the Ras pathway. Another paper, by Tiensuu and Tuck~\cite{}, further addresses
+this issue.
+
+\section*{\gene{sur-2} functions late in \gene{let-60} signaling}
+See paper by Singh and Han~\cite{}. \gene{sur-2} attenuates the Muv phenotype of
+the \letgf{} mutant. Mutations in this gene lead to Vul and Mab phenotypes.
+
+\section*{\gene{lin-1} has positive and negative function in Ras signaling}
+See paper by Tiensuu~\cite{Tiensuu2005}
+In the absence of \gene{eor-1}, \gene{lin-1} mutants are dead unless maternally
+rescued for LIN-1 protein, in which case they show a Muv/Vul dual phenotype.
+Larval rod-like death is typical of \ras{} loss-of-function, whereas the Muv
+phenotype is reminiscent of \letgf{} mutants.
+
+This paper goes on to claim, using \gene{egl-17::gfp} expression as a proxy,
+that \gene{lin-1} has positive and negative effects on the Ras pathway. However,
+all of their epistatic evidence is entirely consistent with an `additive' model,
+in which \gene{lin-1} represses \gene{egl-17} and none of the other genes affect
+\gene{egl-17} expression. Particularly worrisome is the lack of dynamic range
+(almost everything is 0 or 100\%).
+
+The most interesting aspect of this paper us that in \gene{lin-1} mutants, the
+excretory duct cell is duplicated (as defined by expression of a
+\gene{lin-48::gfp} reporter), whereas in a \gene{eor-1} mutant the duct cell
+appears wild-type. In the double mutant, however, the duct cell appears to be
+missing, which also happens to be the phenotype of a \letgf{} mutant.
+
+In general, a very poorly written paper with an overabundance of weak data.
+
+\section*{A gain-of-function allele of \gene{cbp-1} (p300) increase Histone
+          Acetyltransferase activity and antagonizes Ras}
+See Eastburn and Han~\cite{Eastburn2005}. More Mediator-associated associations with Ras.
+
+\section*{ISWI and NURF301 antagonize Rb-like pathways in multiple cell fates}
+See Andersen and Horvitz~\cite{}. \gene{isw-1} suppresses a number of class B
+phenotypes, as well as the synMuv phenotype for a number of AB doubles.
+
+\section*{Non-cell-autonomous role of Ras in neuroblast determination}
+See paper by Parry and Sundaram~\cite{Parry2014}. Paper shows that the G1 cell, which
+helps generate the excretory pore initially, but later becomes a neuroblast,
+requires \ras{} for its maturation non-cell autonomously.
+
+\section*{KSR forms a Multiprotein Signaling Complex and Modulates MEK
+          localization}
+See paper by Stewart, Sundaram and Guan~\cite{Stewart1999}. Nice and thorough paper showing
+that KSR binds MEK in an enormous 700kDA complex (KSR and MEK1/2 <50kDA each).
+\cel{} \gene{ksr} alleles cannot bind MEK1. KSR did not appear to affect MEK
+activity or activation, but it does appear to localize MEK1 to the membrane.
+
+\section*{KSR is a scaffold required for MAPK activation}
+See paper by Roy and Therrien~\cite{}. Fruitfly paper. Claim is that KSR is a
+scaffold that facilitates phosphorylation of MEK by RAF.
+
+\section*{PP2A positively regulates Ras-signaling}
+See paper by Sierburth and Han~\cite{}. They find that PP2A acts positively to
+promote Ras signaling in a common pathway with \gene{ksr-1}, probably upstream
+of \gene{raf}.
+
+\section*{Wnt signaling bypasses Ras in vulval induction}
+See paper by Gleason and Eisenman~\cite{}. Take-home message is that
+\gene{lin-39}, a Hox gene, is controlled positively by both Wnt and Ras. When
+Wnt is overloaded, \gene{lin-39} activity becomes independent of Ras, as assayed
+by a \gene{pry-1; let-60(n1531dn)} double mutant. At 15\degree{}C, the effect is
+particularly pronounced.
+
+\section*{\gene{ksr-1} and \gene{ksr-2} have unique and redundant functions and
+          are required for MPK-1 ERK phosphorylation}
+See beautiful paper by Ohmachi and Sundaram~\cite{Ohmachi2002}. This paper explains that
+\gene{ksr-1} and \gene{ksr-2} are part of a scaffold that promotes the
+phosphorylation of MPK-1. Whereas \gene{ksr-1} is required for SM and dispensable
+for almost everything else, \gene{ksr-2} is required for Ras signaling in the
+germline meiotic progression. Morevoer, knocking both of these genes out results
+in a significant loss of activated MPK-1 and phenotype strongly reminiscent of
+\letlf{} mutants, as assayed by vulval induction, SM migration defects and
+fertility.
+
+Interestingly, KSR1/2 were both identified as synthetic interactors with
+\letgf{} and said to be in a `redundant' pathway. However, some of these papers
+suggest that they were not so much redundant pathways as concentration hubs
+for multiple Ras-related pathways. This is a fantastic paper.
+
+\section*{PTEN Negatively Regulates MAPK Signaling during
+          \cel{} Vulval Development}
+Nakdimon and Durbin~\cite{Nakdimon2012}. \gene{daf-2} promotes Ras, \gene{daf-18} inhibits.
+\gene{daf-2} allegedly talks to \gene{sem-5} and \gene{age-1}. AGE-1 promotes
+PIP$_3$ formation, which in turn promotes Ras signaling at an unknown location.
+Meanwhile, DAF-18 promotes PIP$_3$ degradation, thus inhibiting the Ras pathway.
+However, DAF-18 also appears to act in a PIP$_3$-independent pathway to inhibit
+MAPK (MPK-1) activity.
+
+\section*{PUF-8 negatively regulates RAS/MAPK signalling to promote
+         differentiation of \cel{} germ cells}
+Vaid and Subramaniam~\cite{Vaid2013}. GLP-1 (Notch) promotes mitotic proliferation by
+blocking exit into meiosis. PUF-8 and GAP-3 (a Ras GAP protein) appear to function
+redundantly to block LET-60 in the mitotic and meiotic entry regions.
+
+Phosphorylated MPK-1 is
+present in the transition to proximal parts of the gonad and repressed distally.
+However, in \gene{puf-8;gap-3} double mutants, MPK-1 is phosphorylated throughout
+and leads to a constitutively mitotic germline.
+The authors show that RNAi knockdown of \gene{let-60} restores meiosis to the
+germline. This would appear to show that \gene{let-60} inhibits germline
+maturation.
+
+In general, this paper is best understood with a view of \gene{let-60} as a
+proliferative factor. It promotes mitosis by blocking entry into meiosis in the
+distal germline, for which reason it is repressed there. Overabundance of LET-60
+thus leads to tumor formation.
+
+
+
+
+
+\bibliography{citations}
+
+%This defines the bibliographies style.
+\bibliographystyle{naturemag}
+
+\end{document}
