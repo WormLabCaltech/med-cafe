@@ -101,3 +101,5 @@ ENV/
 *.out
 
 tex/biorxiv_version/allelic_series_theory.synctex.gz
+
+*.sketch
