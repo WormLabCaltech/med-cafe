@@ -50,15 +50,9 @@
 
 % ####################################################
 % ####################################################
-% ####################################################
 \usepackage[colorinlistoftodos]{todonotes}
 % ####################################################
 % ####################################################
-% ####################################################
-
-
-
-
 
 % use for have text wrap around figures
 \usepackage{wrapfig}
@@ -68,6 +62,20 @@
 
 \usepackage{gensymb}
 \usepackage{siunitx}
+
+% make a box for author summary
+\usepackage[framemethod=TikZ]{mdframed}
+%% define the style
+\newcommand{\mybox}[2]{%
+         \begin{center}%
+            \begin{tikzpicture}%
+                \node[rectangle, draw=#1, top color=#1!10, bottom color=#1!10,
+                      rounded corners=5pt, inner xsep=5pt, inner ysep=6pt,
+                      outer ysep=10pt]{
+                        \begin{minipage}{1\textwidth}#2\end{minipage}};%
+            \end{tikzpicture}%
+         \end{center}%
+}
 
 % new commands
 % q value
@@ -81,7 +89,6 @@
 \newcommand{\lf}{loss-of-function allele}
 \newcommand{\strong}{strong loss-of-function allele}
 \newcommand{\weak}{weak loss-of-function allele}
-
 
 % gene names
 % \newcommand{\gene}[1]{\emph{#1}} # for MS word typesetting
@@ -98,14 +105,6 @@
 \newcommand{\strongn}{2,821}
 \newcommand{\weakn}{434}
 \newcommand{\transn}{2,930}
-
-% protein names
-
-% DE genes numbers:
-
-% downstream targets
-
-% website commands
 
 
 % more space between rows
@@ -127,48 +126,93 @@ Pasadena, CA, 91125, USA}
 \maketitle
 
 \section*{Abstract}
+\textbf{Expression profiling holds great promise for genetics due to
+its quantitative nature and the large number of genes that are measured. There
+is increasing interest in using these measurements as phenotypes for classical
+genetics analysis. Although transcriptomes have recently been used to perform
+epistasis analyses for pathway reconstruction, there has not been a systematic
+effort to understand whether different alleles have different transcriptomic
+qualities. Here, we study two allelic series using transcriptomic phenotypes. We
+study gain-of-function and reduction-of-function \gene{let-60 (ras)} alleles and
+show that they are drastically different and show relationships between
+themselves that were not predictable. We also study two alleles of \gene{dpy-22}
+that generate two prematurely truncated proteins of different lengths. We show
+that expression perturbations caused by these alleles can be split into three
+distinct modules, and each module reacts with a different dominance relationship
+to each allele. Our work formalizes the concept of dominance for transcriptomic
+phenotypes, and shows the importance of studying allelic series for
+understanding the molecular qualities of the genes in question. }
 
-\textbf{
-Abstract goes here
+\vspace{5mm}
+
+\section*{Author Summary}
+\mybox{red}{
+Expression profiling is a way to quickly and quantitatively measure the expression
+level of every gene in an organism. As a result, these profiles could be used as
+phenotypes with which to perform genetic analyses (i.e., to figure out what genes
+interact with each other) as well as to dissect the molecular properties of each
+gene. Before we can perform these analyses, we have to figure out the rules that
+apply to these measurements. In this paper, we develop new concepts and methods
+with which to study an allelic series. Briefly, allelic series are an important
+aspect of genetics because different alleles encode different versions of a gene.
+By studying these different versions, we can make statements about the function
+of different parts of the gene. By combining allelic series with expression
+profiling, we can learn much more about the gene under study than we could
+previously.
 }
-
-\vspace{10mm}
-
-\section*{Significance Statement}
-
-
 \vspace{10mm}
 
 \linenumbers{}
 
 \section*{Introduction}
-Allelic series refers to the study of alleles with different phenotypes in order
+Allelic series refers to the study of alleles with different phenotypes
 to understand the molecular properties that this locus controls. Allelic series
-are historically important for genetics. Indeed, the earliest authors to use the
-term `allelic series' are Barbara McClintock~\cite{} and Elizabeth S.
-Russell~\cite{}. In her work, McClintock studied a deficiency of the tail end of
-chromosome 9 of maize by generating trans-heterozygotes with mutants of various
-genes that she knew existed near the end of chromosome 9. Her work allowed her
-to infer that the deficiency was modular, effectively generating a double mutant
-that behaved as a single allele but which could participate phenotypically in
-two distinct allelic series. From this study, McClintock made inferences about
-the role of large deletions in generating null mutants and the modifying effects
-of placing a loss-of-function mutation in \emph{trans} to a deficiency or large
-deletion. In multiple senses, this work precluded later observations in yeast
+are historically important for genetics. The earliest Pubmed-indexed author to
+use this term was Barbara McClintock~\cite{McClintock1944}. In her work,
+McClintock studied a deficiency of the tail end of chromosome 9 of maize by
+generating trans-heterozygotes with mutants of various genes that she knew
+existed near the end of chromosome 9. Her work allowed her to infer that the
+deficiency was modular, effectively generating a double mutant that behaved as a
+single allele but which could participate phenotypically in two distinct allelic
+series. From this study, McClintock made inferences about the role of large
+deletions in generating null mutants and the modifying effects of placing a
+loss-of-function mutation in \emph{trans} to a deficiency or large deletion. In
+multiple senses, this work set the foundations for later observations in yeast
 that showed two mutant alleles of the same genetic unit, when placed in
-\emph{trans} to each other, could complement and generate a wild-type phenotype.
-Allelic series have also been used to study the dose response curve of a
-phenotype for a particular gene. In \cel{}, the \gene{let-23} allelic series
-stands out as an example~\cite{}.
+\emph{trans} to each other, could complement and generate a wild-type
+phenotype~\cite{FINCHAM1957}. Allelic series have also been used to study the
+dose response curve of a phenotype for a particular gene. In \cel{}, the
+\gene{let-23} allelic series stands out as such an example~\cite{}. Although
+molecular null alleles are important for epistasis measurements, alleles with
+functional variations are useful to probe the genetic architecture at the single
+locus level.
 
-As case studies, we focus on an allelic series of the \gene{let-60} gene and an
-allelic series of the \gene{dpy-22} gene in \cel{}. \gene{let-60} is the
-\gene{ras} orthologue in \cel{}~\cite{Han1990a}, where it functions to promote
-the cellular fate of a number of cells during development~\cite{Yochem1997}.
-\ras{} is a GTPase~\cite{Han1990a} that cycles between GDP- and GTP-binding
-states. The GTP-binding state is considered to be the signaling
-competent state. \gene{dpy-22} is the \gene{med-12} orthologue in
-\cel{}~\cite{}\todo{cite}.
+Over the last decade, biology has moved from studies of single genes towards
+studies of genome-wide measurements. In particular, expression profiling via
+RNA-sequencing~\cite{Mortazavi2008} (RNA-seq) is a popular method because it
+enables the simultaneous measurement of expression levels for all genes in a
+genome. These measurements can now be made on a whole-organism scale or for
+single cells~\cite{}. Although initially expression profiles had a qualitative
+purpose as descriptive methods to identify genes that are downstream of a
+perturbation, these profiles are actively being developed as phenotypes for
+genetic analysis. Transcriptomes have been successful in identifying new cell or
+organismal states~\cite{Angeles-Albores2017,Villani2017}. Finally, genetic
+pathways can be reconstructed by using single cell sequencing via
+clustering~\cite{Dixit2016} and using whole-animal sequencing to measure
+transcriptome-wide epistasis between the null mutants of two genes~\cite{}.
+However, to fully characterize a genetic pathway, it is necessary to
+build allelic series to compare how phenotypes change with varying
+gene activity.
+
+To explore the relationship between different transcriptomes associated with
+different alleles, we focused on two allelics series: an allelic series of the
+\gene{let-60} gene and an allelic series of the \gene{dpy-22} gene in \cel{}.
+\gene{let-60} is the \gene{ras} orthologue in \cel{}~\cite{Han1990a}, where it
+functions to promote the cellular fate of a number of cells during
+development~\cite{Yochem1997}. \ras{} is a GTPase~\cite{Han1990a} that cycles
+between GDP- and GTP-binding states. The GTP-binding state is considered to be
+the signaling competent state. \gene{dpy-22} is the TRAP-230/MED12 orthologue in
+\cel{}~\cite{Zhang2000,Bourbon2004}.
 
 In \cel{}, \ras{} always acts downstream of a receptor\todo{citation}. Activated
 \ras{} can activate signaling cascades to transmit information to the eukaryotic
@@ -190,81 +234,141 @@ known to be lethal, but reduction-of-function alleles have been useful to
 carefully dissect the molecular properties of this protein. Gain-of-function
 mutations of \ras{} are also known, although they are much more rare. In
 particular, a single gain-of-function mutation, \emph{n1046gf}, was famously
-isolated multiple times in several
-screens~\cite{Han1990,Beitel1990a,Ferguson1985} leading to a Multivulva (Muv)
-phenotype. \todo{Is Ferguson 1985 the right citation here} These
-gain-of-function mutations have a privileged history in the Ras pathway, as they
-have been used in multiple screens to identify genes that have a Suppressor of
-Ras (Sur) phenotype \todo{anything else that I need to cite here?} such as
-\gene{sur-1} (now \gene{mpk-1}~\cite{Lackner1994}) or
+isolated independently in several vulva formation screens by different
+laboratories~\cite{Han1990,Beitel1990a,Ferguson1985}. \todo{Is Ferguson 1985 the
+right citation here} These gain-of-function mutations have a privileged history
+in the Ras pathway, as they have been used in multiple screens to identify genes
+that have a Suppressor of Ras (Sur) phenotype \todo{anything else that I need to
+cite here?} such as \gene{sur-1} (now \gene{mpk-1}~\cite{Lackner1994}) or
 \gene{sur-2}~\cite{Singh1995}. Interestingly, although nulls of these genes are
 often lethal, strong loss-of-function alleles can be obtained for these
-suppressors. Moreover many of these suppressor alleles have no phenotype in a
-wild-type background~\cite{}. This suggests that many of these genes mediate
-very little Ras signaling under most situations yet have significant dynamic
-range in the amount of signaling they can accomodate.
+suppressors. Moreover many of these reduction-of-function suppressor alleles
+have no phenotype in a wild-type background~\cite{}. This suggests that many of
+these genes mediate little Ras signaling under most situations yet have
+significant dynamic range in the amount of signaling they can accomodate. We
+selected \ras{} due to the range of phenotypic outcomes associated with this
+gene and the dependence of these outcomes on the type of lesion present
+(gain-of-function or reduction-of-function).
 
-Talk about \gene{dpy-22}.
+\gene{dpy-22}, also known as \gene{mdt-12}, is a subunit of the Mediator
+complex. Briefly, Mediator is a complex that globally regulates RNA polymerase
+II (Pol II)~\cite{Allen2015,Takagi2006}. Mediator is a versatile regulator, a
+quality often associated with its variable subunit composition~\cite{Allen2015},
+and it can promote transcription as well as inhibit it. The Mediator complex can
+be associated with four modules: head, middle and tail modules and a kinase
+module. In \cel{}, CDK8-associated kinase module (CKM) consists of \gene{cdk-8},
+\gene{mdt-13}, \gene{cic-1} and \dpy{}~\cite{Grants2015}. The CKM is considered
+a molecular switch, which inhibits Pol II activity by sterically preventing
+interactions between Mediator and the polymerase~\cite{Knuesel2009,Elmlund2006}.
+In \cel{}, \dpy{} has been studied primarily in the context of the male
+tail~\cite{Zhang2000}, where it was found to interact with the Wnt pathway, as
+well as vulval formation~\cite{Moghal2003a}, where it was found to be an
+inhibitor of the Ras pathway. The null mutant of \dpy{} is
+lethal~\cite{}\todo{who to cite for this?}, so developmental studies have relied
+on reduction-of-function alleles to understand the role of this gene in
+morphogenesis. In particular, studies of the male tail were carried out using
+an allele, \gene{dpy-22(bx93)}, that generates a truncated \protein{dpy-22}
+protein missing the terminal 900 or so amino acids~\cite{Zhang2000}. In spite of
+the premature truncation, animals carrying this allele appear phenotypically
+wild-type. In contrast, the allele used to study the role of \dpy{} in the vulva,
+\gene{dpy-22(sy622)}, is a premature stop codon that removes more than 1,500
+amino acids of the protein~\cite{Moghal2003}. Animals carrying this mutation are
+severely dumpy (Dpy), have egg-laying defects (Egl) and have a multivulva (Muv)
+phenotype that occurs at a very low rate. We wanted to study how truncations of
+increasing severity affected transcriptomic phenotypes. These alleles could form
+a single quantitative series, in which case the \emph{trans}-heterozygote would
+exhibit a single dosage-dependent phenotype intermediate to the two homozygotes;
+they could form a single qualitative series, in which case the trans-heterozygote
+should have the same phenotype as the homozygote of the \emph{bx93} allele, since
+this allele encodes the longer protein. Alternatively, these alleles could form a
+mixed series, in which case multiple separable phenotypes would appear that
+have different behaviors in the \emph{trans}-heterozygote.
 
-In this paper, we set out to sequence a weak gain-of-function (\emph{n1046gf})
-and a strong loss-of-function (\emph{n2021}) allele of Ras, as well as a weak
-loss-of-function (\emph{bx93}) and a strong-loss-of-function (\emph{sy622})
-allele of \dpy{}. In either allelic series we found behaviors that challenge the
-way we think about alleles and allelic series.
+Expression profiles are quantitative measurements that hold great potential for
+dissecting the various molecular functions of a gene, but studying allelic
+series \emph{de novo} is complicated by the lack of a theoretical framework with
+which to explore these new phenotypes. To establish a methodology for studying
+allelic series, we explored two well-characterized sets of alleles. We sequenced
+a weak gain-of-function (\emph{n1046gf}) and a strong loss-of-function
+(\emph{n2021}) allele of Ras, as well as a weak loss-of-function (\emph{bx93})
+and a strong-loss-of-function (\emph{sy622}) allele of \dpy{}. We expected that
+the Ras alleles would show perturbations in the same set of genes in opposite
+directions. Instead, we find that the two sets of altered genes are largely
+distinct; of those genes that are common to both alleles, a majority change in
+the same direction, contrary to expectations. For the \dpy{} allelic series, we
+found that the perturbations caused by the weak loss-of-function allele,
+\emph{bx93}, are entirely contained within the strong loss-of-function allele,
+\emph{sy622}. Further, we found that there are three phenotypic classes that are
+affected by \dpy{}. For one class, termed the \emph{sy622}-specific class, the
+\emph{bx93} homozygote, but not the \emph{sy622} homozygote, shows wild-type
+functionality. In a trans-heterozygote of \emph{sy622/bx93} these genes are
+suppressed to wild-type levels from the \emph{sy622} levels, which shows that
+\emph{bx93} is wild-type dominant over \emph{bx93} for this phenotype. A second
+class, called the \emph{sy622}-associated class, similarly shows wild-type
+functionality in the \emph{bx93} homozygote but not in the \emph{sy622}
+homozygote, yet in the trans-heterozygote the expression levels of these genes
+is intermediate to the expression levels of either homozygote. Thus, genes in
+this class are responsive to \protein{dpy-22} dosage. Finally, we identified a
+third class, called the \emph{bx93}-specific class, which contained genes that
+were altered in both homozygotes, but which showed an expression level most
+similar to the \emph{bx93} homozygote, showing that \emph{bx93} has a dominant
+mutant phenotype for this subset. For each class, we were able to quantitatively
+measure the dominance level of each allele. These findings challenge the way we
+think about alleles and their phenotypic classes at the transcriptional level
+and provide an example for how to quantitatively dissect allelic series on a
+transcriptome-wide level.
+
 
 
 \section*{Results}
-\subsection*{Comparing \emph{ras(gf)} and \emph{ras(lf)} alleles}
-As a first survey of allelic series, we sequenced in triplicate two alleles of
+\subsection*{Comparing gain-of-function and loss-of-function alleles}
+We sequenced in triplicate two alleles of
 \gene{let-60}, \gene{let-60(n1046gf)} and \gene{let-60(n2021)} at the young
 adult stage and compared them with wild-type samples at the same stage. We
 sequenced each sample at a depth of 20M reads. These reads were pseudo-aligned
-using Kallisto~\cite{}, which allowed us to quantify 21,800 protein-coding
-isoforms. After quantification, we performed differential expression analysis
-using Sleuth~\cite{}. Briefly, Sleuth uses a General Linear Model to identify
-genes that are differentially expressed by log-transforming the estimated counts
-of a given isoform in all the samples and performing a linear regression between
-a given mutant and wild-type. The slope of the linear regression, $\beta$, is a
-measurement of the magnitude of the perturbation, loosely analogous to the
-natural logarithm of the fold-change (see Angeles-Albores \emph{et al}~\cite{},
-Figure 1). These slopes are tested against the null hypothesis that they are
-equal to zero. An isoform is considered to be differentially expressed when the
-$q$-value ($p$-value corrected for false discovery rate) is less than 0.1.
-$\beta$ values can be positive or negative---positive values of $\beta$ indicate
-an isoform that is up-regulated in the mutant relative to the wild-type control,
-whereas negative values of $\beta$ indicate an isoform that is down-regulated in
-the mutant relative to the wild-type control. When we refer to $\beta$ and
-$q$-values, it will always be in reference to isoforms. However, when speaking
-about the size of a gene set, we will always quantify it as the number of
-individual genes contained in the set. For \cel{}, the difference between the
-number of isoforms and genes is negligible because most protein-coding genes
-have a single isoform.
+using Kallisto~\cite{Bray2016}, which allowed us to quantify 21,800
+protein-coding isoforms. After quantification, we performed differential
+expression analysis using Sleuth~\cite{Pimentel2016a}. Briefly, Sleuth uses a
+General Linear Model to identify genes that are differentially expressed by
+log-transforming the estimated counts of a given isoform in all the samples and
+performing a linear regression between a given mutant and wild-type. The slope
+of the linear regression, $\beta$, is a measurement of the magnitude of the
+perturbation, loosely analogous to the natural logarithm of the fold-change (see
+Angeles-Albores \emph{et al}~\cite{}, Figure 1), for each isoform. These slopes
+are tested against the null hypothesis that they are equal to zero. An isoform
+is considered to be differentially expressed when the $q$-value ($p$-value
+corrected for false discovery rate) is less than 0.1. $\beta$ values can be
+positive or negative---positive values of $\beta$ indicate an isoform that is
+up-regulated in the mutant relative to the wild-type control, whereas negative
+values of $\beta$ indicate an isoform that is down-regulated in the mutant
+relative to the wild-type control. When we refer to $\beta$ and $q$-values, it
+will always be in reference to isoforms. However, when speaking about the size
+of a gene set, we will always quantify it as the number of individual genes
+contained in the set. For \cel{}, the difference between the number of isoforms
+and genes is negligible because most protein-coding genes have a single isoform.
 
-
-We predicted that the transcriptomes of these alleles
-would show the same set of differentially expressed genes (henceforth referred
-to them as a shared transcriptomic phenotype, STP) because these alleles are
-both perturbing the GTP-binding potential of the protein product. Moreover, we
-predicted genes within this STP would show weaker perturbations on average
-within one mutant compared to the other.
-We identified \letgfn{} differentially expressed genes in the \letgf{} mutant
-relative to the wild-type control, and \letlfn{} differentially expressed genes
-in the \letlf{} mutant relative to the wild-type control (see
-Fig.~\ref{fig:rasplots}).
-
-Contrary to our expectations, the STP between these two alleles consisted of
-31\% of the differentially expressed genes in the \letlf{} transcriptome,
-totalling 269 genes. Moreover, we found that this STP showed a strong positive
-correlation between the two alleles. In order to assess whether one allele was
-significantly stronger than another we split the STP into its correlated and
-anti-correlated components and found the regression line in each component. We
-measured a correlation coefficient of 1.03 and -1.00 for each component,
-indicating that the two alleles have effects that are exactly opposite on
-average. Our results suggest the existence of four phenotypes: A phenotype
-associated exclusively with \letgf{} (the \letgf{}-specific phenotype), another
-associated exclusively with \letlf{} (the \letlf{}-specific phenotype), a
-phenotype that is the dpy-6 in both alleles and a phenotype that is inverted in
-one allele relative to the other.
+We predicted that the transcriptomes of these alleles would show the same set of
+differentially expressed genes (henceforth referred to as a shared
+transcriptomic phenotype, STP) because these alleles are both perturbing the
+GTP-binding potential of the protein product. However, we predicted that whereas
+these genes would be up-regulated (down-regulated) in the gain-of-function
+homozygote, they would be down-regulated (up-regulated) in the loss-of-function.
+In other words, the gain-of-function allele would have opposite effects relative
+to the loss-of-function allele for genes contained in the STP.\@ We identified
+\letgfn{} differentially expressed genes in the \letgf{} mutant relative to the
+wild-type control, and \letlfn{} differentially expressed genes in the \letlf{}
+mutant relative to the wild-type control (see Fig.~\ref{fig:rasplots}). Contrary
+to our expectations, the STP between these two alleles consisted of 31\% of the
+differentially expressed genes in the \letlf{} transcriptome, totalling 269
+genes. Moreover, we found that this STP showed a strong positive correlation
+between the two alleles. To assess whether one allele was significantly stronger
+than another we split the STP into its correlated and anti-correlated components
+and found the regression line in each component. We measured a correlation
+coefficient of 1.03 and -1.00 for each component, indicating that the two
+alleles have effects that are on average exactly opposite. Our results suggest
+the existence of four phenotype classes: A \letgf{}-specific class, a
+\letlf{}-specific class, a positively correlated shared transcriptomic phenotype
+class and a negatively correlated shared transcriptomic phenotype class.
 
 \begin{figure}
   \centering{}
@@ -280,53 +384,56 @@ one allele relative to the other.
 \label{fig:rasplots}
 \end{figure}
 
-In order to gain some insight into the biological meaning each set, we used the
-WormBase Enrichment Suite~\cite{} to perform Gene, Tissue and Phenotype Ontology
-enrichment analyses. Analysis of the \letgf{}-specific phenotype revealed
-enrichment of genes expressed in the early embryo (AB lineage), in the male, the
-hypodermis and the reproductive system whereas the \letlf{}-specific phenotype
-showed enrichment of the intestine. Phenotype term enrichment associated the
-\letgf{}-specific transcriptomic phenotype with the linker cell migration, lipid
-metabolism and neuropil development, and the \letlf{}-specific transcriptomic
-phenotype was enriched in mitochondrial alignment. Finally, gene ontology
-enrichment analysis showed that the \letgf{}-specific transcriptomic phenotype
-was enriched in regulation of cell-shape, immune system response and side of
-membrane. The \letlf{}-specific phenotype showed enrichment in terms related to
-striated muscle, collagen trimer and cell death. Our results suggest that gain-
-and loss-of-function alleles have separable functions that do not obviously
-recapitulate the visible phenotypes typically associated with this gene.
+We used the WormBase Enrichment Suite~\cite{Angeles-Albores2016} to perform
+Gene, Tissue and Phenotype Ontology enrichment analyses of each class. Analysis
+of the \letgf{}-specific phenotype revealed enrichment of genes expressed in the
+early embryo (AB lineage), in the male, the hypodermis and the reproductive
+system whereas the \letlf{}-specific phenotype showed enrichment of the
+intestine. Phenotype term enrichment associated the \letgf{}-specific
+transcriptomic phenotype with the linker cell migration, lipid metabolism and
+neuropil development, and the \letlf{}-specific transcriptomic phenotype was
+enriched in mitochondrial alignment. Gene ontology enrichment analysis also
+showed that the \letgf{}-specific transcriptomic phenotype was enriched in
+regulation of cell-shape, immune system response and side of membrane. The
+\letlf{}-specific phenotype showed enrichment in terms related to striated
+muscle, collagen trimer and cell death. Our results suggest that gain- and
+loss-of-function alleles have separable functions that do not conform to the
+gain/loss of structure phenotypes typically associated with them.
 
 \subsection*{A strong and a weak loss-of-function \gene{dpy-22} allele show
              different transcriptomic profiles}
 We studied two alleles of \gene{dpy-22} (a Mediator subunit) that previous
-studies had suggested could be qualitatively distinct. Allele \emph{bx93} (the
-weak allele) encodes a premature stop codon that removes the terminal 900 amino
-acids from the protein. \emph{bx93} homozygotic animals are phenotypically
-wild-type with a very low incidence of male tail defects~\cite{}. Allele
-\emph{sy622} (the strong allele) encodes a premature stop codon that removes the
-terminal 1700 amino acids from the protein. \emph{sy622} homozygotes grow
-slowly, are severely dumpy (Dpy), have a low penetrance multivulva (Muv) phenotype
-and have a prominent egg-laying defective (Egl) phenotype~\cite{Moghal2003}.
+studies had suggested could be qualitatively distinct. Allele \emph{bx93}
+(referred to as weak allele) encodes a premature stop codon that removes the
+terminal 900 amino acids from the protein. \emph{bx93} homozygotic animals are
+phenotypically wild-type with a very low incidence of male tail defects~\cite{}.
+Allele \emph{sy622} (referred to as the strong allele) encodes a premature stop
+codon that removes the terminal 1700 amino acids from the protein. \emph{sy622}
+homozygotes grow slowly, are severely dumpy (Dpy), have a low penetrance
+multivulva (Muv) phenotype and have a prominent egg-laying defective (Egl)
+phenotype~\cite{Moghal2003}.
 
-We sequenced homozygotes of both alleles. We found that \emph{bx93} homozygotes
-expressed \weakn{} differentially expressed genes, and \emph{sy622} homozygotes
-showed \strongn{} differentially expressed genes. Of the \weakn{} differentially
-expressed genes in the \emph{bx93} mutant, 73\% were also differentially
-expressed in the \emph{sy622} alleles, indicating that the impaired
-functionalities in the \emph{bx93} homozygote are also impaired in the
-\emph{sy622} homozygote. Having established that both alleles affect a
-shared subset of genes, we proceeded to measure whether the \emph{sy622} allele
-showed greater perturbations in this subset. We observed that the weak allele,
-\emph{bx93}, had perturbation magnitudes that were on average 39\% weaker than
-the perturbation magnitudes in the strong allele, \emph{sy622} (see
-Fig.~\ref{fig:dpy22}). In summary, the strong allele had more differentially
-expressed genes than the weak allele, and genes altered commonly in mutants of
-both alleles were more perturbed in the strong allele than in the weak allele.
-However, without a \emph{trans}-heterozygote, it is impossible to tell whether
-these differences are the result of greater reduction of function in the
-\emph{sy622} allele relative to the \emph{bx93} allele or whether the
-\emph{sy622} allele has qualitative differences from \emph{bx93} as a result of
-additional deleted functional domains.
+We sequenced homozygotes of both alleles and a \emph{trans}-heterozygote of both
+alleles in triplicate and calculated differential expression with respect to a
+wild-type control. We found that \emph{bx93} homozygotes expressed \weakn{}
+differentially expressed genes, and \emph{sy622} homozygotes showed \strongn{}
+differentially expressed genes. Of the \weakn{} differentially expressed genes
+in the \emph{bx93} mutant, 73\% were also differentially expressed in the
+\emph{sy622} alleles, indicating that the impaired functionalities in the
+\emph{bx93} homozygote are also impaired in the \emph{sy622} homozygote. Having
+established that both alleles affect a shared subset of genes, we proceeded to
+measure whether the \emph{sy622} allele showed greater perturbations in this
+subset. We observed that the weak allele, \emph{bx93}, had perturbation
+magnitudes that were on average 39\% weaker than the perturbation magnitudes in
+the strong allele, \emph{sy622} (see Fig.~\ref{fig:dpy22}). In summary, the
+strong allele had more differentially expressed genes than the weak allele, and
+genes altered commonly in mutants of both alleles were more perturbed in the
+strong allele than in the weak allele. However, without analysis of the
+\emph{trans}-heterozygote, it is impossible to conclude whether these differences
+are the result of greater reduction of function in the \emph{sy622} allele
+relative to the \emph{bx93} allele or whether the \emph{sy622} allele has
+qualitative differences from \emph{bx93} as a result of additional deleted
+functional domains.
 
 \begin{figure}
   \centering{}
@@ -349,6 +456,7 @@ additional deleted functional domains.
 
 \subsection*{The \emph{trans}-heterozygote of \gene{dpy-22} strong and weak
              alleles allows the identification of four phenotypic classes}
+\label{sec:transhet_analysis}
 A standard method to identify whether two alleles differ quantitatively in their
 activity levels or whether they are qualitatively different because each allele
 has inactivated protein domains with separable functions is to generate a
@@ -367,8 +475,8 @@ We sequenced a trans-heterozygote of the \emph{bx93} and \emph{sy622} alleles
 with genotype \gene{dpy-6(e14) bx93/+ sy622}. This trans-heterozygote appears
 phenotypically wild-type, resembling the \emph{bx93} mutant morphologically. The
 \emph{trans}-heterozygote showed \transn{} differentially expressed genes. Using
-the trans-heterozygote, we were able to separate genes into four main phenotypic
-classes, classifying them by what genotypes caused these genes to become
+the trans-heterozygote, we were able identify four non-overlapping phenotypic
+classes by what genotypes caused these genes to become
 differentially expressed. One phenotypic class consisted of genes that were
 differentially expressed in the \emph{sy622} homozygote as well as the
 trans-heterozygote, but not in the \emph{bx93} homozygote (989 differentially
@@ -377,32 +485,37 @@ phenotypic class consisted of 1,623 genes that were only dysregulated in the
 \emph{sy622} homozygote, which we called the \emph{sy622}-specific phenotype
 because it is entirely suppressed by the presence of a single copy of the
 \emph{bx93} allele. We also found a trans-heterozygote-specific phenotype
-consisting of 1,676 genes which is not present in either homozygote. Finally, we
-defined a \emph{bx93}-associated phenotype as the set of genes dysregulated in
-both the \emph{bx93} homozygote and the heterozygote, consisting of 310
-differentially expressed genes. Having defined these classes, we set out to
-describe their properties.
+consisting of 1,676 genes which is not present in either homozygote. The fourth
+phenotypic class, called the \emph{bx93}-associated class, was defined as the
+set of genes dysregulated in both the \emph{bx93} homozygote and the
+heterozygote, consisting of 310 differentially expressed genes. Although a
+\emph{bx93}-specific phenotype technically exists, we do not consider it because
+we believe this class can be mostly explained in terms of false-positives and
+false-negatives (see discussion: \nameref{sec:dpy_conclusion}). Having defined
+these classes, we set out to describe their properties.
 
-We asked whether these classes behaved differently within a homozygote.
-Specifically, we wanted to know whether the \emph{sy622}-specific, the
-\emph{sy622}-associated and the \emph{bx93}-associated phenotypes were different
-in the magnitude of their perturbations or whether these subsets behaved as if
-they had been randomly selected from the set of differentially expressed genes
-in the \emph{sy622} homozygote (see Fig.~\ref{fig:classes}). We found that that
-the \emph{bx93}-associated phenotype had the greatest magnitude of perturbations
-of the three classes (mean, median and maximum). The \emph{sy622}-associated
-phenotype had a smaller range of perturbations compared to the
-\emph{bx93}-associated phenotype (95th percentiles: 3.3 versus 4.2,
-respectively), and a statistically smaller mean (1.3 vs 0.99, respectively, $p <
-10^{-5}$, non-parametric boostrap). The \emph{sy622}-specific phenotype had the
-smallest mean of all (0.9, $p < 10^{-5}$ compared with \emph{bx93}-associated
-phenotype, and $p = 0.01$ compared with the \emph{sy622}-associated phenotype).
-The medians are almost identical between the \emph{sy622}-specific and the
-\emph{sy622}-associated phenotypes, which indicates that the small difference in
-the means of these two distributions is primarily driven by the longer tail of
-the \emph{sy622}-associated phenotype. In conclusion, the \emph{bx93}-associated
-phenotypic class contains those genes that are most sensitive to loss of function
-in \protein{dpy-22}.
+We asked whether these classes had perturbation distributions distinct from each
+other within a single homozygote. Specifically, in the context of the
+\emph{sy622} homozygote, we wanted to know whether the \emph{sy622}-specific,
+the \emph{sy622}-associated and the \emph{bx93}-associated phenotypic classes had
+different perturbation distributions or whether these subsets
+behaved as if they had been randomly selected from the set of differentially
+expressed genes in the \emph{sy622} homozygote (see Fig.~\ref{fig:classes}). We
+found that that the $\beta$ coefficients of isoforms within the
+\emph{bx93}-associated phenotype on average had the largest absolute value (mean
+$1.3$). The \emph{sy622}-associated phenotype had a smaller range of
+perturbations compared to the \emph{bx93}-associated phenotype (95th percentiles
+of the two distributions: 3.3 versus 4.2, respectively), and a statistically
+smaller mean (1.3 vs 0.99, respectively, $p < 10^{-5}$, non-parametric
+boostrap). The \emph{sy622}-specific phenotype had the smallest mean of all
+(0.9, $p < 10^{-5}$ compared with \emph{bx93}-associated phenotype, and $p =
+0.01$ compared with the \emph{sy622}-associated phenotype, non-parametric
+bootstrap). The medians are almost identical between the \emph{sy622}-specific
+and the \emph{sy622}-associated phenotypes, which indicates that the small
+difference in the means of these two distributions is primarily driven by the
+longer tail of the \emph{sy622}-associated phenotype. In conclusion, the
+\emph{bx93}-associated phenotypic class contains those genes that respond most
+strongly to loss of function of \protein{dpy-22}.
 
 
 \begin{figure}
@@ -427,7 +540,7 @@ in \protein{dpy-22}.
 \label{fig:classes}
 \end{figure}
 
-\subsection*{Dominance can be quantified}
+\subsection*{Dominance can be quantified in transcriptomic phenotypes}
 We reasoned that if one allele was dominant over the other in the heterozygote,
 then plotting the $\beta$ coefficients in the homozygote of the dominant allele
 versus the heterozygote should lead to a slope of 1. Deviations from a slope
@@ -465,48 +578,45 @@ to the \emph{bx93} homozygote, although on average its phenotype is 10\% worse
 The close resemblance of the \emph{bx93} levels to the trans-heterozygote levels
 suggested that the \emph{bx93} is dominant over the \emph{sy622} allele. To
 quantify this dominance, we implemented and maximized a Bayesian model. Briefly,
-we asked whether there was a linear combination of the $\beta$ coefficients
-of each homozygote that would predict the observed $\beta$ values of the
-heterozygote, subject to the constraint that the coefficients added up to 1.
-Our results suggested that the \emph{bx93} allele was responsible for
-$80\% \pm 1\%$ of the gene expression phenotypes of the trans-heterozygote.
-We wanted to explore how well this model explained the data. We reasoned that
-if this was a modular phenotype, then it should be possible to plot the predicted
-$\beta$ values against the observed $\beta$ values of the heterozygote using
-this coefficient. If the model fit well, we expected to observe a clearly linear
+we asked whether there was a linear combination of the $\beta$ coefficients of
+each homozygote that would predict the observed $\beta$ values of the
+heterozygote, subject to the constraint that the coefficients added up to 1. Our
+results suggested that the \emph{bx93} allele was responsible for $80\% \pm 1\%$
+of the gene expression phenotypes of the trans-heterozygote. We wanted to
+explore how well this model explained the data. We reasoned that if this was a
+modular phenotype, then it should be possible to plot the predicted $\beta$
+values against the observed $\beta$ values of the heterozygote using this
+coefficient. If the model fit well, we expected to observe a clearly linear
 relationship between both axes. In particular, we should not observe systematic
 deviations from this model. The plot revealed that the results fit remarkably
-well, furthering the case that the \emph{bx93}-associated class indeed constitutes
-a modular phenotype (see Figure~\ref{fig:transhet}).
+well, furthering the case that the \emph{bx93}-associated class indeed
+constitutes a modular phenotype (see Figure~\ref{fig:transhet}).
 
 \begin{figure}
   \centering{}
   \includegraphics[width=0.5\textwidth]{../figs/dominance_classes.pdf}
   \caption{
-    Alleles have a single dominance behavior for modular phenotypes.
+    For each phenotype, alleles have a single dominance behavior.
     \textbf{A}. Schematic explaining codominance. The closer the
     trans-heterozygote is to one of the homozygotes, the more dominant the allele
     corresponding to that homozygote is considered to be. Codominance is only
     valid when the heterozygote has a phenotype between the two alleles being
     studied. Dominance is phenotype-specific, so two alleles can share different
     dominance relationships for different phenotypes.
-    \textbf{B}.
-    The \emph{bx93} allele is dominant over
-    \emph{sy622} for the expression level of genes that fall into the
-    \emph{bx93}-associated class. The \emph{bx93} is 80\% dominant over the
-    \emph{sy622} allele.
-    \textbf{C}. The \emph{sy622} is co-dominant with the
-    \emph{bx93} allele for the expression level of genes that fall into the
-    \emph{sy622}-associated class. Genes within this class show attenuated
-    perturbations in the trans-heterozygote relative to the \emph{sy622}
-    homozygote but do not show full complementation by the \emph{bx93} allele,
-    even though the \emph{bx93} allele shows wild-type expression at these loci.
-    X-axes are the predicted $\beta$ values for each subset in heterozygote
-    using the data from both homozygotes.
-    The dominance coefficient was estimated
-    via maximum likelihood estimates on the datasets.
-    Y-axes show the observed $\beta$ values for each subset in the heterozygote.
-    Insets show the subset of genes plotted in each graph.
+    \textbf{B}. The \emph{bx93} allele is dominant over \emph{sy622} for the
+    expression level of genes that fall into the \emph{bx93}-associated class.
+    The \emph{bx93} is 80\% dominant over the \emph{sy622} allele.
+    \textbf{C}. The \emph{sy622} is co-dominant with the \emph{bx93} allele for
+    the expression level of genes that fall into the \emph{sy622}-associated
+    class. Genes within this class show attenuated perturbations in the
+    trans-heterozygote relative to the \emph{sy622} homozygote but do not show
+    full complementation by the \emph{bx93} allele, even though the \emph{bx93}
+    allele shows wild-type expression at these loci. X-axes are the predicted
+    $\beta$ values for each subset in heterozygote using the data from both
+    homozygotes. The dominance coefficient was estimated via maximum likelihood
+    estimates on the datasets. Y-axes show the observed $\beta$ values for each
+    subset in the heterozygote. Insets show the subset of genes plotted in each
+    graph.
     }
 \label{fig:transhet}
 \end{figure}
@@ -575,8 +685,8 @@ Table~\ref{tab:enrich}).
 %     List of enriched terms for the \emph{sy622}-specific and \emph{bx93}-specific
 %     phenotypic classes. Fold-change is calculated relative to the expected number
 %     of observations for any given term under the null hypothesis that terms are
-%     drawn at random. Q-values are calculated using a hypergeometric model and
-%     adjusted via a Benjamini-Hochberg algorithm. Q-values shown are rounded to
+%     drawn at random. $q$-values are calculated using a hypergeometric model and
+%     adjusted via a Benjamini-Hochberg algorithm. $q$-values shown are rounded to
 %     the nearest power of 10 for simplicity.
 %   }
 % \label{tab:enrich}
@@ -585,7 +695,8 @@ Table~\ref{tab:enrich}).
 \begin{table}[tbhp]
   \centering
   \begin{tabular}{lcc}
-    \toprule{}Term & \emph{sy622}-specific $-\log_{10}{q}$ & \emph{bx93}-associated $-\log_{10}{q}$\\
+    \toprule{}Term & $-\log_{10}{q}$, \emph{sy622}-specific &
+              $-\log_{10}{q}$, \emph{bx93}-associated\\
     \midrule{}Intestine & $12$ & $-$\\
     Intestinal muscle & $4$ & $<1$\\
     PVD & $3$ & $<1$\\
@@ -608,11 +719,12 @@ Table~\ref{tab:enrich}).
   \caption{
     List of enriched terms for the \emph{sy622}-specific and
     \emph{bx93}-specific phenotypic classes. The \emph{sy622}-specific and the
-    \emph{bx93}-associated columns show $-\log_{10}{q}$ for each term. Q-values
+    \emph{bx93}-associated columns show $-\log_{10}{q}$ for each term. $q$-values
     are calculated using a hypergeometric model and adjusted via a
-    Benjamini-Hochberg algorithm. Q-values shown are rounded to the nearest
-    power of 10 for simplicity. $<1$ implies that the q-value did not pass the
-    significance threshold.
+    Benjamini-Hochberg algorithm. $q$-values shown are rounded to the nearest
+    power of 10 for simplicity. $<1$ implies that the $q$-value did not pass the
+    significance threshold. Enrichment analysis was carried out using the
+    WormBase Enrichment Suite~\cite{Angeles-Albores2016}.
   }
 \label{tab:enrich}
 \end{table}
@@ -635,41 +747,46 @@ terms associated with metabolism, such as glucuronosyltransferase activity,
 monocarboxylic acid catabolic process, and lytic vacuole.
 
 \section*{Conclusions}
+\label{sec:conclusions}
 \subsection*{Gain-of-function and loss-of-function alleles can lead to different
              transcriptomic states.}
-We sequenced a weak gain-of-function (\emph{n1046gf}) and a strong
-loss-of-function (\emph{n2021}) allele of Ras, with the expectation that these
-alleles would affect the same set of genes in opposite ways, because the
-gain-of-function allele is thought to signal more than the wild type, whereas
-the loss-of-function does not signal at all. Contrary to our expectations, we
-find that these gene sets are substantially disjoint with a relatively small
-overlap. Within this overlap, we find that genes that are commonly
-differentially expressed in homozygotes of either allele tend to show changes of
-exactly the same magnitude and direction. In other words, the effect of
-loss-of-function and gain-of-function for these genes is exactly the same.
-Moreover, we find that for a smaller population of genes where loss-of-function
-and gain-of-function have opposing effects on gene expression, the magnitude of
-change is also the same. We considered various mechanisms that could generate
-these patterns.
+\label{sec:ras_conclusion}
+% We sequenced a weak gain-of-function (\emph{n1046gf}) and a strong
+% loss-of-function (\emph{n2021}) allele of Ras, with the expectation that these
+% alleles would affect the same set of genes in opposite ways, because the
+% gain-of-function allele is thought to signal more than the wild type, whereas
+% the loss-of-function does not signal at all. Contrary to our expectations, we
+% find that these gene sets are substantially disjoint with a relatively small
+% overlap. Within this overlap, we find that genes that are commonly
+% differentially expressed in homozygotes of either allele tend to show changes of
+% exactly the same magnitude and direction. In other words, the effect of
+% loss-of-function and gain-of-function for these genes is exactly the same.
+% Moreover, we find that for a smaller population of genes where loss-of-function
+% and gain-of-function have opposing effects on gene expression, the magnitude of
+% change is also the same. We considered various mechanisms that could generate
+% these patterns.
 
-We considered a scenario where the \gf{} signals constitutively through pathways
-that are only sparingly used in wild-type animals. This model would predict that
-the \gf{} mutant would show changes in these pathways as they are flooded with
-new information through channels that are rarely used. In contrast, the \lf{}
-mutant should show fewer changes in these pathways, because in this model most
-of the changes are rarely in use. Thus, genes that are differentially expressed
-in the \gf{} homozygote would be interpreted as genes where \ras{} is sufficient
-to trigger changes in expression, and the changes in the \lf{} represent genes
-where \ras{} is necessary for appropriate expression. Although this scenario
-begins to explain the difference in size between the number of differentially
-expressed genes in the \gf{} homozygote and the \lf{} homozygote, it does not
-explain why there are genes that are differentially expressed in the \lf{}
-homozygote that are not present in the \gf{}. Moreover, this model does not
-explain why the STP between the \lf{} and \gf{} homozygotes is predominantly
-correlated, instead of being entirely anti-correlated. Therefore, it seems
-unlikely that the transcriptomes of these alleles result from a model where
-\ras{} is capable of signaling through a large number of pathways but
-predominantly uses only a subset.
+Contrary to our expectations, the gain-of-function and loss-of-function \ras{}
+alleles had significant differences in the genes they perturbed, and those genes
+that were commonly regulated tended to be perturbed in the same direction. To
+explain these findings, we considered a scenario where the \gf{} signals
+constitutively through pathways that are only sparingly used in wild-type
+animals. This model would predict that the \gf{} mutant would show changes in
+these pathways as they are flooded with new information through channels that
+are rarely used. In contrast, the \lf{} mutant should show fewer changes in
+these pathways, because in this model most of the changes are rarely in use.
+Thus, genes that are differentially expressed in the \gf{} homozygote would be
+interpreted as genes where \ras{} is sufficient to trigger changes in
+expression, and the changes in the \lf{} represent genes where \ras{} is
+necessary for appropriate expression. Although this scenario begins to explain
+the difference in size between the number of differentially expressed genes in
+the \gf{} homozygote and the \lf{} homozygote, it does not explain why there are
+genes that are differentially expressed in the \lf{} homozygote that are not
+present in the \gf{}. Moreover, this model does not explain why the STP between
+the \lf{} and \gf{} homozygotes is predominantly correlated, instead of being
+entirely anti-correlated. Therefore, it seems unlikely that the transcriptomes
+of these alleles result from a model where \ras{} is capable of signaling
+through a large number of pathways but predominantly uses only a subset.
 
 A mechanism that could feasibly generate \letlf{}- and \letgf{}-specific effects
 as well as correlated and anti-correlated effects would be to postulate that
@@ -684,14 +801,14 @@ GTPase~\cite{}\todo{cite Peter Novick here}.
 Another way to understand the effects we observed in \letlf{} and \letgf{}
 mutants is by thinking of the transcriptomes of each mutant as their respective
 states. Recently, transcriptome profiling has been used to identify novel states
-in both single cells and whole-organisms~\cite{Villani2017}\todo{cite female
-state paper}. If these transcriptomes are states, then these states are the
-result of continous \ras{} activity (or inactivity) throughout the lifespan of
-the animal, and reflect the proximal or immediate effects of altered \rasp{}
-activity a well as compensatory changes due to altered development or life
-history. This framework has the advantage that it does not \emph{a priori}
-suggest that the \gf{} homozygote and \lf{} homozygote should have similar, or
-even overlapping, effects.
+in both single cells and whole-organisms~\cite{Angeles-Albores2017,Villani2017}.
+If these transcriptomes are states, then these states are the result of
+continous \ras{} activity (or inactivity) throughout the lifespan of the animal,
+and reflect the proximal or immediate effects of altered \rasp{} activity a well
+as compensatory changes due to altered development or life history. This
+framework has the advantage that it does not \emph{a priori} suggest that the
+\gf{} homozygote and \lf{} homozygote should have similar, or even overlapping,
+effects.
 
 Without many more experiments, we cannot definitively point at a mechanism. It
 is possible that background mutations are contributing to the \letlf{}- and
@@ -707,10 +824,15 @@ of 1 suggests the existence of circuits that monitor Ras signaling levels with
 quantitative accuracy in \cel{}.
 
 \subsection*{Loss-of-function allelic series reveal unknown functionality}
-We sequenced two alleles of \gene{dpy-22} that had been previously studied and
-reported to have different functionalities. Through transcriptomic profiling, we
-were able to verify that \emph{sy622} has a transcriptomic phenotype that is
-quantifiably worse than \emph{bx93}. This worsening manifests as an increase in
+\label{sec:dpy_conclusion}
+Our sequencing results demonstrate that \emph{sy622}, an allele that truncates
+1700 amino acids from \protein{dpy-22}, has a more severe phenotype than
+\emph{bx93} when assayed transcriptomically.
+% We sequenced two alleles of \gene{dpy-22} that had been previously studied and
+% reported to have different functionalities. Through transcriptomic profiling, we
+% were able to verify that \emph{sy622} has a transcriptomic phenotype that is
+% quantifiably worse than \emph{bx93}.
+This worsening manifests as an increase in
 the number of differentially expressed genes in \emph{sy622} relative to
 wild-type compared to the number of differentially expressed genes in
 \emph{bx93}. Moreover, the genes that are commonly dysregulated in both alleles
@@ -719,7 +841,10 @@ the \emph{bx93} allele (see Fig.~\ref{fig:dpy22}). Unlike the \ras{} alleles we
 studied, the set of genes differentially expressed in the \emph{bx93} is
 contained within the \emph{sy622} with few exceptions. We can account for most
 of these exceptions by invoking a 10\% false positive rate (which was the cutoff
-for our study) and a similar false negative rate.
+for our study) and a similar false negative rate in all samples. Thus, it seems
+reasonable to state that the set of genes affected by \emph{bx93} is a subset of
+the set of genes affected by \emph{sy622}. It follows that this subset is
+biologically equivalent to the \emph{bx93}-specific phenotypic class.
 
 Although a comparison between these two alleles proves fruitful in establishing
 differences in phenotypic severity, this comparison alone does not allow us to
@@ -731,27 +856,44 @@ informative about the biological effects of each allele. We found a
 wild-type phenotype; we found a \emph{bx93}-associated phenotypic class for
 which \emph{bx93} also has a dominant phenotype, but this phenotype is
 definitely not wild-type. We also found a \emph{sy622}-associated class for
-which \emph{sy622} and \emph{bx93} appear co-dominant. Intriguingly, we also
-found a phenotype specific to the trans-heterozygote that was not present in
-either homozygote. A weakness in our study is that we have limited power to
-study the gene expression changes associated with the trans-heterozygote. This
-phenotypic class is puzzling because \dpy{} is not known to have homotypic
-interactions, which is a classical explanation for trans-heterozygote-specific
-phenotypes. Moreover, since this class is specific to a single strain we cannot
-rule out that this class is actually a result of a strain-specific mutation or
-set of mutations. In particular, the genotype of the heterozygote includes a
-mutation at the \gene{dpy-6} locus to balance the \emph{bx93} mutation. One
-possibility is that the \emph{dpy-6} loss-of-function mutation is not recessive
-for transcriptomic phenotypes and is responsible for the dysregulation of the
-new genes observed in the heterozygote. Another possibility is that the
-\emph{dpy-6} strain had a carrier mutation that fixed in the balanced strain.
-Finally, it is also possible that the \emph{bx93} and the \emph{sy622} strains
-had background mutations that did not have effects on their own, but when
-combined generate a synthetic phenotype with themselves or with one or both of
-the \gene{dpy-22} alleles. As the cost of sequencing becomes lower, and with
-improved genetic engineering tools that allow the creation of background-free
-mutations, it will become increasingly important to rule out these hypotheses by
-sequencing additional independently derived identical alleles.
+which \emph{sy622} and \emph{bx93} appear almost perfectly co-dominant.
+Intriguingly, we also found a phenotype specific to the trans-heterozygote that
+was not present in either homozygote. A weakness in our study is that we have
+limited power to study the gene expression changes associated with the
+trans-heterozygote. This phenotypic class is puzzling because \dpy{} is not
+known to have homotypic interactions, which are a classical explanation for
+trans-heterozygote-specific phenotypes. Moreover, since this class is specific
+to a single strain we cannot rule out that this class is actually a result of a
+strain-specific mutation or set of mutations. In particular, the genotype of the
+heterozygote includes a mutation at the \gene{dpy-6} locus to balance the
+\emph{bx93} mutation. One possibility is that the \emph{dpy-6} loss-of-function
+mutation is not recessive for transcriptomic phenotypes and is responsible for
+the dysregulation of the new genes observed in the heterozygote. Another
+possibility is that the \emph{dpy-6} strain had a carrier mutation that fixed in
+the balanced strain. Finally, it is also possible that the \emph{bx93} and the
+\emph{sy622} strains had background mutations that did not have effects on their
+own, but when combined generate a synthetic phenotype with themselves or with
+one or both of the \gene{dpy-22} alleles. Although we cannot definitively
+pinpoint the origin of the \emph{trans}-heterozygote-specific phenotypic class,
+the other phenotypic classes are unlikely to be the result of mutational
+background since both alleles came from different screens carried out in different
+laboratories at different times.
+
+In a complete genetic analysis, which is beyond the scope of this paper, the
+above possibilities should be rigorously tested. To rule out background as the
+cause of the \emph{trans}-heterozygote phenotypic class, the alleles should be
+regenerated using a genome engineering tool such as Cas9~\cite{} and the
+trans-heterozygote re-sequenced. Alternatively, more alleles coding for similar
+molecular lesions should be sequenced along with the respective heterozygote. To
+rule out dominant effects from the \emph{dpy-6} locus, the locus could be
+restored to a wild-type status using standard co-conversion Cas9
+techniques~\cite{}. Taken together, these experiments would help establish
+whether the \emph{trans}-heterozygote phenotypic class is a result of strain
+background or not.  As the cost of sequencing becomes lower, and with improved
+genetic engineering tools that allow the creation of background-free mutations,
+it will become increasingly important to rule out these hypotheses by sequencing
+additional independently derived identical alleles.
+
 
 Our enrichment analysis of the \emph{sy622}-specific and the
 \emph{bx93}-associated phenotypic classes revealed that they reflect
@@ -759,7 +901,7 @@ functionally distinct aspects of \dpy{} biology. The \emph{sy622}-specific class
 contains genes that are associated with severe pleiotropic effects, embryonic
 lethality and sterility. It also contains genes that are associated with muscle
 development and function, and there is enrichment of genes expressed in the PVD
-neuron. Finally, collagen trimers are also overrepresented in this gene class.
+neuron. Collagen trimers are also overrepresented in this gene class.
 Taken together, these terms suggest that perturbing this gene class away from
 the wild-type should lead to an animal that is sickly, has a small brood size
 and has altered locomotion as well as altered collagen production. Indeed, the
@@ -769,15 +911,16 @@ enriched in a different set of terms, which suggests that transcriptome
 profiling can be used in conjunction with allelic series to separate genes into
 distinct phenotypic classes that are biologically relevant. Specifically, for
 the \emph{sy622} and the \emph{bx93} alleles, we can rule out that these alleles
-form a qualitative allelic series, since such a series should not exhibit a
-dosage-dependent phenotype (the \emph{sy622}-associated class). However, it is
+form a strict qualitative allelic series, since such a series should not exhibit
+a dosage-dependent phenotype (the \emph{sy622}-associated class). However, it is
 possible that \emph{sy622} and \emph{bx93} represent a mixed
 quantitative-qualitative series, because we found phenotypic classes where
 \emph{bx93} complemented \emph{sy622}, \emph{bx93} was dominant over
 \emph{sy622} and where \emph{sy622} was co-dominant with or partially dominant
 over \emph{bx93}.
 
-\todo[inline]{Add self-citations below.}
+\subsection*{Genetics in multi-dimensional phenotypes}
+\todo[inline]{Add citations below.}
 Allelic series are a cornerstone of genetic analyses. Classically, these series
 have been important to understand multiple aspects of a gene by comparing and
 contrasting the properties of different alleles in homozygotes as well as
@@ -792,12 +935,100 @@ states~\cite{}. In particular, single-cell sequencing has shown great
 potential as a tool because it can help understand transcriptional heterogeneity
 at the cellular level, but also because random screens can be used to
 simultaneously knock out random combinations of genes and infer genetic
-interactions~\cite{} (Perturb-Seq). Here, we highlight the importance of
+interactions~\cite{} (Perturb-Seq). Our work shows the importance of
 understanding allelic diversity towards understanding distinct biological
 properties of the genes in question. In addition to sequencing great numbers of
 cells to understand cell-cell heterogeneity and diversity, we should also
-sequence diverse alleles in order to better understand genotype-genotype
+sequence diverse alleles to better understand genotype-genotype
 heterogeneity.
+
+\section*{Methods}
+\subsection*{Strains used}
+Strains used were N2 wild-type (Bristol),
+PS4087 \gene{dpy-22(sy622)},
+PS4187 \gene{dpy-22(bx93)},
+PS4176\\ \gene{dpy-6(e14) dpy-22(bx93)/ + dpy-22(sy622)},
+MT4866 \gene{let-60(n2021)}, and
+MT2124 \gene{let-60(n1046gf)}.
+All lines were grown on standard nematode growth media (NGM) Petri plates seeded
+with OP50 \ecol{} at 20\degree{}C~\cite{Brenner1974}.
+
+\subsection*{Strain synchronization, harvesting and RNA sequencing}
+With the exception of \letlf{}, all strains were synchronized by bleaching
+P$_0$'s into virgin S. basal (no cholesterol or ethanol added) for 8--12 hours.
+Arrested L1 larvae were placed in NGM plates seeded with OP50 at 20\degree{}C
+and allowed to grow to the young adult stage (as assessed by vulval morphology
+and lack of  embryos). The \letlf{} strain was discovered to have a severe
+arrest phenotype that caused a 96\% lethality rate after 12 hours of starvation.
+\letlf{} worms were bleached once, then adults were selected at the young adult
+stage (assessed by timing and visual inspection of adult alae). RNA extraction
+and sequencing was performed as previously described~\cite{}.
+
+\subsection*{Read pseudo-alignment and differential expression}
+Reads were pseudo-aligned using Kallisto~\cite{Bray2016}, using 200 bootstraps
+and with the sequence bias (\texttt{--seqBias}) flag. The fragment size for all
+libraries was set to 200 and the standard deviation to 40. Quality control was
+performed on a subset of the reads using FastQC, RNAseQC, BowTie and
+MultiQC~\cite{Andrews2010,Deluca2012,Langmead2009,Ewels2016}. All libraries had
+good quality scores.
+
+Differential expression analysis was performed using
+Sleuth~\cite{Pimentel2016a}. Briefly, we used a general linear model to identify
+genes that were differentially expressed between wild-type and mutant libraries.
+To increase our statistical power, we pooled wild-type replicates from other
+published~\cite{} and unpublished analysis. All wild-type replicates were
+collected at the same stage (young adult). In total, we had 10 wild-type
+replicates from 4 different batches, which greatly heightened our statistical
+power. To account for batch effects, we added a batch correction term to our
+general linear model.
+
+\subsection*{Non-parametric bootstrap}
+We performed non-parametric bootstrap testing to identify whether two
+distributions had the same mean. Briefly, the two datasets were mixed, and
+samples were selected at random with replacement from the mixed population into
+two new datasets. We calculated the difference in the means of these new
+datasets. We iterated this process $10^6$ times. To calculate a $p$-value that the
+null hypothesis is true, we identified the number of times a difference in the
+means of the simulated populations was greater than or equal to the observed
+difference in the means of the real population. We divided this result by $10^5$
+to complete the calculation for a $p$-value. If an event where the difference in
+the simulated means was greater than the observed difference in the means was
+not observed, we reported the $p$-value as $p<10^{-5}$. Otherwise, we reported the
+exact $p$-value. We chose to reject the null hypothesis that the means of the two
+datasets are equal to each other if $p < 0.05$.
+
+\subsection*{Dominance analysis}
+We modeled allelic dominance as a weighted average of allelic activity. Briefly,
+our model proposed that $\beta$ coefficients of the heterozygote,
+$\beta_{a/b,i,\text{Pred}}$, could be modeled as a linear combination of the
+coefficients of each homozygote:
+\begin{equation}
+  \beta_{a/b,i,\text{Pred}}(d_a) = d_a\cdot \beta_{a/a,i} + (1-d_a)\cdot \beta_{b/b,i},
+\end{equation}
+where $\beta_{k/k, i}$ refers to the $\beta$ value of the $i$th isoform in a
+genotype $k/k$, and $d_a$ is the dominance coefficient for allele $a$.
+
+To find the parameters $d_a$ that maximized the probability of observing the
+data, we found the parameter, $d_a$, that maximized the equation:
+\begin{equation}
+    P(d_a|D,H,I) = \prod_{i \in S}\frac{1}{\sqrt{2\pi \sigma_i^2}}
+                   \exp{\frac{{(\beta_{a/b,i,\text{Obs}} -
+                                \beta_{a/b,i,\text{Pred}}(d_a))}^2}{
+                                2\sigma_i^2}}
+\end{equation}
+where $\beta_{a/b,i,\text{Obs}}$ was the coefficient associated with the $i$th
+isoform in the trans-het $a/b$ and $\sigma_i$ was the standard error of the
+$i$th isoform in the trans-heterozygote samples as output by Kallisto. $S$ is
+the set of isoforms that participate in the regression (see main text). This
+equation describes a linear regression which was solved numerically.
+
+\subsection*{Code}
+All code was written in Jupyter notebooks~\cite{Perez2007} using the Python
+programming language. The Numpy, pandas and scipy libraries were used for
+computation~\cite{VanDerWalt2011,McKinney2011,Oliphant2007} and the matplotlib
+and seaborn libraries were used for data visualization~\cite{Hunter2007,Waskom}.
+Enrichment analyses were performed using the WormBase Enrichment
+Suite~\cite{Angeles-Albores2016}.
 
 
 \section*{Acknowledgements}

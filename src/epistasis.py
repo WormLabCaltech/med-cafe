@@ -335,6 +335,7 @@ def epiplot(X, Y, Y_se, **kwargs):
     beta = kwargs.pop('beta', np.nan)
     s0 = kwargs.pop('s0', 15)
     cmap = kwargs.pop('cmap', 'viridis')
+    alpha = kwargs.pop('alpha', 0.5)
     ax = kwargs.pop('ax', None)
     # Calculate the point density
 
@@ -350,10 +351,10 @@ def epiplot(X, Y, Y_se, **kwargs):
 
     if len(X) > 50:
         ax.scatter(X, Y, c=z, s=s0/Y_se,
-                   edgecolor='', cmap=cmap, alpha=0.5)
+                   edgecolor='', cmap=cmap, alpha=alpha)
     else:
         ax.scatter(X, Y, s=s0/np.sqrt(Y_se),
-                   color='#33a02c', alpha=.9)
+                   color='#33a02c', alpha=alpha)
 
     if plot_unbranched:
         smoothX = np.linspace(X.min() - 0.5, X.max() + 0.5, 1000)
