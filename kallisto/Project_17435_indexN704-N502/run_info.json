@@ -1,0 +1,9 @@
+{
+	"n_targets": 33746,
+	"n_bootstraps": 200,
+	"n_processed": 16802595,
+	"kallisto_version": "0.43.0",
+	"index_version": 10,
+	"start_time": "Mon Sep 18 13:28:27 2017",
+	"call": "kallisto quant -i /woldlab/castor/home/dangeles/genomes/WBcel235/WBcel235_kallisto_index --output /woldlab/castor/home/dangeles/projects/synmuv/kallisto/Project_17435_indexN704-N502 -b 200 -t 16 --single -l 200 -s 40 --bias -t 16 Project_17435_indexN704-N502/Sample1/17435_TCCTGAGC-CTCTCTAT_L001_R1_001.fastq.gz Project_17435_indexN704-N502/Sample1/17435_TCCTGAGC-CTCTCTAT_L001_R1_002.fastq.gz Project_17435_indexN704-N502/Sample1/17435_TCCTGAGC-CTCTCTAT_L001_R1_003.fastq.gz Project_17435_indexN704-N502/Sample1/17435_TCCTGAGC-CTCTCTAT_L002_R1_001.fastq.gz Project_17435_indexN704-N502/Sample1/17435_TCCTGAGC-CTCTCTAT_L002_R1_002.fastq.gz Project_17435_indexN704-N502/Sample1/17435_TCCTGAGC-CTCTCTAT_L002_R1_003.fastq.gz"
+}

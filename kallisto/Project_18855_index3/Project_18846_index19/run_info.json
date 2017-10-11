@@ -1,0 +1,9 @@
+{
+	"n_targets": 33746,
+	"n_bootstraps": 16,
+	"n_processed": 20763010,
+	"kallisto_version": "0.43.0",
+	"index_version": 10,
+	"start_time": "Wed Jun  7 14:52:03 2017",
+	"call": "kallisto quant -i /woldlab/castor/home/dangeles/genomes/WBcel235/WBcel235_kallisto_index --output /woldlab/castor/home/dangeles/projects/med_cafe/kallisto/Project_18846_index19 -b 16 --single -l 200 -s 40 --bias -t 16 Project_18846_index19/Sample_18846/18846_GTGAAA_L001_R1_001.fastq.gz Project_18846_index19/Sample_18846/18846_GTGAAA_L001_R1_002.fastq.gz Project_18846_index19/Sample_18846/18846_GTGAAA_L001_R1_003.fastq.gz Project_18846_index19/Sample_18846/18846_GTGAAA_L002_R1_001.fastq.gz Project_18846_index19/Sample_18846/18846_GTGAAA_L002_R1_002.fastq.gz Project_18846_index19/Sample_18846/18846_GTGAAA_L002_R1_003.fastq.gz"
+}

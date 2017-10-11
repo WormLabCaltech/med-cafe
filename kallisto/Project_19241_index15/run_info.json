@@ -1,0 +1,9 @@
+{
+	"n_targets": 33746,
+	"n_bootstraps": 200,
+	"n_processed": 20856901,
+	"kallisto_version": "0.43.0",
+	"index_version": 10,
+	"start_time": "Mon Sep 18 12:31:33 2017",
+	"call": "kallisto quant -i /woldlab/castor/home/dangeles/genomes/WBcel235/WBcel235_kallisto_index --output /woldlab/castor/home/dangeles/projects/betting_genes/kallisto/Project_19241_index15 -b 200 -t 16 --single -l 200 -s 40 --bias -t 16 Project_19241_index15/Sample_19241/19241_ATGTCA_L001_R1_001.fastq.gz Project_19241_index15/Sample_19241/19241_ATGTCA_L001_R1_002.fastq.gz Project_19241_index15/Sample_19241/19241_ATGTCA_L001_R1_003.fastq.gz Project_19241_index15/Sample_19241/19241_ATGTCA_L002_R1_001.fastq.gz Project_19241_index15/Sample_19241/19241_ATGTCA_L002_R1_002.fastq.gz Project_19241_index15/Sample_19241/19241_ATGTCA_L002_R1_003.fastq.gz"
+}

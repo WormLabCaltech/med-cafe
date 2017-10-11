@@ -1,0 +1,30 @@
+ext_gene,ens_gene,complex,module,comments
+cdk-8,WBGene00000409,mediator,kinase,
+cic-1,WBGene00000506,mediator,kinase,
+dpy-22,WBGene00001081,mediator,kinase,
+let-19,WBGene00002295,mediator,kinase,
+let-49,WBGene00002324,mediator,middle,
+lin-25,WBGene00003011,mediator,tail,
+mdt-1.2,WBGene00007011,mediator,middle,
+mdt-10,WBGene00007014,mediator,middle,
+mdt-11,WBGene00007015,mediator,head,
+mdt-15,WBGene00007016,mediator,tail,
+mdt-17,WBGene00007017,mediator,head,
+mdt-18,WBGene00007018,mediator,head,
+mdt-19,WBGene00007019,mediator,middle,
+mdt-20,WBGene00007020,mediator,head,
+mdt-21,WBGene00007704,mediator,middle,
+mdt-22,WBGene00007022,mediator,head,
+mdt-26,WBGene00016115,mediator,middle,
+mdt-27,WBGene00007023,mediator,tail,actual location dubious
+mdt-28,WBGene00009223,mediator,tail,actual location dubious
+mdt-29,WBGene00007025,mediator,tail,actual location dubious
+mdt-30,WBGene00004125,mediator,tail,actual location dubious
+mdt-31,WBGene00007026,mediator,middle,
+mdt-4,WBGene00007012,mediator,middle,
+mdt-6,WBGene00003164,mediator,head,
+mdt-8,WBGene00007013,mediator,head,
+mdt-9,WBGene00014938,mediator,middle,
+rgr-1,WBGene00004343,mediator,tail,
+sop-3,WBGene00004946,mediator,middle,
+sur-2,WBGene00006349,mediator,tail,

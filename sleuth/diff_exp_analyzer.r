@@ -2,6 +2,7 @@ library("sleuth")
 library("files")
 library("optparse")
 
+# optparse is now deprecated, and I should migrate these lines to argparse.
 option_list <- list(make_option(c("-d", "--directory"), type='character', default=character(0),
                     help="Please specify the directory")
 )
