@@ -1,101 +1,1 @@
-name genotype batch strain pathway person_collected_worms person_collected_rna person_made_library library_kind sync_method
-Project_17434_indexN704-N517 a_WT a a_n2 none CPR CPR BAW SmartSeq2 picked
-Project_17435_indexN704-N502 a_WT a a_n2 none CPR CPR BAW SmartSeq2 picked
-Project_17436_indexN704-N503 a_WT a a_n2 none CPR CPR BAW SmartSeq2 picked
-Project_17437_indexN704-N504 b_egl9 a b_sa307 hypoxia_on CPR CPR BAW SmartSeq2 picked
-Project_17438_indexN704-N505 b_egl9 a b_sa307 hypoxia_on CPR CPR BAW SmartSeq2 picked
-Project_17439_indexN704-N506 b_egl9 a b_sa307 hypoxia_on CPR CPR BAW SmartSeq2 picked
-Project_17440_indexN704-N507 b_egl9_vhl1 a b_sa307_ok161 hypoxia_on CPR CPR BAW SmartSeq2 picked
-Project_17441_indexN704-N508 b_egl9_vhl1 a b_sa307_ok161 hypoxia_on CPR CPR BAW SmartSeq2 picked
-Project_17442_indexN705-N517 b_egl9_vhl1 a b_sa307_ok161 hypoxia_on CPR CPR BAW SmartSeq2 picked
-Project_17443_indexN705-N502 b_hif1 a b_ia4 hypoxia_off CPR CPR BAW SmartSeq2 picked
-Project_17444_indexN705-N503 b_hif1 a b_ia4 hypoxia_off CPR CPR BAW SmartSeq2 picked
-Project_17445_indexN705-N504 b_hif1 a b_ia4 hypoxia_off CPR CPR BAW SmartSeq2 picked
-Project_17446_indexN705-N505 b_vhl1 a b_ok161 hypoxia_on CPR CPR BAW SmartSeq2 picked
-Project_17447_indexN705-N506 b_vhl1 a b_ok161 hypoxia_on CPR CPR BAW SmartSeq2 picked
-Project_17448_indexN705-N507 b_vhl1 a b_ok161 hypoxia_on CPR CPR BAW SmartSeq2 picked
-Project_17449_indexN705-N508 b_rhy1 a b_ok1402 hypoxia_on CPR CPR BAW SmartSeq2 picked
-Project_17450_indexN706-N517 b_rhy1 a b_ok1402 hypoxia_on CPR CPR BAW SmartSeq2 picked
-Project_17451_indexN706-N502 b_rhy1 a b_ok1402 hypoxia_on CPR CPR BAW SmartSeq2 picked
-Project_17452_indexN706-N503 b_egl9_hif1 a b_sa307_ia4 hypoxia_off CPR CPR BAW SmartSeq2 picked
-Project_17453_indexN706-N504 b_egl9_hif1 a b_sa307_ia4 hypoxia_off CPR CPR BAW SmartSeq2 picked
-Project_17454_indexN706-N505 b_egl9_hif1 a b_sa307_ia4 hypoxia_off CPR CPR BAW SmartSeq2 picked
-Project_18665_index16 a_WT c a_n2 none DAA HS VK SR picked
-Project_18666_index18 a_WT c a_n2 none DAA HS VK SR picked
-Project_18667_index19 a_WT c a_n2 none DAA HS VK SR picked
-Project_18668_index20 b_lin8 c b_n2731 ClassA DAA HS VK SR picked
-Project_18669_index21 b_lin8 c b_n2731 ClassA DAA HS VK SR picked
-Project_18670_index22 b_lin8 c b_n2731 ClassA DAA HS VK SR picked
-Project_18671_index23 b_lin8_hpl2 c b_n2731_tm1489 synmuv DAA HS VK SR picked
-Project_18672_index25 b_lin8_hpl2 c b_n2731_tm1489 synmuv DAA HS VK SR picked
-Project_18673_index27 b_lin8_hpl2 c b_n2731_tm1489 synmuv DAA HS VK SR picked
-Project_18795_index1 b_lin15a d b_n767 ClassA HS HS VK SR picked
-Project_18796_index2 b_lnes1 d b_n3917 weak_suppressor_of_synmuv HS HS VK SR picked
-Project_18797_index3 b_lin61 d b_n3809 ClassB HS HS VK SR picked
-Project_18798_index4 b_lin8nc d b_n2376 ClassA HS HS VK SR picked
-Project_18799_index5 b_lin8_lin15a d b_n2731_n767 ClassA HS HS VK SR picked
-Project_18800_index6 b_lin15a_hpl2 d b_n767_tm1489 synmuv HS HS VK SR picked
-Project_18801_index7 b_hpl2 d b_tm1489 ClassB HS HS VK SR picked
-Project_18802_index8 b_lin35 d b_n745 ClassB HS HS VK SR picked
-Project_18803_index9 a_WT d a_n2 none HS HS VK SR picked
-Project_18804_index10 b_lin15a d b_n767 ClassA HS HS VK SR picked
-Project_18805_index11 b_lnes1 d b_n3917 weak_suppressor_of_synmuv HS HS VK SR picked
-Project_18806_index12 b_lin61 d b_n3809 ClassB HS HS VK SR picked
-Project_18807_index13 b_lin8nc d b_n2376 ClassA HS HS VK SR picked
-Project_18808_index14 b_lin8_lin15a d b_n2731_n767 ClassA HS HS VK SR picked
-Project_18809_index15 b_lin15a_hpl2 d b_n767_tm1489 synmuv HS HS VK SR picked
-Project_18810_index16 b_hpl2 d b_tm1489 ClassB HS HS VK SR picked
-Project_18811_index18 b_lin35 d b_n745 ClassB HS HS VK SR picked
-Project_18812_index19 a_WT d a_n2 none HS HS VK SR picked
-Project_18819_index20 b_lin15a d b_n767 ClassA HS HS VK SR picked
-Project_18820_index21 b_lnes1 d b_n3917 weak_suppressor_of_synmuv HS HS VK SR picked
-Project_18821_index22 b_lin61 d b_n3809 ClassB HS HS VK SR picked
-Project_18822_index23 b_lin8nc d b_n2376 ClassA HS HS VK SR picked
-Project_18823_index25 b_lin8_lin15a d b_n2731_n767 ClassA HS HS VK SR picked
-Project_18824_index27 b_lin15a_hpl2 d b_n767_tm1489 synmuv HS HS VK SR picked
-Project_18825_index1 b_hpl2 d b_tm1489 ClassB HS HS VK SR picked
-Project_18826_index2 b_lin35 d b_n745 ClassB HS HS VK SR picked
-Project_18827_index3 a_WT d a_n2 none HS HS VK SR picked
-Project_18841_index13 a_WT e a_n2 none DA DA VK SR picked
-Project_18842_index14 a_WT e a_n2 none DA DA VK SR picked
-Project_18843_index15 a_WT e a_n2 none DA DA VK SR picked
-Project_18844_index16 b_bar1 e b_ew15 none DA DA VK SR picked
-Project_18845_index18 b_bar1 e b_ew15 none DA DA VK SR picked
-Project_18846_index19 b_bar1 e b_ew15 none DA DA VK SR picked
-Project_18847_index20 b_let60 e b_mt21245 none DA DA VK SR picked
-Project_18848_index21 b_let60 e b_mt21245 none DA DA VK SR picked
-Project_18849_index22 b_let60 e b_mt21245 none DA DA VK SR picked
-Project_18850_index23 b_dpy22_a1 e b_ps4187 none DA DA VK SR picked
-Project_18851_index25 b_dpy22_a1 e b_ps4187 none DA DA VK SR picked
-Project_18852_index27 b_dpy22_a1 e b_ps4187 none DA DA VK SR picked
-Project_18853_index1 b_dpy22_a2 e b_ps4087 none DA DA VK SR picked
-Project_18854_index2 b_dpy22_a2 e b_ps4087 none DA DA VK SR picked
-Project_18855_index3 b_dpy22_a2 e b_ps4087 none DA DA VK SR picked
-Project_18889_index13 b_dpy22_a1a2het e b_ps4176 mediator DA DA VK SR picked
-Project_18890_index14 b_dpy22_a1a2het e b_ps4176 mediator DA DA VK SR picked
-Project_18891_index15 b_dpy22_a1a2het e b_ps4176 mediator DA DA VK SR picked
-Project_18892_index16 b_dpy22_a1a2het e b_ps4176 mediator DA DA VK SR picked
-Project_18893_index18 b_let60_lf e b_mt4866 ras_off DA DA VK SR picked
-Project_18894_index19 b_let60_lf e b_mt4866 ras_off DA DA VK SR picked
-Project_18895_index20 b_let60_lf e b_mt4866 ras_off DA DA VK SR picked
-Project_19227_index1 b_clk-1 f b_mq130 ubiquinone_synthesis CPR CPR VK SR picked
-Project_19228_index2 b_clk-1 f b_mq130 ubiquinone_synthesis CPR CPR VK SR picked
-Project_19229_index3 b_clk-1 f b_mq130 ubiquinone_synthesis CPR CPR VK SR picked
-Project_19230_index4 b_dpy7 f b_cb88 cuticular_collagen CPR CPR VK SR picked
-Project_19231_index5 b_dpy7 f b_cb88 cuticular_collagen CPR CPR VK SR picked
-Project_19232_index6 b_dpy7 f b_cb88 cuticular_collagen CPR CPR VK SR picked
-Project_19233_index7 b_dpy10 f b_cb128 cuticular_collagen CPR CPR VK SR picked
-Project_19234_index8 b_dpy10 f b_cb128 cuticular_collagen CPR CPR VK SR picked
-Project_19235_index9 b_dpy10 f b_cb128 cuticular_collagen CPR CPR VK SR picked
-Project_19236_index10 b_unc54 f b_cb190 muscle_myosin CPR CPR VK SR picked
-Project_19237_index11 b_unc54 f b_cb190 muscle_myosin CPR CPR VK SR picked
-Project_19238_index12 b_unc54 f b_cb190 muscle_myosin CPR CPR VK SR picked
-Project_19239_index13 a_WT f a_n2 none CPR CPR VK SR picked
-Project_19240_index14 a_WT f a_n2 none CPR CPR VK SR picked
-Project_19241_index15 a_WT f a_n2 none CPR CPR VK SR picked
-Project_JKY1 b_fog2 b b_q71 spermatogenesis DWL DWL VK SR plate
-Project_JKY2 b_fog2 b b_q71 spermatogenesis DWL DWL VK SR plate
-Project_JKY3 b_fog2 b b_q71 spermatogenesis DWL DWL VK SR plate
-Project_N2Y1 a_WT b a_n2 none DWL DWL VK SR plate
-Project_N2Y2 a_WT b a_n2 none DWL DWL VK SR plate
-Project_N2Y3 a_WT b a_n2 none DWL DWL VK SR plate
+name	genotype	allele1	allele2	strain	pathway	person_collected_worms	person_collected_rna	person_made_library	library_kind	sync_method	project	batchProject_17434_indexN704-N517	a_WT	a_nan	a_nan	a_n2	none	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17435_indexN704-N502	a_WT	a_nan	a_nan	a_n2	none	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17436_indexN704-N503	a_WT	a_nan	a_nan	a_n2	none	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17437_indexN704-N504	b_egl9	b_sa307	a_nan	b_JT307	hypoxia_on	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17438_indexN704-N505	b_egl9	b_sa307	a_nan	b_JT307	hypoxia_on	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17439_indexN704-N506	b_egl9	b_sa307	a_nan	b_JT307	hypoxia_on	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17440_indexN704-N507	b_egl9_vhl1	b_sa307	b_ok161	b_CB6116	hypoxia_on	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17441_indexN704-N508	b_egl9_vhl1	b_sa307	b_ok161	b_CB6116	hypoxia_on	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17442_indexN705-N517	b_egl9_vhl1	b_sa307	b_ok161	b_CB6116	hypoxia_on	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17443_indexN705-N502	b_hif1	a_nan	b_ia4	b_ZG31	hypoxia_off	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17444_indexN705-N503	b_hif1	a_nan	b_ia4	b_ZG31	hypoxia_off	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17445_indexN705-N504	b_hif1	a_nan	b_ia4	b_ZG31	hypoxia_off	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17446_indexN705-N505	b_vhl1	a_nan	b_ok161	b_CB5602	hypoxia_on	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17447_indexN705-N506	b_vhl1	a_nan	b_ok161	b_CB5602	hypoxia_on	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17448_indexN705-N507	b_vhl1	a_nan	b_ok161	b_CB5602	hypoxia_on	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17449_indexN705-N508	b_rhy1	b_ok1402	a_nan	b_RB1297	hypoxia_on	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17450_indexN706-N517	b_rhy1	b_ok1402	a_nan	b_RB1297	hypoxia_on	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17451_indexN706-N502	b_rhy1	b_ok1402	a_nan	b_RB1297	hypoxia_on	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17452_indexN706-N503	b_egl9_hif1	b_sa307	b_ia4	b_CB6088	hypoxia_off	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17453_indexN706-N504	b_egl9_hif1	b_sa307	b_ia4	b_CB6088	hypoxia_off	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_17454_indexN706-N505	b_egl9_hif1	b_sa307	b_ia4	b_CB6088	hypoxia_off	CPR	CPR	BAW	SmartSeq2	bleach	hypoxia	aProject_18665_index16	a_WT	a_nan	a_nan	a_n2	none	DAA	HS	VK	SR	L1_arrest	synmuv	bProject_18666_index18	a_WT	a_nan	a_nan	a_n2	none	DAA	HS	VK	SR	L1_arrest	synmuv	bProject_18667_index19	a_WT	a_nan	a_nan	a_n2	none	DAA	HS	VK	SR	L1_arrest	synmuv	bProject_18668_index20	b_lin8	b_n2731	a_nan	b_MT10591	ClassA	DAA	HS	VK	SR	L1_arrest	synmuv	bProject_18669_index21	b_lin8	b_n2731	a_nan	b_MT10591	ClassA	DAA	HS	VK	SR	L1_arrest	synmuv	bProject_18670_index22	b_lin8	b_n2731	a_nan	b_MT10591	ClassA	DAA	HS	VK	SR	L1_arrest	synmuv	bProject_18671_index23	b_lin8_hpl2	b_n2731	b_tm1489	b_MT15058	synmuv	DAA	HS	VK	SR	L1_arrest	synmuv	bProject_18672_index25	b_lin8_hpl2	b_n2731	b_tm1489	b_MT15058	synmuv	DAA	HS	VK	SR	L1_arrest	synmuv	bProject_18673_index27	b_lin8_hpl2	b_n2731	b_tm1489	b_MT15058	synmuv	DAA	HS	VK	SR	L1_arrest	synmuv	bProject_18795_index1	b_lin15a	b_n767	a_nan	b_MT1806	ClassA	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18796_index2	b_lnes1	b_n3917	a_nan	b_MT16922	weak_suppressor_of_synmuv	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18797_index3	b_lin61	b_n3809	a_nan	b_MT12833	ClassB	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18798_index4	b_lin8nc	b_n2376	a_nan	b_MT10588	ClassA	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18799_index5	b_lin8_lin15a	b_n2731	b_n767	b_MT17232	ClassA	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18800_index6	b_lin15a_hpl2	b_n767	b_tm1489	b_MT15061	synmuv	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18801_index7	b_hpl2	b_tm1489	a_nan	b_MT14853	ClassB	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18802_index8	b_lin35	b_n745	a_nan	b_MT10430	ClassB	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18803_index9	a_WT	a_nan	a_nan	a_n2	none	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18804_index10	b_lin15a	b_n767	a_nan	b_MT1806	ClassA	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18805_index11	b_lnes1	b_n3917	a_nan	b_MT16922	weak_suppressor_of_synmuv	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18806_index12	b_lin61	b_n3809	a_nan	b_MT12833	ClassB	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18807_index13	b_lin8nc	b_n2376	a_nan	b_MT10588	ClassA	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18808_index14	b_lin8_lin15a	b_n2731	b_n767	b_MT17232	ClassA	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18809_index15	b_lin15a_hpl2	b_n767	b_tm1489	b_MT15061	synmuv	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18810_index16	b_hpl2	b_tm1489	a_nan	b_MT14853	ClassB	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18811_index18	b_lin35	b_n745	a_nan	b_MT10430	ClassB	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18812_index19	a_WT	a_nan	a_nan	a_n2	none	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18819_index20	b_lin15a	b_n767	a_nan	b_MT1806	ClassA	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18820_index21	b_lnes1	b_n3917	a_nan	b_MT16922	weak_suppressor_of_synmuv	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18821_index22	b_lin61	b_n3809	a_nan	b_MT12833	ClassB	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18822_index23	b_lin8nc	b_n2376	a_nan	b_MT10588	ClassA	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18823_index25	b_lin8_lin15a	b_n2731	b_n767	b_MT17232	ClassA	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18824_index27	b_lin15a_hpl2	b_n767	b_tm1489	b_MT15061	synmuv	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18825_index1	b_hpl2	b_tm1489	a_nan	b_MT14853	ClassB	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18826_index2	b_lin35	b_n745	a_nan	b_MT10430	ClassB	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18827_index3	a_WT	a_nan	a_nan	a_n2	none	HS	HS	VK	SR	L1_arrest	synmuv	bProject_18841_index13	a_WT	a_nan	a_nan	a_n2	none	DAA	DAA	VK	SR	L1_arrest	dpy-22	cProject_18842_index14	a_WT	a_nan	a_nan	a_n2	none	DAA	DAA	VK	SR	L1_arrest	dpy-22	cProject_18843_index15	a_WT	a_nan	a_nan	a_n2	none	DAA	DAA	VK	SR	L1_arrest	dpy-22	cProject_18844_index16	b_bar1	b_ga80	a_nan	b_EW15	wnt	DAA	DAA	VK	SR	L1_arrest	none	cProject_18845_index18	b_bar1	b_ga80	a_nan	b_EW15	wnt	DAA	DAA	VK	SR	L1_arrest	none	cProject_18846_index19	b_bar1	b_ga80	a_nan	b_EW15	wnt	DAA	DAA	VK	SR	L1_arrest	none	cProject_18847_index20	b_let60.gf	b_n1046gf	a_nan	b_MT2124	ras_on	DAA	DAA	VK	SR	L1_arrest	none	cProject_18848_index21	b_let60.gf	b_n1046gf	a_nan	b_MT2124	ras_on	DAA	DAA	VK	SR	L1_arrest	none	cProject_18849_index22	b_let60.gf	b_n1046gf	a_nan	b_MT2124	ras_on	DAA	DAA	VK	SR	L1_arrest	none	cProject_18850_index23	b_dpy22.bx93	b_bx93	a_nan	b_PS4187	mediator	DAA	DAA	VK	SR	L1_arrest	dpy-22	cProject_18851_index25	b_dpy22.bx93	b_bx93	a_nan	b_PS4187	mediator	DAA	DAA	VK	SR	L1_arrest	dpy-22	cProject_18852_index27	b_dpy22.bx93	b_bx93	a_nan	b_PS4187	mediator	DAA	DAA	VK	SR	L1_arrest	dpy-22	cProject_18853_index1	b_dpy22_sy622	a_nan	b_sy622	b_PS4087	mediator	DAA	DAA	VK	SR	L1_arrest	dpy-22	cProject_18854_index2	b_dpy22_sy622	a_nan	b_sy622	b_PS4087	mediator	DAA	DAA	VK	SR	L1_arrest	dpy-22	cProject_18855_index3	b_dpy22_sy622	a_nan	b_sy622	b_PS4087	mediator	DAA	DAA	VK	SR	L1_arrest	dpy-22	cProject_18889_index13	b_dpy22_transhet_sy622_bx93	b_bx93	b_sy622	b_PS4176	mediator	DAA	DAA	VK	SR	L1_arrest	dpy-22	cProject_18890_index14	b_dpy22_transhet_sy622_bx93	b_bx93	b_sy622	b_PS4176	mediator	DAA	DAA	VK	SR	L1_arrest	dpy-22	cProject_18891_index15	b_dpy22_transhet_sy622_bx93	b_bx93	b_sy622	b_PS4176	mediator	DAA	DAA	VK	SR	L1_arrest	dpy-22	cProject_18892_index16	b_dpy22_transhet_sy622_bx93	b_bx93	b_sy622	b_PS4176	mediator	DAA	DAA	VK	SR	L1_arrest	dpy-22	cProject_18893_index18	b_let60	b_n2021	a_nan	b_MT4866	ras_off	DAA	DAA	VK	SR	L1_arrest	none	cProject_18894_index19	b_let60	b_n2021	a_nan	b_MT4866	ras_off	DAA	DAA	VK	SR	L1_arrest	none	cProject_18895_index20	b_let60	b_n2021	a_nan	b_MT4866	ras_off	DAA	DAA	VK	SR	L1_arrest	none	cProject_19227_index1	b_clk-1	b_qm30	a_nan	b_MQ130	ubiquinone_synthesis	CPR	CPR	VK	SR	bleach	structural_genes	dProject_19228_index2	b_clk-1	b_qm30	a_nan	b_MQ130	ubiquinone_synthesis	CPR	CPR	VK	SR	bleach	structural_genes	dProject_19229_index3	b_clk-1	b_qm30	a_nan	b_MQ130	ubiquinone_synthesis	CPR	CPR	VK	SR	bleach	structural_genes	dProject_19230_index4	b_dpy7	b_e88	a_nan	b_CB88	cuticular_collagen	CPR	CPR	VK	SR	bleach	structural_genes	dProject_19231_index5	b_dpy7	b_e88	a_nan	b_CB88	cuticular_collagen	CPR	CPR	VK	SR	bleach	structural_genes	dProject_19232_index6	b_dpy7	b_e88	a_nan	b_CB88	cuticular_collagen	CPR	CPR	VK	SR	bleach	structural_genes	dProject_19233_index7	b_dpy10	b_e128	a_nan	b_CB128	cuticular_collagen	CPR	CPR	VK	SR	bleach	structural_genes	dProject_19234_index8	b_dpy10	b_e128	a_nan	b_CB128	cuticular_collagen	CPR	CPR	VK	SR	bleach	structural_genes	dProject_19235_index9	b_dpy10	b_e128	a_nan	b_CB128	cuticular_collagen	CPR	CPR	VK	SR	bleach	structural_genes	dProject_19236_index10	b_unc54	b_e190	a_nan	b_CB190	muscle_myosin	CPR	CPR	VK	SR	bleach	structural_genes	dProject_19237_index11	b_unc54	b_e190	a_nan	b_CB190	muscle_myosin	CPR	CPR	VK	SR	bleach	structural_genes	dProject_19238_index12	b_unc54	b_e190	a_nan	b_CB190	muscle_myosin	CPR	CPR	VK	SR	bleach	structural_genes	dProject_19239_index13	a_WT	a_nan	a_nan	a_n2	none	CPR	CPR	VK	SR	bleach	structural_genes	dProject_19240_index14	a_WT	a_nan	a_nan	a_n2	none	CPR	CPR	VK	SR	bleach	structural_genes	dProject_19241_index15	a_WT	a_nan	a_nan	a_n2	none	CPR	CPR	VK	SR	bleach	structural_genes	dProject_JKY1	b_fog2	b_q71	a_nan	b_JK574	spermatogenesis	DWL	DWL	VK	SR	plate	female_state	eProject_JKY2	b_fog2	b_q71	a_nan	b_JK574	spermatogenesis	DWL	DWL	VK	SR	plate	female_state	eProject_JKY3	b_fog2	b_q71	a_nan	b_JK574	spermatogenesis	DWL	DWL	VK	SR	plate	female_state	eProject_N2Y1	a_WT	a_nan	a_nan	a_n2	none	DWL	DWL	VK	SR	plate	female_state	eProject_N2Y2	a_WT	a_nan	a_nan	a_n2	none	DWL	DWL	VK	SR	plate	female_state	eProject_N2Y3	a_WT	a_nan	a_nan	a_n2	none	DWL	DWL	VK	SR	plate	female_state	e

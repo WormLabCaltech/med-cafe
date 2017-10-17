@@ -495,62 +495,114 @@ differentially expressed in \emph{bx93} homozygotes). Since the two alleles are
 co-dominant for transcript expression in this class, the functionality encoded
 in this gene must be dosage-dependent for this model to hold.
 
-\subsection*{Ontology enrichment correlates transcriptomic phenotypic classes
-             with morphological phenotypes}
-Whereas the \emph{sy622} homozygote is visibly different from the wild type (see
-Fig.~\ref{fig:dpy22}), the \emph{bx93} is almost entirely wild-type. Since the
-\emph{trans}-heterozygote also appears grossly wild-type, we hypothesized that the
-\emph{sy622}-specific phenotypic class was associated with the macroscopic
-phenotypes visible in the \emph{sy622} allele. We used the Wormbase Enrichment
-Suite~\cite{Angeles-Albores2016,Angeles-Albores106369} to query what anatomical,
-phenotypic or gene ontological terms were enriched in each phenotypic class.
+\subsection*{The \emph{sy622}-specific class is strongly enriched for a Dpy
+             transcriptional signature}
+\emph{bx93} homozygotic animals are almost wild-type, but careful measurements
+show that they have a slight body length defect causing them to be slightly Dpy,
+and \emph{sy622} homozygotic animals are known to be severely
+Dpy~\cite{Moghal2003}, but this phenotype is complemented almost to wild-type
+levels when the \emph{bx93} allele is placed in \emph{trans} to the \emph{sy622}
+allele. The only class that is fully complemented to wild-type levels is the
+\emph{sy622}-specific class. We hypothesized that the
+\emph{sy622}-specific class should show a strong transcriptional Dpy signature.
 
-The \emph{bx93}-specific gene class returned no enriched anatomy, phenotype
-or gene ontology terms, consistent with our interpretation that this class plays
-a minor role in the biology of \dpy{}. The \emph{trans}-heterozygote specific
-class was enriched in the anatomy terms `male' (Enrichment Fold Change, $FC=2$,
-\qval{40}) and `reproductive system' ($FC=1.3$, \qval{19}), but showed no
-phenotype enrichment. Gene enrichment for this category showed enrichment of many
-terms. Some of the top terms included `cell death' ($FC=3.9$, \qval{28}) and
-`gene silencing by RNA' ($FC=5$, \qval{13}).
+To test this hypothesis, we derived a Dpy signature from two Dpy mutants
+(\gene{dpy-7} and \gene{dpy-10}, \emph{unpublished data}) consisting of 628
+genes. We used this gene set to look for a transcriptional Dpy signature in each
+phenotypic class using a hypergeometric probabilistic model
+(see~\nameref{sec:methods}). We found that the \emph{sy622}-specific and
+-associated classes were enriched in genes that are transcriptionally associated
+with a Dpy phenotype. The \emph{bx93}-associated class also showed significant
+enrichment (fold-change = 2.2, $p=4\cdot10^{-10}$, 68 genes observed). The
+enrichment was of considerably greater magnitude in the \emph{sy622}-specific
+class (fold-change enrichment = 3, $p=2\cdot 10^{-40}$, $167$ genes observed)
+than the enrichment in the \emph{sy622}-associated class (fold-change = 1.9,
+$p=9\cdot10^{-9}$, 82 genes observed) or in the \emph{bx93}-associated class.
+Correlation analysis showed that a majority of the genes in the
+\emph{sy622}-specific class were perfectly correlated between the expression
+levels in the Dpy signature and the expression levels in \emph{sy622}
+homozygotes, while 25\% of the genes were anti-correlated (Spearman R = 0.42,
+$p=6\cdot10^{-15}$). If the anti-correlated values are excluded from the
+Spearman regression, the statistical value of the regression improves
+significantly (Spearman R = 0.94, $p=2\cdot10^{-108}$). Taken together, this
+suggests that the \emph{sy622}-specific phenotypic class contains a
+transcriptional signature that can be associated with the morphological Dpy
+phenotype.
 
-The \emph{sy622}-associated class showed enrichment in the intestine ($FC=1.3$,
-\qval{3})
-% , `Psub1' ($FC=2.3$, \qval{2}),  `AB' ($FC=3.0$, \qval{2}) and `cephalic
-% sheath cell' ($FC=2.1$, \qval{2})
-. Phenotype enrichment analysis of this class
-showed
-no enrichment
-% enrichment of the terms `dauer constitutive' ($FC=5.8$, \qval{2}),
-% `cadmium hypersensitive' ($FC=7.3$, \qval{2}) and `pathogen susceptibility'
-% ($FC=4.9$, \qval{2}).
-Gene ontology enrichment analysis identified terms such as
-`oviposition' ($FC=4.1$, \qval{6}), `tube development' ($FC=9.1$, \qval{8}) and
-`collagen trimer' ($FC=4.6$, \qval{4}).
+As a negative control, we also tested a hypoxia dataset, since \emph{dpy-22} is
+not known to be associated with the \gene{hif-1}-dependent hypoxia response in
+\cel{}. Enrichment tests revealed that the hypoxia response was significantly
+enriched in the \emph{bx93}-associated (fold-change = 2.1, $p=10^-{8}$, 63 genes
+observed), the \emph{sy622}-associated (fold-change = 1.9, $p=4\cdot10^{-8}$, 78
+genes observed) and the \emph{sy622}-specific classes (fold-change = 2.4,
+$p=9\cdot10^{-55}$, 186 genes observed). However, correlation analysis revealed
+that the expression levels of these genes are not correlated between \dpy{}
+mutants and the hypoxia response ($p > 0.4$ in all cases). Therefore, although
+genes associated with the hypoxia response are perturbed in \dpy{}
+loss-of-function mutants, these genes do not reflect engagement of a
+\gene{hif-1}-dependent hypoxia response.
 
-The \emph{sy622}-specific class showed enrichment in the intestine ($FC=1.4$,
-\qval{15}), the muscular system ($FC=1.3$, \qval{7}), the epithelial system
-($FC=1.2$, \qval{3}) and sex organs ($FC=1.3$, \qval{3}). This class had
-enrichment of terms associated with general sickness and pleiotropy, namely
-`avoids bacterial lawn' ($FC=1.9$, \qval{6}), `gonad vesiculated' ($FC=2.0$,
-\qval{3}) and `severe pleiotropic defects in the early embryo' ($FC=2.3$,
-\qval{3}). Gene ontology enrichment analysis showed enrichment of many terms,
-including `respiratory chain' ($FC=7.3$, \qval{13}), `muscle cell development'
-($FC=6.6$, \qval{15}),  `oviposition ($FC=2.6$, \qval{10}) and `collagen trimer'
-($FC=7.7$, \qval{21}).
+\subsection*{Interactions with the RAS and WNT pathways}
 
-% TODO: Insert jupyter link
-Our analyses indicate that the \emph{sy622}-specific phenotypic class
-regulates a large number (39) of collagen genes that is not expected to be the
-result of random sampling. The expression of these genes is not homogeneous,
-and 19/40 isoforms are down-regulated and the rest are up-regulated. On the
-other hand, the \emph{sy622}-associated class regulates 12 collagen genes, most
-of which increase in expression. A similar situation occurs with genes annotated
-as `oviposition' genes. The \emph{sy622}-specific class contains 38 oviposition
-genes, compared to 23 in the \emph{sy622}-associated class. It is plausible that
-changes in these genes are behind the Dpy and Egl phenotypes of the \emph{sy622}
-homozygote. In particular, the enrichments in the \emph{sy622}-specific are the
-most extreme deviations from random sampling, as we hypothesized.
+
+
+
+% This suggests that
+% the \emph{sy622}-specific class is
+% Whereas the \emph{sy622} homozygote is visibly different from the wild type (see
+% Fig.~\ref{fig:dpy22}), the \emph{bx93} is almost entirely wild-type. Since the
+% \emph{trans}-heterozygote also appears grossly wild-type, we hypothesized that the
+% \emph{sy622}-specific phenotypic class was associated with the macroscopic
+% phenotypes visible in the \emph{sy622} allele. We used the Wormbase Enrichment
+% Suite~\cite{Angeles-Albores2016,Angeles-Albores106369} to query what anatomical,
+% phenotypic or gene ontological terms were enriched in each phenotypic class.
+%
+% The \emph{bx93}-specific gene class returned no enriched anatomy, phenotype
+% or gene ontology terms, consistent with our interpretation that this class plays
+% a minor role in the biology of \dpy{}. The \emph{trans}-heterozygote specific
+% class was enriched in the anatomy terms `male' (Enrichment Fold Change, $FC=2$,
+% \qval{40}) and `reproductive system' ($FC=1.3$, \qval{19}), but showed no
+% phenotype enrichment. Gene enrichment for this category showed enrichment of many
+% terms. Some of the top terms included `cell death' ($FC=3.9$, \qval{28}) and
+% `gene silencing by RNA' ($FC=5$, \qval{13}).
+%
+% The \emph{sy622}-associated class showed enrichment in the intestine ($FC=1.3$,
+% \qval{3})
+% % , `Psub1' ($FC=2.3$, \qval{2}),  `AB' ($FC=3.0$, \qval{2}) and `cephalic
+% % sheath cell' ($FC=2.1$, \qval{2})
+% . Phenotype enrichment analysis of this class
+% showed
+% no enrichment
+% % enrichment of the terms `dauer constitutive' ($FC=5.8$, \qval{2}),
+% % `cadmium hypersensitive' ($FC=7.3$, \qval{2}) and `pathogen susceptibility'
+% % ($FC=4.9$, \qval{2}).
+% Gene ontology enrichment analysis identified terms such as
+% `oviposition' ($FC=4.1$, \qval{6}), `tube development' ($FC=9.1$, \qval{8}) and
+% `collagen trimer' ($FC=4.6$, \qval{4}).
+%
+% The \emph{sy622}-specific class showed enrichment in the intestine ($FC=1.4$,
+% \qval{15}), the muscular system ($FC=1.3$, \qval{7}), the epithelial system
+% ($FC=1.2$, \qval{3}) and sex organs ($FC=1.3$, \qval{3}). This class had
+% enrichment of terms associated with general sickness and pleiotropy, namely
+% `avoids bacterial lawn' ($FC=1.9$, \qval{6}), `gonad vesiculated' ($FC=2.0$,
+% \qval{3}) and `severe pleiotropic defects in the early embryo' ($FC=2.3$,
+% \qval{3}). Gene ontology enrichment analysis showed enrichment of many terms,
+% including `respiratory chain' ($FC=7.3$, \qval{13}), `muscle cell development'
+% ($FC=6.6$, \qval{15}),  `oviposition ($FC=2.6$, \qval{10}) and `collagen trimer'
+% ($FC=7.7$, \qval{21}).
+%
+% % TODO: Insert jupyter link
+% Our analyses indicate that the \emph{sy622}-specific phenotypic class
+% regulates a large number (39) of collagen genes that is not expected to be the
+% result of random sampling. The expression of these genes is not homogeneous,
+% and 19/40 isoforms are down-regulated and the rest are up-regulated. On the
+% other hand, the \emph{sy622}-associated class regulates 12 collagen genes, most
+% of which increase in expression. A similar situation occurs with genes annotated
+% as `oviposition' genes. The \emph{sy622}-specific class contains 38 oviposition
+% genes, compared to 23 in the \emph{sy622}-associated class. It is plausible that
+% changes in these genes are behind the Dpy and Egl phenotypes of the \emph{sy622}
+% homozygote. In particular, the enrichments in the \emph{sy622}-specific are the
+% most extreme deviations from random sampling, as we hypothesized.
 
 \section*{Discussion}
 \label{sec:conclusions}
