@@ -522,87 +522,69 @@ Correlation analysis showed that a majority of the genes in the
 \emph{sy622}-specific class were perfectly correlated between the expression
 levels in the Dpy signature and the expression levels in \emph{sy622}
 homozygotes, while 25\% of the genes were anti-correlated (Spearman R = 0.42,
-$p=6\cdot10^{-15}$). If the anti-correlated values are excluded from the
-Spearman regression, the statistical value of the regression improves
-significantly (Spearman R = 0.94, $p=2\cdot10^{-108}$). Taken together, this
-suggests that the \emph{sy622}-specific phenotypic class contains a
-transcriptional signature that can be associated with the morphological Dpy
-phenotype.
+$p=6\cdot10^{-15}$, see Fig.~\ref{fig:dpy_phenotype}). If the anti-correlated
+values are excluded from the Spearman regression, the statistical value of the
+regression improves significantly (Spearman R = 0.94, $p=2\cdot10^{-108}$).
+Taken together, this suggests that the \emph{sy622}-specific phenotypic class
+contains a transcriptional signature that can be associated with the
+morphological Dpy phenotype.
 
 As a negative control, we also tested a hypoxia dataset, since \emph{dpy-22} is
 not known to be associated with the \gene{hif-1}-dependent hypoxia response in
 \cel{}. Enrichment tests revealed that the hypoxia response was significantly
-enriched in the \emph{bx93}-associated (fold-change = 2.1, $p=10^-{8}$, 63 genes
+enriched in the \emph{bx93}-associated (fold-change = 2.1, $p=10^{-8}$, 63 genes
 observed), the \emph{sy622}-associated (fold-change = 1.9, $p=4\cdot10^{-8}$, 78
 genes observed) and the \emph{sy622}-specific classes (fold-change = 2.4,
-$p=9\cdot10^{-55}$, 186 genes observed). However, correlation analysis revealed
-that the expression levels of these genes are not correlated between \dpy{}
-mutants and the hypoxia response ($p > 0.4$ in all cases). Therefore, although
-genes associated with the hypoxia response are perturbed in \dpy{}
-loss-of-function mutants, these genes do not reflect engagement of a
-\gene{hif-1}-dependent hypoxia response.
+$p=9\cdot10^{-55}$, 186 genes observed). However, there was no correlation
+between the expression levels of these genes in \dpy{} genotypes and the
+expression levels expected from the hypoxia response.
 
-\subsection*{Interactions with the RAS and WNT pathways}
+\begin{figure}
+  \centering{}
+  \includegraphics[width=0.5\textwidth]{../figs/dpy_phenotype.pdf}
+  \caption{
+    \emph{sy622} homozygotes show a transcriptional response associated with the
+    Dpy phenotype.
+    \textbf{A} We obtained a set of transcripts associated with the Dpy phenotype
+    from \gene{dpy-7} and \gene{dpy-10} mutants. We identified the transcripts
+    that were differentially expressed in \emph{sy622} homozyogtes. Next,
+    we plotted the $\beta$ values of each transcript in \emph{sy622} homozygotes
+    against the $\beta$ values in a \emph{dpy-7} mutant. A significant portion
+    of the genes are correlated between the two genotypes, showing that the
+    signature is largely intact. 25\% of the genes are anti-correlated.
+    \textbf{B} We performed the same analysis using a set of transcripts associated
+    with the \gene{hif-1}-dependent hypoxia response as a negative control.
+    Although \emph{sy622} is enriched for the transcripts that make up this
+    response, there is no correlation between the $\beta$ values in \emph{sy622}
+    homozygotes and the  $\beta$ values in \emph{egl-9} homozygotes.
+    In the plots, a colormap is used to represent the density of points. The
+    standard error of the mean is inversely proportional to the standard error
+    of $\beta_{dpy-22(sy622)}$.
+    }
+\label{fig:dpy_phenotype}
+\end{figure}
 
 
+%  correlation analysis revealed
+% that the expression levels of these genes are not correlated between \dpy{}
+% mutants and the hypoxia response ($p > 0.4$ in all cases). Therefore, although
+% genes associated with the hypoxia response are perturbed in \dpy{}
+% loss-of-function mutants, these genes do not reflect engagement of a
+% \gene{hif-1}-dependent hypoxia response.
 
-
-% This suggests that
-% the \emph{sy622}-specific class is
-% Whereas the \emph{sy622} homozygote is visibly different from the wild type (see
-% Fig.~\ref{fig:dpy22}), the \emph{bx93} is almost entirely wild-type. Since the
-% \emph{trans}-heterozygote also appears grossly wild-type, we hypothesized that the
-% \emph{sy622}-specific phenotypic class was associated with the macroscopic
-% phenotypes visible in the \emph{sy622} allele. We used the Wormbase Enrichment
-% Suite~\cite{Angeles-Albores2016,Angeles-Albores106369} to query what anatomical,
-% phenotypic or gene ontological terms were enriched in each phenotypic class.
+% \subsection*{Interactions with the RAS and WNT pathways}
+% \dpy{} is known to interact genetically with the WNT and RAS pathways in
+% \cel{}~\cite{Zhang2000,Moghal2003}, and this interaction has been found to be
+% conserved in other organisms~\cite{}. In \cel{}, the \emph{bx93} allele exhibits
+% an interaction with a hypomorphic allele of \gene{bar-1} ($\beta$-catenin) only
+% in a \gene{pal-1} sensitized background~\cite{Zhang2000}. On the other hand, the
+% \emph{sy622} allele displays no interaction with \gene{bar-1}, but it strongly
+% enhances the multivulva phenotype of a Ras gain-of-function allele,
+% \gene{let-60(n1046)}.
 %
-% The \emph{bx93}-specific gene class returned no enriched anatomy, phenotype
-% or gene ontology terms, consistent with our interpretation that this class plays
-% a minor role in the biology of \dpy{}. The \emph{trans}-heterozygote specific
-% class was enriched in the anatomy terms `male' (Enrichment Fold Change, $FC=2$,
-% \qval{40}) and `reproductive system' ($FC=1.3$, \qval{19}), but showed no
-% phenotype enrichment. Gene enrichment for this category showed enrichment of many
-% terms. Some of the top terms included `cell death' ($FC=3.9$, \qval{28}) and
-% `gene silencing by RNA' ($FC=5$, \qval{13}).
-%
-% The \emph{sy622}-associated class showed enrichment in the intestine ($FC=1.3$,
-% \qval{3})
-% % , `Psub1' ($FC=2.3$, \qval{2}),  `AB' ($FC=3.0$, \qval{2}) and `cephalic
-% % sheath cell' ($FC=2.1$, \qval{2})
-% . Phenotype enrichment analysis of this class
-% showed
-% no enrichment
-% % enrichment of the terms `dauer constitutive' ($FC=5.8$, \qval{2}),
-% % `cadmium hypersensitive' ($FC=7.3$, \qval{2}) and `pathogen susceptibility'
-% % ($FC=4.9$, \qval{2}).
-% Gene ontology enrichment analysis identified terms such as
-% `oviposition' ($FC=4.1$, \qval{6}), `tube development' ($FC=9.1$, \qval{8}) and
-% `collagen trimer' ($FC=4.6$, \qval{4}).
-%
-% The \emph{sy622}-specific class showed enrichment in the intestine ($FC=1.4$,
-% \qval{15}), the muscular system ($FC=1.3$, \qval{7}), the epithelial system
-% ($FC=1.2$, \qval{3}) and sex organs ($FC=1.3$, \qval{3}). This class had
-% enrichment of terms associated with general sickness and pleiotropy, namely
-% `avoids bacterial lawn' ($FC=1.9$, \qval{6}), `gonad vesiculated' ($FC=2.0$,
-% \qval{3}) and `severe pleiotropic defects in the early embryo' ($FC=2.3$,
-% \qval{3}). Gene ontology enrichment analysis showed enrichment of many terms,
-% including `respiratory chain' ($FC=7.3$, \qval{13}), `muscle cell development'
-% ($FC=6.6$, \qval{15}),  `oviposition ($FC=2.6$, \qval{10}) and `collagen trimer'
-% ($FC=7.7$, \qval{21}).
-%
-% % TODO: Insert jupyter link
-% Our analyses indicate that the \emph{sy622}-specific phenotypic class
-% regulates a large number (39) of collagen genes that is not expected to be the
-% result of random sampling. The expression of these genes is not homogeneous,
-% and 19/40 isoforms are down-regulated and the rest are up-regulated. On the
-% other hand, the \emph{sy622}-associated class regulates 12 collagen genes, most
-% of which increase in expression. A similar situation occurs with genes annotated
-% as `oviposition' genes. The \emph{sy622}-specific class contains 38 oviposition
-% genes, compared to 23 in the \emph{sy622}-associated class. It is plausible that
-% changes in these genes are behind the Dpy and Egl phenotypes of the \emph{sy622}
-% homozygote. In particular, the enrichments in the \emph{sy622}-specific are the
-% most extreme deviations from random sampling, as we hypothesized.
+% We asked whether transcriptional signatures associated with the WNT and RAS
+% pathways were both enriched in our phenotypic classes. We found that
+
 
 \section*{Discussion}
 \label{sec:conclusions}
@@ -728,21 +710,19 @@ class does not exist and is simply the result of statistical noise.
              statistical artifact}
 In our study, we found a large class of transcripts that were exclusively
 differentially expressed in \emph{trans}-heterozygotes. The size of this class
-makes a statistical artifact unlikely. As a result, this class must be understood
-as either a legitimate aspect of \dpy{} biology, reflecting antagonistic
-dosage-responsive tissue-specific effects, or as a strain-specific artifact.
-The genotype of the
-heterozygote includes a mutation at the \gene{dpy-6} locus which acts as a balancer
-for the
-\emph{bx93} mutation. One possibility is that the \emph{dpy-6} loss-of-function
-mutation is not recessive for transcriptomic phenotypes and is responsible for
-the dysregulation of the new genes observed in the heterozygote. Another
-possibility is that the \emph{dpy-6} strain had eQTLs that are affecting gene
-expression levels in a complex manner. As the cost of sequencing becomes
-lower, and with improved genetic engineering tools that allow the creation of
-background-free mutations, it will become increasingly important to rule out
-these hypotheses by sequencing additional independently derived identical
-alleles.
+makes a statistical artifact unlikely. As a result, this class must be
+understood as either a legitimate aspect of \dpy{} biology, reflecting
+antagonistic dosage-responsive tissue-specific effects, or as a strain-specific
+artifact. The genotype of the heterozygote includes a mutation at the
+\gene{dpy-6} locus which acts as a balancer for the \emph{bx93} mutation. One
+possibility is that the \emph{dpy-6} loss-of-function mutation is not recessive
+for transcriptomic phenotypes and is responsible for the dysregulation of the
+new genes observed in the heterozygote. Another possibility is that the
+\emph{dpy-6} strain had eQTLs that are affecting gene expression levels in a
+complex manner. As the cost of sequencing becomes lower, and with improved
+genetic engineering tools that allow the creation of background-free mutations,
+it will become increasingly important to rule out these hypotheses by sequencing
+additional independently derived identical alleles.
 
 \subsection*{Transcriptomic genetics}
 Allelic series are a cornerstone of genetic analyses. Classically, these series
@@ -767,8 +747,6 @@ PS4087 \gene{dpy-22(sy622)},
 PS4187 \gene{dpy-22(bx93)},
 %line break inserted below because \gene{...} doesn't linebreak well
 and PS4176\\ \gene{dpy-6(e14) dpy-22(bx93)/ + dpy-22(sy622)}.
-% MT4866 \gene{let-60(n2021)}, and
-% MT2124 \gene{let-60(n1046gf)}.
 All lines were grown on standard nematode growth media (NGM) Petri plates seeded
 with OP50 \ecol{} at 20\degree{}C~\cite{Brenner1974}.
 
@@ -804,15 +782,15 @@ We performed non-parametric bootstrap testing to identify whether two
 distributions had the same mean. Briefly, the two datasets were mixed, and
 samples were selected at random with replacement from the mixed population into
 two new datasets. We calculated the difference in the means of these new
-datasets. We iterated this process $10^6$ times. To calculate a $p$-value that the
-null hypothesis is true, we identified the number of times a difference in the
-means of the simulated populations was greater than or equal to the observed
+datasets. We iterated this process $10^6$ times. To calculate a $p$-value that
+the null hypothesis is true, we identified the number of times a difference in
+the means of the simulated populations was greater than or equal to the observed
 difference in the means of the real population. We divided this result by $10^6$
 to complete the calculation for a $p$-value. If an event where the difference in
 the simulated means was greater than the observed difference in the means was
-not observed, we reported the $p$-value as $p<10^{-5}$. Otherwise, we reported the
-exact $p$-value. We chose to reject the null hypothesis that the means of the two
-datasets are equal to each other if $p < 0.05$.
+not observed, we reported the $p$-value as $p<10^{-5}$. Otherwise, we reported
+the exact $p$-value. We chose to reject the null hypothesis that the means of
+the two datasets are equal to each other if $p < 0.05$.
 
 \subsection*{Dominance analysis}
 \label{subsec:dominance}
@@ -829,7 +807,7 @@ genotype $k/k$, and $d_a$ is the dominance coefficient for allele $a$.
 To find the parameters $d_a$ that maximized the probability of observing the
 data, we found the parameter, $d_a$, that maximized the equation:
 \begin{equation}
-    P(d_a|D,H,I) = \prod_{i \in S}\frac{1}{\sqrt{2\pi \sigma_i^2}}
+    P(d_a|D,H,I) \propto \prod_{i \in S}
                    \exp{\frac{{(\beta_{a/b,i,\text{Obs}} -
                                 \beta_{a/b,i,\text{Pred}}(d_a))}^2}{
                                 2\sigma_i^2}}
