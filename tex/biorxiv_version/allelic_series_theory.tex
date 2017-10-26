@@ -223,26 +223,24 @@ enhancers~\cite{VandePeppel2005}. In \cel{}, the CKM consists of
 \protein{cdk-8}, \protein{mdt-13}, \protein{cic-1} and
 \protein{DPY-22}~\cite{Grants2015}. Since \gene{dpy-22} is orthologous to the
 human Mediator subunits \gene{MED-12} and \gene{MED-12L}~\cite{Zhang2000}, we
-will henceforth refer to this gene as \dpy{}. \todo[inline]{dpy-22 in gene
-dosage sentence?} \dpy{} has been studied in the context of the male
-tail~\cite{Zhang2000}, where it was found to interact with the Wnt pathway. It
-has also been studied in the context of vulval formation~\cite{Moghal2003a},
-where it was found to be an inhibitor of the Ras pathway. \dpy{} is likely an
-essential gene, and developmental studies have relied on reduction-of-function
-alleles to understand the role of this gene in development. Studies of the male
-tail were carried out using an allele, \gene{dpy-22(bx93)}, that generates a
-truncated \protein{dpy-22} protein missing its C-terminal 900 or so amino acids
-as a result of a premature stop codon, Q2549STOP~\cite{Zhang2000}. In spite of
-the premature truncation, animals carrying this allele grossly appear
-phenotypically wild-type. In contrast, the allele used to study the role of
-\dpy{} in the vulva, \gene{dpy-22(sy622)}, is a premature stop codon, Q1689STOP,
-that predicted to remove over 1,500 amino acids from the
-C-terminus~\cite{Moghal2003}. Animals carrying this mutation are severely dumpy
-(Dpy), have egg-laying defects (Egl) and have a multivulva (Muv) phenotype that
-occurs at a very low rate (see Fig.~\ref{fig:dpy22}). We wanted to study how
-truncations of increasing severity affected transcriptomic phenotypes. These
-alleles could form a single quantitative series, affecting the same sets of
-target genes but to different degrees, in which case the
+will henceforth refer to this gene as \dpy{}. \dpy{} has been studied in the
+context of the male tail~\cite{Zhang2000}, where it was found to interact with
+the Wnt pathway. It has also been studied in the context of vulval
+formation~\cite{Moghal2003a}, where it was found to be an inhibitor of the Ras
+pathway. \dpy{} is likely an essential gene, and developmental studies have
+relied on reduction-of-function alleles to understand the role of this gene in
+development. Studies of the male tail were carried out using an allele,
+\gene{dpy-22(bx93)}, that generates a truncated \protein{dpy-22} protein missing
+its C-terminal 900 or so amino acids as a result of a premature stop codon,
+Q2549STOP~\cite{Zhang2000}. In spite of the premature truncation, animals
+carrying this allele grossly appear phenotypically wild-type. In contrast, the
+allele used to study the role of \dpy{} in the vulva, \gene{dpy-22(sy622)}, is a
+premature stop codon, Q1689STOP, that predicted to remove over 1,500 amino acids
+from the C-terminus~\cite{Moghal2003} (see Fig.~\ref{fig:dpy22}). Animals
+carrying this mutation are severely dumpy (Dpy), have egg-laying defects (Egl)
+and have a low penetrance multivulva (Muv) phenotype. These alleles could form a
+single quantitative series, affecting the
+same sets of target genes but to different degrees, in which case the
 \emph{trans}-heterozygote would exhibit a single dosage-dependent phenotype
 intermediate to the two homozygotes. Alternatively, they could form a single
 qualitative series, in which case the \emph{trans}-heterozygote should have the
@@ -256,8 +254,9 @@ quantitative behaviors in the \emph{trans}-heterozygote.
   \includegraphics[width=0.5\textwidth]{../figs/gene_model_dpy22.pdf}
   \caption{
     The \dpy{} allelic series, consisting of two amino acid truncations. Diagram
-    of the \dpy{} gene and the \emph{bx93} and \emph{sy622} alleles.
-    Conservation between \dpy{} and its human orthologs is shown in color.
+    of the \protein{mdt-12} wild-type protein and the protein product of
+    \emph{bx93} and \emph{sy622} alleles.
+    % Conservation between \protein{mdt-12} and a human ortholog is shown in color.
     }
 \label{fig:dpy22}
 \end{figure}
@@ -367,7 +366,8 @@ our hit analysis for eachperturbation category.
   first idealized the Venn diagram and asked whether false positive and
   false negative results could distort the diagram back to its original
   shape. We estimated the false negative rate at 15\% and used a false positive
-  rate of 10\%. False hits can explain the existence of a groups of genes that
+  rate of 10\%. For simplicity, only false hit analysis for \emph{bx93} groups
+  is shown. False hits can explain the existence of a groups of genes that
   are differentially expressed in \emph{bx93} homozygotes only, in \emph{bx93}
   homozygotes and \emph{trans}-heterozygotes, and in \emph{bx93} homozygotes
   and \emph{sy622} homozygotes. Genes that are solely expressed in \emph{bx93}
@@ -386,26 +386,22 @@ defined cut-off) we expect 48 genes to be falsely called as differentially
 expressed in \emph{bx93} homozygotes. The probability that such a false positive
 is also differentially expressed in another genotype is 20\% (4,392 transcripts
 identified between the two other genotypes divided by 21,954 the total number of
-transcripts that were successfully sequenced). Thus, on average we expect 42
-false positive hits to be classified into the \emph{bx93}-specific class. False
-negative rates will also contribute to the \emph{bx93}-specific class, albeit at
-a much lower rate ($\leq 5$ transcripts, assuming a 10\% false negative rate).
-In total, we estimate 45/78 genes in the \emph{bx93}-specific class are the
-result of statistical artifacts. Since statistical noise can account for the
-existence of this class, and since the biological interpretation of this class
+transcripts that were successfully sequenced). Thus, on average we expect 39
+false positive hits to be classified into the \emph{bx93}-specific class.
+On average, half of all genes in the \emph{bx93}-specific class would be expected to be the
+result of statistical artifacts. Statistical noise is therefore a major contributor towards the
+existence of this class. Since the biological interpretation of this class
 is unclear and requiring extraordinary evidence, we find the most parsimonious
 explanation to be that the \emph{bx93}-specific class does not exist.
 
-
-
-We estimated that statistical noise could account for 30--50\%
+We estimated that statistical noise could account for $>80$\%
 of the genes that were differentially expressed in both \emph{bx93} and
 \emph{sy622} homozygotes and not differentially expressed in the
 \emph{trans}-heterozygote. Further, we estimated that statistical artifacts
-could explain between 50--100\% of the transcripts that were differentially
+could explain $>80$\% of the transcripts that were differentially
 expressed in the \emph{trans}-heterozygote and \emph{bx93} homozygotes but not
 in \emph{sy622} homozygotes. For both of these populations, we estimate that
-$>50\%$ of the false hits emerge from false negative results. In other words,
+the majority of the false hits emerge from false negative results. In other words,
 most of the noise in these populations is the result of mis-classification.
 Finally, the biological interpretation of either population is implausible given
 the molecular nature of the alleles. Taken together, a false hit analysis of
@@ -449,17 +445,17 @@ functions of \dpy{}.
 We asked whether these classes had perturbation distributions distinct from each
 other within a single homozygote. Specifically, we wanted to test whether these
 sets behaved as randomly selected sets. If this were the case, then within a
-single genotype, each class would be expected to have the same distribution
-of perturbations (see Fig.~\ref{fig:classes}). We
-found that that the $\beta$ coefficients of isoforms within the
-\emph{bx93}-associated phenotype on average had the largest absolute value (mean:
-$1.2$). The \emph{sy622}-associated phenotype had a smaller range of
-perturbations compared to the \emph{bx93}-associated phenotype (95th percentiles
-of the two distributions: 2.9 versus 3.2, respectively), and a statistically
-smaller median (0.91 vs 1.2, respectively, $p < 10^{-6}$, non-parametric
-boostrap). The medians of the \emph{sy622}-specific and -associated classes were
-the same ($p=0.15$). Therefore, our results suggest that these classes do not
-behave as if the genes had been selected at random. Instead, there are systematic
+single genotype, each class would be expected to have the same distribution of
+perturbations (see Fig.~\ref{fig:classes}). We found that that the $\beta$
+coefficients of isoforms within the \emph{bx93}-associated phenotype on average
+had the largest absolute value (mean: $1.2$). The \emph{sy622}-associated
+phenotype had a smaller range of perturbations compared to the
+\emph{bx93}-associated phenotype (95th percentiles of the two distributions: 2.9
+versus 3.2, respectively), and a statistically smaller median (0.91 vs 1.2,
+respectively, $p < 10^{-6}$, non-parametric boostrap). The medians of the
+\emph{sy622}-specific and -associated classes were the same ($p=0.15$).
+Therefore, our results suggest that these classes do not behave as if the
+transcripts had been randomly selected. Instead, there are systematic
 differences between the behaviors of each class.
 
 % to make figure span two columns in twocolumn mode, use figure*
@@ -467,29 +463,33 @@ differences between the behaviors of each class.
   \centering{}
   \includegraphics[width=0.75\textwidth]{../figs/dpy22_classes.pdf}
   \caption{
-    Within the \emph{sy622} homozygote mutant, different phenotypic classes have
-    statistically different distributions. The lines
-    within the boxes show the 25, 50, and 75 percentiles. Whiskers show the rest
-    of the plot, except for outliers (diamonds). Diagrams show what genotypes each
-    gene class is expressed in, but the magnitude of the perturbation plotted
-    always corresponds to the \emph{sy622} mutant. The x-axis shows the absolute
-    magnitude of the perturbation for each transcript.
-    The medians of the \emph{sy622}-specific and the \emph{sy622}-associated
-    classes were statistically significantly different from the mean of the
-    \emph{bx93}-specific class, as assessed by a non-parametric bootstrap test.
+    Within the \emph{sy622} homozygote mutant, transcripts whose differential
+    expression pattern places them in different phenotypic classes have
+    statistically different distributions. The lines within the boxes show the
+    25\textsuperscript{th}, 50\textsuperscript{th}, and 75\textsuperscript{th}
+    percentiles. Whiskers show the 0\textsuperscript{th} and
+    100\textsuperscript{th} percentiles, with the exception of outliers
+    (diamonds). Diagrams show what genotypes each gene class is expressed in,
+    but the magnitude of the perturbation plotted always corresponds to the
+    \emph{sy622} mutant. The x-axis shows the absolute magnitude of the
+    perturbation for each transcript in \emph{sy622} homozygotes,
+    $|\beta_{sy622}|$. The medians of the \emph{sy622}-specific and the
+    \emph{sy622}-associated classes were statistically significantly different
+    from the median of the \emph{bx93}-specific class, as assessed by a
+    non-parametric bootstrap test.
   }
 \label{fig:classes}
 \end{figure*}
 
 \subsection*{Dominance can be quantified in transcriptomic phenotypes}
-\todo[inline]{quantitative genetics citation?}
-We reasoned that if one allele was dominant over the other in the heterozygote,
-then plotting the $\beta$ coefficients in the homozygote of the dominant allele
-versus the heterozygote should lead to a slope of 1. Deviations from a slope
-with magnitude equal to unity should therefore be interpreted as deviations from
-a standard dominant-recessive model. When expression in a \emph{trans}-heterozygote
-is intermediate between the two homozygotes, this suggests a co-dominance regime
-where both alleles are contributing to the phenotype in a weighted fashion.
+% We reasoned that if one allele was dominant over the other in the
+% \emph{trans}-heterozygote, then plotting the $\beta$ coefficients in the
+% homozygote of the dominant allele versus the \emph{trans}-heterozygote should
+% lead to a slope of 1. Deviations from a slope with magnitude equal to unity
+% should therefore be interpreted as deviations from a standard dominant-recessive
+% model. When expression in a \emph{trans}-heterozygote is intermediate between
+% the two homozygotes, this suggests a co-dominance regime where both alleles are
+% contributing to the phenotype in a weighted fashion.
 
 % TODO: Cite let-23 allelic series paper
 Dominance relationships between alleles are phenotype-specific. In other
@@ -525,61 +525,66 @@ Since our previous testing showed that the transcript expression of genes in
 this class was dysregulated in \emph{sy622} homozygotes, and wild-type in both
 \emph{bx93} homozygotes and \emph{trans}-heterozygotes we can conclude that
 these transcripts are complemented to their wild-type levels by the presence of
-the \emph{bx93} allele. Applying the Bayesian model yields identical results.
+the \emph{bx93} allele. Applying the Bayesian model yields identical results
+($d_{bx93} = 1$).
 Thus, there is a module that has wild-type functionality in the \emph{bx93}
 allele but is partially or completely deleted in the \emph{sy622} allele. This
-functionality must require the sequences between amino acid position 1,689, where
-the \emph{sy622} allele truncates prematurely, and the position 2,549 where the
-\emph{bx93} allele stops.
+functionality must require protein encoded between the amino acid position 1,698
+where the \emph{sy622} protein product truncates prematurely, and the position
+2,549 where the \emph{bx93} protein product ends.
 
 \subsubsection*{The \emph{bx93} allele is dominant over the \emph{sy622} for the
                 \emph{bx93}-associated phenotype}
 We explored how expression levels of transcripts within the
-\emph{bx93}-associated phenotypic class were controlled by these two alleles. We
-first applied our dominance analysis to transcripts in this class. We found that
-the \emph{bx93} allele is largely dominant ($d_{bx93}=0.82$) over the
-\emph{sy622} allele (see Fig.~\ref{fig:bx93_associated}). A large dominance
-coefficient might indicate that, for this phenotypic class, the \emph{bx93} has
-a functional structure that is not present in the \emph{sy622} allele. However,
-a significant portion of the transcripts within this class are differentially
-expressed in both homozygotes studied. Therefore, if this class is controlled by
-a single structure, then the functionality of this structure cannot be intact in
-the \emph{bx93} homozygote. Moreover, when we compared the expression levels of
-transcripts in \emph{sy622} and \emph{bx93} homozygotes, we found that the
-\emph{bx93} homozygotes had $\beta$ coefficients that were on average 39\%
-weaker than in the \emph{sy622} homozygote. This implies that the two alleles
-should be codominant to each other, which is at odds with the dominance
-coefficient we observed. The mixed evidence precludes a conclusion about the
-structure/function relationship underlying this phenotypic class.
+\emph{bx93}-associated phenotypic class were controlled by these two alleles.
+Transcripts in this class are differentially expressed in homozygotes of either
+allele. Moreover, transcripts in this class are more perturbed in \emph{sy622}
+homozygotes than in \emph{bx93} homozygotes. This is consistent with a single
+functional unit that is impaired in the \emph{bx93} allele, and even more
+impaired in the \emph{sy622} allele (see Fig.~\ref{fig:bx93_associated}).
+
+If a single functional unit is being impaired, then we would expect these
+alleles to form a quantitative allelic series for this phenotypic class. In a
+quantitative series, alleles exhibit codominance. We quantified the dominance
+coefficient for this class and found that the \emph{bx93} allele is largely but
+not completely dominant over the \emph{sy622} allele ($d_{bx93}=0.81$; see
+Fig.~\ref{fig:bx93_associated}). Dominance in the context of an allelic series
+indicates a qualitative allelic series, which is evidence
+that \protein{MDT-12} protein produced from the \emph{bx93} allele has an intact
+functional unit that is deleted in protein product from the \emph{sy622}
+allele. Mixed evidence for quantitative and qualitative allelic series at this
+phenotypic class precludes a definitive conclusion.
 
 \begin{figure}
   \centering{}
   \includegraphics[width=0.5\textwidth]{../figs/bx93_associated_analysis.pdf}
   \caption{The \emph{bx93}-associated class has properties of both quantitative
     and qualitative allelic series.
-    \textbf{A} In a \emph{trans}-heterozygote, the \emph{bx93} allele is largely
+    \textbf{A} In \emph{bx93}
+    homozygotes, transcripts within the \emph{bx93}-associated class are
+    less perturbed than in \emph{sy622}
+    homozygotes. The line of best fit (green) is
+    $\beta_{bx93/bx93}=0.56\cdot\beta_{sy622/sy622}$.
+    \textbf{B} In a \emph{trans}-heterozygote, the \emph{bx93} allele is largely
     dominant over the \emph{sy622} allele for the expression levels of
     transcripts in the \emph{bx93}-associated class.
-    \textbf{B} A majority of the transcripts in the \emph{bx93}-associated class
-    are differentially expressed in homozygotes of both alleles. In \emph{bx93}
-    homozygotes, these transcripts are less perturbed than in \emph{sy622}
-    homozygotes.
+    In the graphs above, densely packed points are colored yellow as a visual
+    aid. The size of the point is inversely proportional to the standard error
+    of the $\beta$ coefficients.
     }
 \label{fig:bx93_associated}
 \end{figure}
 
-\subsubsection*{The \emph{sy622}-associated phenotype is attenuated by the
-                presence of \emph{bx93} in the \emph{trans}-heterozygote}
-We also wanted to know whether the \emph{sy622}-associated phenotype showed
-differences depending on genotypic context. We quantified the relative dominance
-of \emph{bx93} and \emph{sy622} on the expression level of transcripts of this
+\subsubsection*{The \emph{bx93} allele is codominant with \emph{sy622} for the
+                \emph{sy622}-associated phenotypic class}
+We quantified the relative dominance of \emph{bx93} and \emph{sy622} on the
+expression level of transcripts that belonged to the \emph{sy622}-associated
 class. We found that both alleles are codominant ($d_{bx93} = 0.51$). This
 suggests that there is a structure distributed evenly throughout the gene
-body starting the first amino acid position and ending before position 2,549
-(the site of the \emph{bx93} truncation, otherwise these transcripts would be
-differentially expressed in \emph{bx93} homozygotes). Since the two alleles are
-co-dominant for transcript expression in this class, the functionality encoded
-in this gene must be dosage-dependent for this model to hold.
+body starting the first amino acid position and ending before position 2,549.
+Since the two alleles are codominant for transcript expression in this class,
+the functionality encoded in this gene must be dosage-dependent for this model
+to hold.
 
 \subsection*{The \emph{sy622}-specific class is strongly enriched for a Dpy
              transcriptional signature}
@@ -685,165 +690,175 @@ have major effects on gene expression in an organism, and which do not have
 complex, antagonistic tissue-specific effects on expression. Given the
 importance of allelic series for fully characterizing genetic pathways, we are
 optimistic that this method will be a useful addition towards making full use of
-the potential of these molecular phenotypes.
+the potential of these molecular phenotypes. Specifically, allelic series
+coupled with false hit analyses show great promise to identify distinct
+phenotypic classes that would be difficult or impossible to measure using
+standard methods. The sensitivity and quantitative nature of transcriptomic
+phenotypes makes identification of these phenotypes considerably more feasible.
+Once the phenotypeic classes have been identified, dominance and enrichment
+analyses can be performed easily with significant statistical power. These
+properties highlight the power of coupling the genetical properties of \cel{}
+with next-generation sequencing methods.
 
 \subsection*{A structure/function diagram of \dpy{}}
-Our results strongly suggest the existence of two structures in \dpy{} that
-control distinct phenotypic classes. The \emph{sy622}-specific class retains
-wild-type functionality in the \emph{bx93} allele, but this functionality is
-decreased in the \emph{sy622} allele. Therefore, the function that controls this
-class must exist between amino-acid position 0 and position 2,549. A similar
-argument can be made for a structure that controls \emph{sy622}-associated
-genes. For this argument to hold, however, the functionality associated with this
-structure must be dosage-dependent, since the \emph{bx93} allele is codominant
-with the \emph{sy622} allele, and this structure is likely intact in the
-\emph{bx93} allele.
+Our results strongly suggest the existence of various functional units in \dpy{}
+that control distinct phenotypic classes (see Fig.~\ref{fig:domains}). The
+\emph{sy622}-specific class of transcripts is regulated normally in the presence
+of the \emph{bx93} allele, indicating that the mutated protein product retains
+wild-type functionality for regulating these genes. This functionality is
+decreased or absent in \protein{mdt-12} produced from the \emph{sy622} allele.
+Therefore, the functional unit that controls this class, functional unit 1 (FC1),
+must require sequence between amino-acid position 1,689 and position 2,549.
 
-Evidence in favor of a \emph{bx93}-associated functionality was mixed. Although
-dominance analysis suggested that the \emph{bx93} allele was dominant over the
-\emph{sy622} allele for expression levels of genes in this class, the expression
-of these genes deviated from wild-type levels in both alleles. The latter
-suggests that the \emph{bx93}-associated module is perturbed quantitatively in
-both alleles, whereas dominance analyses favor an interpretation where the module
-is present in one allele but not in the other. One possibility is that the
-\emph{bx93}-associated function we observed is the joint activity of two
-distinct effectors. In this model, one effector loses partial function in the
-\emph{bx93} allele, whereas the second effector retains its complete activity.
-This leads to non-wild-type expression levels of the \emph{bx93}-associated
-class of transcripts. In the \emph{sy622} allele, both effectors are completely
-deleted, causing an increase in the severity of the observable phenotype. A
-rigorous examination of this model requires studying alleles that mutate the
-region between Q1689 and Q2549 using homozygotes and \emph{trans}-heterozygotes.
-Future work should be able to establish whether how many modules exist in total,
-and how they may interact to drive gene expression.
+A similar argument can be made for a functional unit that controls \emph{sy622}-associated
+transcripts, functional unit 2 (FC2). These genes are strongly perturbed in
+\emph{sy622} homozygotes and they are also perturbed in \emph{bx93/sy622}
+\emph{trans}-heterozygotes, albeit to a lesser degree. For this argument to
+hold, however, the functional unit must work in a dosage-dependent, since the
+\emph{bx93} allele is codominant with the \emph{sy622} allele, and this unit is
+likely intact in the protein product made by the \emph{bx93} allele.
+
+Evidence in favor of a \emph{bx93}-associated functional unit was mixed.
+Although dominance analysis suggested that the \emph{bx93} allele was largely
+dominant over the \emph{sy622} allele for expression levels of genes in this
+class, the expression of these genes deviated from wild-type levels in both
+alleles. The latter suggests that the \emph{bx93}-associated module is perturbed
+quantitatively in both alleles, whereas dominance analyses favor an
+interpretation where the module is present in one allele but not in the other.
+One possibility is that the \emph{bx93}-associated function we observed is the
+joint activity of two distinct effectors, functional units 3 and 4 (FC3, FC4,
+see Fig.~\ref{fig:domains}). In this model, FC4 loses partial function in the
+\emph{bx93} allele, whereas the FC3 retains its complete activity. This leads to
+non-wild-type expression levels of the \emph{bx93}-associated class of
+transcripts. In the \emph{sy622} allele, FC4 is further impaired, causing an
+increase in the severity of the observable phenotype. A rigorous examination of
+this model requires studying alleles that mutate the region between Q1689 and
+Q2549 using homozygotes and \emph{trans}-heterozygotes. Future work should be
+able to establish whether how many modules exist in total, and how they may
+interact to drive gene expression. Another intriguing possibility is that the
+phenotypic classes identified here could be compared against transcriptomic
+signatures from other transcription factors to identify candidate cofactors.
 
 \begin{figure}
   \centering{}
   \includegraphics[width=0.5\textwidth]{../figs/inferred_domains.pdf}
   \caption{
-    The modules associated with each phenotypic class can be
+    The functional units associated with each phenotypic class can be
     mapped to intragenic locations. The beginning and end positions of
-    these functions are unknown,
+    these functional units are unknown,
     so edges are drawn as ragged lines. Thick horizontal lines show the
     limit where each function could end, if known. We postulate that the
-    \emph{bx93}-associated function exists as two distinct modules in the tail
-    region of this gene. Some of the modules shown may represent the same
-    structures. Future experiments are required to make a more complete
-    determination of the number and nature of these modules.
+    \emph{bx93}-associated class is controlled by two functional units, FC3 and
+    FC4, in the tail region of this gene. Some of the modules shown may
+    represent the same structures. Future experiments are required to make a more
+    complete determination of the number and nature of these modules.
   }
 \label{fig:domains}
 \end{figure}
 
 
-\subsection*{Statistical artifacts associated with this analysis}
+\subsection*{Controlling statistical artifacts}
 Transcriptomic phenotypes generate large amounts of information that can be used
-to accurately determine functional units. However, due to the large number
+to determine functional units. However, due to the large number
 of tests performed, false positive and false negative events occur frequently
 enough to create populations of transcripts that have anomalous behaviors. It is
 necessary to identify what modules or populations are most at risk of these
 events and to what extent these modules may be polluted by false signals to
 prevent over-interpretation. In our experiment, we can estimate statistical noise
-in each population.
+in each population. There is a rich literature in genomics devoted to controlling and
+estimating false positive rates~\cite{}, but false negative rates have largely
+been ignored because they do not create spurious signal in simple experimental
+designs and because there is ample signal in most RNA-seq experiments.
+For allelic series experiments to be successful, systematic
+algorithms to estimate and control false negative rates, and to identify
+the populations most at risk for enrichment of false hits, must be developed,
+because false negative hits can create populations of genes that have fantastical
+biological behaviors (such as contrived examples of intragenic complementation
+or dosage models).
 
-% \subsubsection*{Some populations are strongly enriched in statistical noise}
-% When comparing three sets from three different genotypes, the maximum number
-% of populations is seven. Each of these seven populations could be interpreted
-% biologically if the population was believed to arise from real effects. If these
-% populations are small, there is a real chance that they represent statistical
-% noise, and that they do not exist.
+We performed a false hit analysis, estimating the false negative rate at 15\%,
+to identify the clusters or classes of genes most at risk for statistical noise.
+As a general rule, small clusters or classes should be viewed with skepticism,
+particularly if the biological interpretation is complex. In order to perform
+a false hit analysis, a crucial first step is to appropriately idealize the
+shape of the Venn diagram. This idealized Venn diagram can then be ``squeezed''
+with false negative and false positive rates to observe how it deforms. The
+deformed diagram can then be compared with reality to estimate the contribution
+of false hits to the existence of each class.
+
+
+% \subsubsection*{Estimating noise in each phenotypic class}
+% The \emph{sy622}-associated class and the \emph{bx93}-associated class are
+% presented in our analysis as independent modules. A transcript that is
+% differentially expressed in both \emph{sy622} homozygotes and
+% \emph{trans}-heterozygotes is assigned to the \emph{sy622}-associated class if
+% and only if it is not differentially expressed in \emph{bx93} homozygotes. If a
+% transcript is falsely found to have wild-type expression in \emph{bx93}
+% homozygotes, then this transcript will be misclassified, and it will contribute
+% signal to the \emph{sy622}-associated class. Assuming a false negative rate of
+% 10\%--20\%, the number of transcripts that are mis-classified in this manner on
+% average will be between 12--24. This constitutes $<6\%$ of the signal in the
+% \emph{sy622}-associated class.
 %
-% In our analysis, we defined the \emph{bx93}-associated class in a seemingly
-% different manner from the \emph{sy622}-associated class, by including
-% transcripts that were differentially expressed only in both homozygotes but not
-% in the \emph{trans}-heterozygote, as well as transcripts that were
-% differentially expressed in \emph{bx93} homozygotes and
-% \emph{trans}-heterozygotes but not in \emph{sy622} homozygotes. We did this
-% because we considered it highly unlikely that these populations existed, and
-% that it was more likely that these populations represented genes that should
-% have been differentially expressed in all genotypes. We estimated that
-% statistical noise (false positive and negative hits) could account for 30--50\%
-% of the genes that were differentially expressed in both \emph{bx93} and
-% \emph{sy622} homozygotes and not differentially expressed in the
-% \emph{trans}-heterozygote. Further, we estimated that statistical artifacts
-% could explain between 50--100\% of the transcripts that were differentially
-% expressed in the \emph{trans}-heterozygote and \emph{bx93} homozygotes but not
-% in \emph{sy622} homozygotes. For both of these populations, we estimate that
-% $>80\%$ of the hits emerge from false negative results. In other words, most of
-% the noise in these populations is the result of mis-classification: These hits
-% should be classified as differentially expressed in all three genotypes.
 %
-% Another population that is very likely to be artifactual is the
-% \emph{bx93}-specific class. This class contains 78 genes. The expected number of
-% transcripts that are falsely assigned as differentially expressed in \emph{bx93}
-% homozygotes is 48. The probability that such a false positive appears in any
-% other genotype is 20\% (4,392 transcripts identified between the two other
-% genotypes divided by 21,954 the total number of transcripts that were
-% successfully sequenced). Thus, on average we expect 42 false positive hits to be
-% classified into the \emph{bx93}-specific class. False negative rates will also
-% contribute to the \emph{bx93}-specific class, albeit at a much lower rate ($\leq
-% 5$ transcripts). In total, we estimate 45/78 genes in the \emph{bx93}-specific
-% class are the result of statistical artifacts.
-%
-% In addition to considering the magnitude of statistical noise, we found each of
-% the biological interpretations of each population difficult to reconcile with
-% the molecular structure of the alleles. Based on the amount of noise in each
-% population and the implausibility of the biological interpretations, we concluded
-% that these populations are either mis-classified, and should be assigned to the
-% most likely phenotypic class, or do not exist.
-
-\subsubsection*{Estimating noise in each phenotypic class}
-The \emph{sy622}-associated class and the \emph{bx93}-associated class are
-presented in our analysis as independent modules. A transcript that is
-differentially expressed in both \emph{sy622} homozygotes and
-\emph{trans}-heterozygotes is assigned to the \emph{sy622}-associated class if
-and only if it is not differentially expressed in \emph{bx93} homozygotes. If a
-transcript is falsely found to have wild-type expression in \emph{bx93}
-homozygotes, then this transcript will be misclassified, and it will contribute
-signal to the \emph{sy622}-associated class. Assuming a false negative rate of
-10\%--20\%, the number of transcripts that are mis-classified in this manner on
-average will be between 12--24. This constitutes $<6\%$ of the signal in the
-\emph{sy622}-associated class.
-
-
-On the other hand, a transcript could be
-misclassified into the \emph{bx93}-associated class in several ways. We enumerate
-the most likely events next. First, an \emph{sy622}-associated transcript could
-be falsely identified as differentially expressed in \emph{bx93} homozygotes.
-This event would contribute $\sim 24$ genes (10\% of 242 genes differentially
-expressed in all genotypes) to the \emph{bx93}-associated class. Second, a
-transcript in the \emph{sy622}-associated class could be falsely identified as
-differentially expressed in \emph{bx93} homozygotes. This would be expected to
-contribute 5 transcripts. A similar event would also contribute 5 transcripts if
-the misclassification occurred in \emph{trans}-heterozygotes. Therefore, we
-might expect that 29 transcripts are falsely contributing to the
-\emph{bx93}-associated class, which constitutes $\sim 10\%$ of the total signal.
-Therefore, the \emph{bx93}-associated class is twice as vulnerable to
-statistical artifacts as the \emph{sy622}-associated class. Moreover, most of
-the signal comes from transcripts that should have been classified in the
-\emph{sy622}-associated class. Therefore, statistical noise will tend to make
-these two classes appear more similar than they really are. Fortunately, since
-both classes contained hundreds of genes and statistical contamination was less
-than 20\%, our signal/noise ratio is able to resolve differences in the
-behaviors of these populations without trouble.
+% On the other hand, a transcript could be
+% misclassified into the \emph{bx93}-associated class in several ways. We enumerate
+% the most likely events next. First, an \emph{sy622}-associated transcript could
+% be falsely identified as differentially expressed in \emph{bx93} homozygotes.
+% This event would contribute $\sim 24$ genes (10\% of 242 genes differentially
+% expressed in all genotypes) to the \emph{bx93}-associated class. Second, a
+% transcript in the \emph{sy622}-associated class could be falsely identified as
+% differentially expressed in \emph{bx93} homozygotes. This would be expected to
+% contribute 5 transcripts. A similar event would also contribute 5 transcripts if
+% the misclassification occurred in \emph{trans}-heterozygotes. Therefore, we
+% might expect that 29 transcripts are falsely contributing to the
+% \emph{bx93}-associated class, which constitutes $\sim 10\%$ of the total signal.
+% Therefore, the \emph{bx93}-associated class is twice as vulnerable to
+% statistical artifacts as the \emph{sy622}-associated class. Moreover, most of
+% the signal comes from transcripts that should have been classified in the
+% \emph{sy622}-associated class. Therefore, statistical noise will tend to make
+% these two classes appear more similar than they really are. Fortunately, since
+% both classes contained hundreds of genes and statistical contamination was less
+% than 20\%, our signal/noise ratio is able to resolve differences in the
+% behaviors of these populations without trouble.
 
 
 \subsection*{The \emph{trans}-heterozygote specific phenotypic class is not a
              statistical artifact}
-In our study, we found a large class of transcripts that were exclusively
-differentially expressed in \emph{trans}-heterozygotes. The size of this class
-makes a statistical artifact unlikely. As a result, this class must be
-interpreted either as a legitimate aspect of \dpy{} biology, possibly reflecting
-dosage- or tissue-specific effects, or as a strain-specific
-artifact. The genotype of the heterozygote includes a mutation at the
-\gene{dpy-6} locus which acts as a balancer for the \emph{bx93} mutation. One
-possibility is that the \emph{dpy-6} loss-of-function mutation is not recessive
-for transcriptomic phenotypes and is responsible for the dysregulation of the
-new genes observed in the heterozygote. Another possibility is that the
-\emph{dpy-6} strain had background mutations that affect gene expression levels
-in a complex manner. As the cost of sequencing becomes lower, and as improved
-genetic engineering tools allow the creation of background-free mutations,
-it will become increasingly important to rule out these hypotheses by analyzing
-additional alleles.
+In our study, we found a class of transcripts that were exclusively
+differentially expressed in \emph{trans}-heterozygotes. The size of this class,
+1226 genes, means it cannot be a statistical artifact. As a result, this class
+must be interpreted either as a legitimate aspect of \dpy{} biology, possibly
+reflecting dosage- or tissue-specific effects, or as a strain-specific artifact.
+The genotype of the heterozygote includes a mutation at the \gene{dpy-6} locus
+which acts as a balancer for the \emph{bx93} mutation. One possibility is that
+the \emph{dpy-6} loss-of-function mutation is not recessive for transcriptomic
+phenotypes and is responsible for the dysregulation of the new genes observed in
+the heterozygote. Another possibility is that the \emph{dpy-6} strain had
+background mutations that affect gene expression levels in a complex manner.
+These issues could be addressed by re-generating the alleles used in this study
+using genome engineering tools like CRISPR Cas9, which have few off-target
+effects~\cite{}. However, even if these issues were addressed, the biological
+interpretation of this class is problematic.
+
+Phenotypes that are exacerbated or are unique to \emph{trans}-heterozygotes often
+indicate that the protein products of the two alleles are somehow interfering
+with each other. This interference can often be the result of physical interactions
+such as homodimerization~\cite{}. In the case of \dpy{} orthologs, the protein
+products are not known to form oligomers. Instead, \dpy{} and its orthologs are
+expected to assemble in a monomeric manner into the \protein{cdk-8} Kinase Module.
+
+A different model that could explain the \emph{trans}-heterozygote specific class
+is a bell-shaped dosage model. In this model, a switch is only activated at
+a very specific \dpy{} gene dosage. Beyond this dosage, the switch remains off.
+Although such a model explains the data, mechanisms that could generate such
+a dosage curve are not immediately obvious. One possibility is that this
+switch is enacted at the level of cell specification or cell division, and that
+at the appropriate dosage of \dpy{}, two cells that would typically collaborate
+to form a phenotype now act antagonistically, pushing \emph{trans}-heterozygotes
+into a different state. As far as we can tell, there is no clean experiment that
+could satisfactorily explain this phenotypic class. Future research may provide
+an answer.
 
 \subsection*{Analysis of allelic series using transcriptome-wide measurements}
 % TODO: hughes, o'shea
