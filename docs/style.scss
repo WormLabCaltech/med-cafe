@@ -19,7 +19,7 @@ html {
 
 body {
 	background: $white;
-  font: 14px/1.4 $helvetica;
+  font: 18px/1.4 $helvetica;
   color: $darkGray;
 }
 
@@ -45,22 +45,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 25px;
+  font-size: 30px;
   a {
     color: inherit;
   }
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 h3 {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 h4 {
-  font-size: 15px;
+  font-size: 18px;
   color: $gray;
 }
 
@@ -165,10 +165,8 @@ img {
 
 .site-avatar {
   float: left;
-  // width: 70px;
-  // height: 70px;
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   margin-right: 15px;
 
   @include mobile {
