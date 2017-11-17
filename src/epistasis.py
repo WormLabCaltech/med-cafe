@@ -49,7 +49,7 @@ def find_overlap(genotypes, df, q=0.1, col='strain'):
     genes = []
     for target, group in grouped:
         # make sure the group contains all desired genotypes
-        all_in = (len(group.strain.unique()) == len(genotypes))
+        all_in = (len(group[col].unique()) == len(genotypes))
         if all_in:
             genes += [target]
     return genes
