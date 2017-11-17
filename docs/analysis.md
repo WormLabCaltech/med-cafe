@@ -8,11 +8,9 @@ permalink: /analysis
 <a href="{{ site.baseurl }}/notebook/basic.html"> Jupyter Notebook</a>
 
 ## Phenotypic Classes
-We used correlational analyses to predict genetic interactions.
 <a href="{{ site.baseurl }}/notebook/phenotypic_classes.html"> Jupyter Notebook</a>
 
 ## Dominance analysis
-Development of the formalism for, and measurement of, transcriptome-wide epistasis.
 <a href="{{ site.baseurl }}/notebook/dominance.html"> Jupyter Notebook</a>
 
 ## The *bx93*-associated is more perturbed in *sy622* homozygotes than in *bx93* homozygotes
