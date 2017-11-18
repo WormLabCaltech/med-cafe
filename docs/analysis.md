@@ -23,6 +23,7 @@ permalink: /analysis
 <a href="{{ site.baseurl }}/notebook/venn.html"> Jupyter Notebook</a>
 
 ## Quality Check, read quality
+<a href="{{ site.baseurl }}/notebook/qc.html"> Jupyter Notebook</a>
 
 
 ## Quality Check, PCA
