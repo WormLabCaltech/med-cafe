@@ -23,6 +23,8 @@ permalink: /analysis
 <a href="{{ site.baseurl }}/notebook/venn.html"> Jupyter Notebook</a>
 
 ## Quality Check, read quality
+Important note: Samples from Project_18872 to Project_18876 are not *C. elegans*
+samples and were not used for this project. Please disregard those samples.
 <a href="{{ site.baseurl }}/notebook/qc.html"> MultiQC report</a>
 
 
