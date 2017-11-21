@@ -128,10 +128,10 @@ Pasadena, CA, 91125, USA}
     \maketitle
     % \section*{Abstract}
     \textbf{Expression profiling holds great promise for genetics because of its
-    ability to measure thousands of genes quantitatively in parallel. Although
+    ability to measure thousands of genes quantitatively. Although
     transcriptomes have recently been used to perform epistasis analyses for
     pathway reconstruction, there has not been a systematic effort to understand
-    how expression profiles will vary among various mutants of the same gene.
+    how expression profiles will vary among distinct mutants of the same gene.
     Here, we study an allelic series in \cel{} consisting of one wild type and
     two mutant alleles of \dpy{}, a highly pleiotropic gene whose gene product
     is a subunit of Mediator complex, which is essential for transcriptional
@@ -146,63 +146,53 @@ Pasadena, CA, 91125, USA}
     function independently to target the Mediator complex to specific genetic
     loci.
     }
-    \vspace{5mm}
+    \vspace{3mm}
 
     \mybox{red}{
     \section*{Author Summary}
-    Expression profiling is a way to quickly and quantitatively measure the expression
-    level of every gene in an organism. As a result, these profiles could be used as
-    phenotypes with which to perform genetic analyses (i.e., to figure out what genes
-    interact with each other) as well as to dissect the molecular properties of each
-    gene. Before we can perform these analyses, we have to figure out the rules that
-    apply to these measurements. In this paper, we develop new concepts and methods
-    with which to study an allelic series. Briefly, allelic series are an important
-    aspect of genetics because different alleles encode different versions of a gene.
-    By studying these different versions, we can make statements about how function
-    is encoded within the sequence of a gene. We apply our methods to the \dpy{}
-    gene, which encodes a subunit of the Mediator complex.
-    Though we know it is essential for all transcriptional activity in eukaryotes,
-    we understand very little about how the Mediator complex functions to generate
-    both general and specific phenotypes. The reason for this is the genes that
-    encode these subunits are associated with general sickness and multiple
-    phenotypes when mutated, which makes them challenging to study genetically.
-    We show that transcriptomic phenotypes renders the study of general factors
-    such as \dpy{} feasible.
+    Expression profiling is a way to quickly and quantitatively measure the
+    expression level of every gene in an organism. As a result, these profiles
+    could be used as phenotypes with which to perform epistasis analyses or with
+    which to dissect the functional units contained within a single gene. To
+    perform these analyses, we must extend genetic methods, developed for scalar
+    phenotypes, to multiple dimensions. We developed new concepts and methods
+    to study allelic series using expression profiling techniques. Briefly,
+    allelic series are an important aspect of genetics because different alleles
+    encode different versions of a gene. By studying phenotypic similarities and
+    differences among these different versions, we can make statements about how
+    function is encoded within the sequence of a gene. We apply our methods to
+    the \dpy{} gene, which encodes a subunit of the Mediator complex. Though we
+    know it is essential for all transcriptional activity in eukaryotes, we
+    understand very little about how Mediator generates both general and
+    specific phenotypes. We show that transcriptomic phenotypes renders the
+    study of general factors such as \dpy{} feasible.
     }
-    \vspace{2mm}
-
-    \mybox{blue}{
-    \section*{Supplementary Data}
-    The website for the Supplementary Data for this project is still under
-    construction and will be available shortly. All code, data and figures are
-    available upon request.
-    }
-    \vspace{5mm}
+  \vspace{3mm}
 
   \end{@twocolumnfalse}
 ]
 
 
 \linenumbers{}
-
 \section*{Introduction}
 The term `allelic series' refers to the study of alleles with different
 phenotypes to understand the molecular properties that this locus controls.
-Allelic series are historically important for genetics~\cite{McClintock1944}.
-In early pioneering work, McClintock studied a deficiency of the tail end of
+Allelic series are historically important for genetics~\cite{McClintock1944}. In
+early pioneering work, McClintock studied a deficiency of the tail end of
 chromosome 9 of maize by generating \emph{trans}-heterozygotes with mutants of
 various genes that she knew existed near the end of chromosome 9. Her work
 allowed her to infer that the deficiency was modular, effectively generating a
-double mutant that behaved as a single allele but which could participate
-phenotypically in two distinct allelic series. From this study, McClintock
-inferred that deletions could span multiple genes, which behaved as independent
-modules, and which were identified via complementation assays. This work set the
-foundations for later observations in yeast that showed two mutant alleles of
-the same genetic unit, when placed in \emph{trans} to each other, could
-complement and generate a wild-type phenotype~\cite{FINCHAM1957}. Allelic series
-have also been used to study the dose response curve of a phenotype for a
-particular gene and to infer null phenotypes from hypomorphs. In \cel{}, the
-\gene{let-23}, \gene{lin-3} and \gene{lin-12} allelic series stand out as
+double mutant that behaved as a single allele in terms of its Mendelian
+inheritance pattern, but which could participate phenotypically in two distinct
+allelic series. From this study, McClintock inferred that deletions could span
+multiple genes, which behaved as independent modules, and which were identified
+via complementation assays. This work set the foundations for later observations
+in yeast that showed two mutant alleles of the same genetic unit, when placed in
+\emph{trans} to each other, could complement and generate a wild-type
+phenotype~\cite{FINCHAM1957}. Allelic series have also been used to study the
+dose response curve of a phenotype for a particular gene and to infer null
+phenotypes from hypomorphs. In \cel{}, the \gene{let-23}, \gene{lin-3} and
+\gene{lin-12} allelic series stand out as
 examples~\cite{Aroian1991,Ferguson1985a,Greenwald1983}.
 
 Over the last decade, biology has moved from expression measurements of single
@@ -215,13 +205,13 @@ qualitative purpose as descriptive methods to identify genes that are downstream
 of a perturbation, these profiles are now being used as phenotypes for genetic
 analysis. As a result, transcriptomes have been successfully used to identify
 new cell or organismal states~\cite{Angeles-Albores2017,Villani2017}. Genetic
-pathways have been reconstructed via sequencing cDNA from single
-cells~\cite{Dixit2016} or by sequencing transcripts from
+pathways have been reconstructed via sequencing cDNA from single cells (see for
+example~\cite{Dixit2016}) or by sequencing transcripts from
 whole-organisms~\cite{AngelesAlboresHIF}. However, to fully characterize a
 genetic pathway, it is often necessary to build allelic series to explore
 whether independent functional units within a gene mediate different aspects of
-the phenotypes associated with a pathway or gene, or whether the phenotypes are
-simply the result of gene dosage.
+the phenotypes associated with a pathway or gene, and to identify what aspects of
+the pathway are sensitive to gene dosage.
 
 As a proof of principle, we selected a subunit of the Mediator complex in
 \cel{}, \dpy{} (previously known as \gene{dpy-22}~\cite{Bourbon2004}), for
@@ -366,7 +356,8 @@ considered artifactual.
 
 
 \begin{figure*}
-  \includegraphics[width=\textwidth]{../figs/AllelicAnalysis_With_Het}
+  \centering{}
+  \includegraphics[width=.9\textwidth]{../figs/AllelicAnalysis_With_Het}
   \caption{
   The expected Venn diagrams for two alleles, \emph{a} and
   \emph{b}, if the two homozygotes and a \emph{trans}-heterozygote are
@@ -406,7 +397,9 @@ of all differentially expressed genes are expected to be false positive hits.
 Using these definitions, we found \weakn{} differentially expressed
 genes in the  \emph{bx93} homozygote transcriptome, and \strongn{}
 differentially expressed genes in the \emph{sy622} homozygote transcriptome
-(see Fig.~\ref{fig:false_hit}).
+(see Fig.~\ref{fig:false_hit}; see also the
+\href{https://wormlabcaltech.github.io/med-cafe/notebook/basic.html}{Basic
+Statistics Notebook}).
 
 \subsection*{Transcriptome profiling of \gene{mdt-12}
              \emph{trans}-heterozygotes}
@@ -414,7 +407,9 @@ We also sequenced \emph{trans}-heterozygotic animals with genotype
 \gene{dpy-6(e14) bx93/+ sy622}. This \emph{trans}-heterozygote appears
 phenotypically wild-type, resembling the \emph{bx93} mutant
 morphologically~\cite{Moghal2003}. The \emph{trans}-heterozygote transcriptome
-had \transn{} differentially expressed genes.
+had \transn{} differentially expressed genes (see the
+\href{https://wormlabcaltech.github.io/med-cafe/notebook/basic.html}{Basic
+Statistics Notebook}).
 
 \subsection*{False hit analysis identifies four phenotypic classes}
 Overlapping three sets of differentially expressed genes from different
@@ -512,7 +507,12 @@ genes that were differentially expressed in \emph{bx93} homozygotes and at least
 one other genotype, since it is likely that of these genes should actually be
 differentially expressed in all genotypes. As a result, this class contains 403
 genes. We also identified a \emph{sy622}-specific phenotypic class (1,841 genes)
-and a \emph{trans}-heterozygote-specific phenotypic class (1,226 genes). Having
+and a \emph{trans}-heterozygote-specific phenotypic class (1,226 genes;
+see the
+\href{https://wormlabcaltech.github.io/med-cafe/notebook/phenotypic_classes.html}{
+Phenotypic Classes Notebook
+}).
+Having
 identified these phenotypic classes, we set out to confirm whether each class
 actually behaved as an independent phenotypic module in an allelic series and
 whether each class could be interpreted biologically to shed light on the
@@ -544,7 +544,11 @@ versus 3.2, respectively), and a statistically smaller median (0.91 vs 1.2,
 respectively, $p < 10^{-6}$, non-parametric boostrap). The medians of the
 \emph{sy622}-specific and -associated classes were the same ($p=0.15$). There
 are systematic differences between the behaviors of each class. This rejects the
-null hypothesis that the transcripts in each class were randomly selected.
+null hypothesis that the transcripts in each class were randomly selected
+(see the
+\href{https://wormlabcaltech.github.io/med-cafe/notebook/phenotypic_classes.html}{
+Phenotypic Classes Notebook
+})
 
 % to make figure span two columns in twocolumn mode, use figure*
 \begin{figure*}
@@ -585,7 +589,9 @@ explain the gene expression in the \emph{trans}-heterozygote for every gene
 within a class.
 
 To quantify this dominance, we implemented and maximized a Bayesian model (see
-\nameref{sec:methods}). Briefly, we asked what the linear combination of $\beta$
+\nameref{sec:methods}; see also the
+\href{https://wormlabcaltech.github.io/med-cafe/notebook/dominance.html}{Dominance
+Notebook}). Briefly, we asked what the linear combination of $\beta$
 coefficients from each homozygote would best predict the observed $\beta$ values
 of the heterozygote, subject to the constraint that the coefficients added up to
 1 (see \nameref{subsec:dominance}). We reasoned that if this was a modular
@@ -695,7 +701,10 @@ values are excluded from the Spearman regression, the statistical value of the
 regression improves significantly (Spearman R = 0.94, $p=2\cdot10^{-108}$).
 Taken together, this suggests that the \emph{sy622}-specific phenotypic class
 contains a transcriptional signature that can be associated with the
-morphological Dpy phenotype.
+morphological Dpy phenotype
+(see the
+\href{https://wormlabcaltech.github.io/med-cafe/notebook/enrichment.html}{
+Enrichment Notebook}).
 
 We also tested a hypoxia dataset~\cite{AngelesAlboresHIF}, since \emph{mdt-12}
 is not known to be upstream of the \gene{hif-1}-dependent hypoxia response
@@ -743,7 +752,7 @@ the context of an allelic series to partition the transcriptomic effects of a
 large, pleiotropic gene into separable classes. Analysis of these modules can
 inform structure/function predictions at the molecular level, and enrichment
 analysis of each class can be subsequently correlated with other morphologic or
-behavioral phenotypes. This method shows promise for analysing pathways that
+behavioral phenotypes. This method shows promise for analyzing pathways that
 have major effects on gene expression in an organism, and which do not have
 complex, antagonistic tissue-specific effects on expression. Given the
 importance of allelic series for fully characterizing genetic pathways, we are
@@ -854,7 +863,7 @@ differentially expressed in \emph{trans}-heterozygotes. The size of this class,
 must be interpreted either as a legitimate aspect of \dpy{} biology, possibly
 reflecting dosage- or tissue-specific effects, or as a strain-specific artifact.
 The genotype of the heterozygote includes a mutation at the \gene{dpy-6} locus
-which acts as a cis-marker for the \emph{bx93} mutation. One possibility is that
+that acts as a cis-marker for the \emph{bx93} mutation. One possibility is that
 the \emph{dpy-6} loss-of-function mutation is not recessive for transcriptomic
 phenotypes and is responsible for the dysregulation of the new genes observed in
 the heterozygote. Another possibility is that the \emph{dpy-6} strain had
@@ -1043,13 +1052,20 @@ less than $10^-3$ was considered statistically significant. For gene ontology
 enrichment analysis, terms were considered statistically significant only if
 they also showed an enrichment fold-change greater than 2.
 
+\subsection*{Data Availability}
+Raw and processed reads will be deposited in the Gene Expression Omnibus. Scripts
+for the entire analysis can be found with version control in our Github
+repository, \url{https://github.com/WormLabCaltech/med-cafe}. A user-friendly,
+commented website containing the complete analyses can be found at
+\url{https://wormlabcaltech.github.io/med-cafe/}.
+
 \section*{Acknowledgements}
 This work was supported by HHMI with whom PWS was an investigator, by the
 Millard and Muriel Jacobs Genetics and Genomics Laboratory at California
 Institute of Technology, and by the NIH grant U41 HG002223. This article
 would not be possible without help from Dr.\ Igor Antoshechkin and Dr.\ Vijaya
 Kumar who performed the library preparation and sequencing. We would like to
-thank Carmie Puckett Robinson for access to the unpublished Dpy transcriptional
+thank Carmie Puckett Robinson for the unpublished Dpy transcriptional
 signature. Han Wang, Hillel Schwartz, Erich Schwarz and Porfirio Quintero
 provided valuable input throughout the project.
 
