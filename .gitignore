@@ -107,3 +107,8 @@ tex/biorxiv_version/allelic_series_theory.synctex.gz
 *.h5
 
 raw_reads/
+
+geo_submission/
+
+*.fastq.gz
+
