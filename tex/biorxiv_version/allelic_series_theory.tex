@@ -211,7 +211,13 @@ whole-organisms~\cite{AngelesAlboresHIF}. However, to fully characterize a
 genetic pathway, it is often necessary to build allelic series to explore
 whether independent functional units within a gene mediate different aspects of
 the phenotypes associated with a pathway or gene, and to identify what aspects of
-the pathway are sensitive to gene dosage.
+the pathway are sensitive to gene dosage. To address this problem, we developed
+a conceptual framework that enables us to count the number of phenotypes exhibited
+by an ensemble of alleles and their genotypes, perform dominance and
+complementation tests on these phenotypes to establish a dominance and
+complementation hierarchy, and which ultimately allows us to make inferences
+about the functional units contained within a gene and the sequence requirements
+for each unit.
 
 As a proof of principle, we selected a subunit of the Mediator complex in
 \cel{}, \dpy{} (previously known as \gene{dpy-22}~\cite{Bourbon2004}), for
@@ -298,83 +304,247 @@ quantitatively measure the dominance level of each allele.
 \subsection*{A conceptual framework for analyzing allelic series}
 Allelic series offer a way to study the functional units within a gene without
 requiring prior knowledge about the molecular structure of the mutations
-involved. Alleles are placed in \emph{trans} to each other to check whether one
-allele is dominant or co-dominant over the other for a given phenotype. These
-dominance relationships can then be used to identify functional units within a
-gene. To perform an allelic series analysis using transcriptome profiling, we
-needed to identify transcriptional modules that corresponded to different
-phenotypes, and, subsequently, test the alleles for dominance or semidominance
-at these modules. We reasoned that these modules would represent phenotypic
-classes that directly correspond to potentially observable phenotypes associated
-with any two alleles for a given gene.
-
-For arbitrary alleles, it is possible to imagine that two alleles impact exactly
-the same set of phenotypes; impact entirely disjoint phenotypes; or share
-some phenotypes but not others. It is also possible to imagine that the alleles
-share dominance relationships that may or may not be the same for each genotype.
-The results for any allelic series can be hypothesized and represented as a
-Venn diagram (see Fig.~\ref{fig:framework}), where the circles represent
-transcripts that are differentially expressed in one genotype relative to the
-wild type control, and overlaps between circles represent the fact that a set of
-transcripts is differentially expressed in the overlapping genotypes relative to
-the wild type. Crucially, different genetic scenarios may be expected to
-generate a specific number of phenotypic classes.
-
-Although the diagrams can be drawn for each genetic scenario, differential
-expression analyses always have a number of false positive and false negative
-hits. After idealizing a number of genetic scenarios, we asked what the effect
-of statistical noise would be on the number of classes. In every case,
-statistical artifacts lead to the creation of more phenotypic classes than would
-be expected. In some cases, the statistically artifactual classes can outnumber
-the real number of classes by a factor of 6. Since each class can be interpreted
-in terms of functional units, failure to identify artifactual classes could
-contribute disproportionally to the inferred complexity of the gene under study.
-For example, if two alleles were genetically identical, statistical artifacts
-would still be expected to generate 6 artifactual classes, each containing a
-few genes, if the two homozygotes and the \emph{trans}-heterozygote were
-sequenced simultaneously. Instead of concluding that the alleles are genetically
-identical, we might conclude that the alleles have a shared core activity, but
-that they differ in their specific activities for small, yet highly specific,
-set of genes. This pitfall highlights the importance of signal-to-noise analyses
-that can accurately identify classes that have high noise. These analyses should
-also ideally be able to distinguish the contribution of false positive hits,
-which tend to create classes that must be ignored entirely, from false negative
-hits, which tend to create classes that could safely be re-classified into
-the correct categories.
-
-We developed a conceptual method, which we call false hit analysis, that is
-in theory capable of identifying classes with low signal-to-noise ratios and
-that can identify whether the noise contribution is mainly from false positive
-or false negative hits. Briefly, to perform a false hit analysis, an idealized
-Venn diagram must be derived. The problem of selecting an appropriate Venn
-diagram is not solved generally. After selecting a hypothesized Venn diagram,
-the sizes of each class are estimated from the data. These sizes can then be
-used to re-calculate the sizes of classes due to the estimated false positive
-and false negative rates. If the size of a class from the false hits is
-similar to the size of the equivalent observed class, then this class should be
-considered artifactual.
-
+involved. In an allelic series, a set of alleles are selected. Then, a set of
+homozygotes of each allele is created, the phenotypes of each homozygote are
+enumerated and their severity scored to order the alleles by loss (or gain) of
+function relative to the wild-type phenotype. Next, alleles are placed in
+\emph{trans} to each other to check whether one allele is dominant or
+semidominant over the other for each phenotype. In this way, alleles are ordered
+into a dominance hierarchy. This dominance hierarchy can be used to identify
+functional units and their sequence requirements within a gene (see
+Fig.~\ref{fig:flowchart}).
 
 \begin{figure*}
-  \centering{}
-  \includegraphics[width=.9\textwidth]{../figs/AllelicAnalysis_With_Het}
-  \caption{
-  The expected Venn diagrams for two alleles, \emph{a} and
-  \emph{b}, if the two homozygotes and a \emph{trans}-heterozygote are
-  sequenced for various possible scenarios. The circles represent the transcripts
-  that are differentially expressed in a given genotype relative to a wild type
-  control. In all scenarios, we assume the
-  \emph{a} allele is recessive to \emph{b}, and we do not consider the
-  possibility of gene dosage for simplicity. In theory, different scenarios
-  should have a different number of phenotypic classes, but statistical artifacts
-  (false positive and negative hits) always inflate the observed number of
-  classes.
-  }
-\label{fig:framework}
+  \includegraphics[width=\textwidth]{../figs/flowchart.pdf}
+  \caption{Flowchart for an analysis of arbitrary allelic series. A set of 2 or
+  more alleles is selected, and the corresponding genotypes are generated
+  sequenced to generate observable data. The number of phenotypes is estimated,
+  correcting for statistical artifacts. For each phenotype, the alleles are
+  ordered in a dominance/complementation hierarchy. The resulting dominance
+  hierarchy can then be interpreted in terms of functional units within the
+  genes in question.}
+\label{fig:flowchart}
 \end{figure*}
 
+\subsection*{Counting phenotypes in RNA-seq data}
+In theory, a gene could act along distinct pathways that alter the expression of
+distinct modules or clusters in different ways. These functions could be
+independent of one another, and could be encoded in different sites along a
+gene. To parse the functions contained within a gene from gene expression data,
+it is therefore crucial to enumerate the phenotypes a given set of alleles can
+generate. For two different alleles, we reasoned that the number of independent
+phenotypes should be equal to the number of intersection classes occurring in a
+Venn diagram of the two homozygotes and the \emph{trans}-heterozygote in
+question. Thus, to enumerate the independent phenotypes associated with a set of
+(two) alleles, in a noiseless experiment it is sufficient to sequence a
+wild-type control, the homozygotes of the mutant alleles and the corresponding
+\emph{trans}-heterozygote, label which genotypes perturb the expression of each
+transcript in the genome, and count the number of combinations of labels, which
+we call phenotypic classes, that occur. For a comparison involving 3 genotypes,
+the maximum number of phenotypes that can be identified is 7. In general, for a
+comparison involving $N$ genotypes, the maximum number of phenotypes that can be
+identified is $2^N-1$.
 
-\subsection*{Strong and weak loss-of-function alleles of \gene{mdt-12} show
+The presence of noise in an experiment complicates matters substantially. We
+envision a case where homozygotes of two different null alleles of a gene are
+sequenced and their transcriptomes are compared to each other. In the absence of
+noise, we expect the two transcriptomes to match exactly. When false positive
+and false negative rates are non-zero, however, the two transcriptomes will no
+longer contain exactly the same genes. In fact, if the false positive and the
+false negative rate are 10\%, we should expect the two transcriptomes to overlap
+approximately at $60\%$ of the genes that are differentially expressed in either
+genotype relative to a wild-type control. To appropriately count the number of
+phenotypes detected in this thought experiment, it would be necessary to ask
+whether each of the three classes contains a number of genes significantly
+greater than the number expected from statistical artifacts. Failure to account
+for this would determine the number of phenotypes to be three, an error rate of
+200\%. Importantly, the two null alleles would be determined to differ in their
+molecular functions, which constitutes a major qualitative error. In general,
+noise will make genetic interactions and genetic functions appear much more
+complex by increasing the number of seemingly different phenotypes that are
+detected.
+
+We addressed the problem of phenotype counting by developing a false hit
+analysis algorithm (see Fig.~\ref{fig:false_hit}). Briefly, the purpose of a
+false hit analysis is to identify those gene classes that are likely to be
+statistical artifacts and remove or re-classify them into the correct classes.
+To identify these classes, we first defined a minimal model as the gene class
+that is altered in all genotypes studied relative to the wild-type control.
+Subsequently, the noise generated by that minimal model is simulated from known
+or estimated false positive and negative rates. The noising process will
+generate additional classes not contained in the minimal model. Then, a
+signal-to-noise ratio can be estimated by comparing the observed size of each
+class with the size of of the class generated by the noising process. Classes
+that have a signal-to-noise greater than an arbitrary threshold are accepted and
+the minimal model is expanded to include those classes that have a high
+signal-to-noise ratio. The algorithm stops once the classes contained in the
+model have converged. A beneficial aspect of this algorithm is that the noising
+process can be split up into false positive and false negative components. False
+negative hits will tend to break up a single class into multiple---by estimating
+which classes are the result of false negative hits, and by modeling which class
+the false negative hits are most likely from, we can re-classify spurious
+classes, expanding the size and identity of biologically relevant classes. Once
+the number of phenotypic classes have been accounted for, these classes can be
+interpreted in terms of functional units depending on the genotypes that label
+them (the genotypes that affect these classes).
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{../figs/false_hit_analysis.pdf}
+  \caption{Simplified schematic of a false hit algorithm. For data from an
+  arbitrary experimental design, a minimal model is inferred. Typically, the
+  minimal model should be the intersection of all the groups measured. A noising
+  process simulates the sizes of all the other classes expected if only the
+  minimal model was true. A signal-to-noise statistic is calculated for each
+  class. Classes that exceed a user-defined threshold are accepted and the model
+  is refined. The algorithm converges when the classes no longer change from
+  iteration to iteration.}
+\label{fig:false_hit}
+\end{figure}
+
+\subsection*{Establishing a dominance hierarchy between alleles}
+Dominance relationships between alleles are phenotype-specific. In other words,
+an allele can be dominant over another for one phenotype, yet not for others. An
+example is the \gene{let-23} allelic series---nulls of \gene{let-23} are
+recessive lethal (Let) and presumably also recessive vulvaless (Vul) relative to
+the wild-type allele. The \emph{sy1} allele of \gene{let-23} is dominant viable
+relative to null alleles, but is recessive Vul~\cite{Aroian1991} to the
+wild-type allele. For gene expression data, after enumerating the phenotypic
+classes, which presumably reflect gene modules that are regulated independently
+from one another, a dominance or complementation hierarchy between the set of
+alleles must be derived for each phenotypic class. For some classes, this can be
+done immediately. Here, we briefly explain the logic for an allelic series
+containing three alleles ($+$, $a$, and $b$). Importantly, in the following
+text we assume that each phenotypic class reflects the same internal mechanism,
+such that a single dominance coefficient can accurately explain the behavior of
+each transcript within the class.
+
+For example, a phenotypic class that contains genes that are perturbed only in
+one homozygotic genotype ($a/a$) relative to the wild-type control ($+/+$) but
+not in the other homozygotic genotype ($b/b$) or the \emph{trans}-heterozgyotes
+($a/b$) reveals regulation that is impaired in one allele but not in the other
+in a way such that the allele with wild-type functionality can complement the
+impaired allele to wild-type levels. This suggests that the gene contains at
+least one functional unit, impaired in one allele ($a$) but not in the other
+($b$), and that the function of this unit is not dosage-dependent within the
+activity levels relevant to this allelic pair. Interpretation of this class of
+genes ideally does not require a further dominance analysis.
+
+On the other hand, a phenotypic class where two genotypes, $a/a$ and $a/b$,
+exhibit perturbed expression levels requires a dominance analysis for biological
+interpretation of this class. If the two alleles are semidominant, meaning the
+perturbation levels in the \emph{trans}-heterozygote ($a/b$) are intermediate
+between the levels of the two homozygotes, then this means that one functional
+unit is impaired in one allele but not the other, and the function of this unit
+is dosage-sensitive within the activity levels relevant to these alleles. On the
+other hand, if the perturbations associated with the \emph{trans}-heterozygotes
+are equal to those in the homozygotes $a/a$, then $a$ is dominant negative over
+$b$. Dominant negative alleles are important biologically because they generate
+poisonous products that can often be highly informative of gene function.
+
+Systematic analysis of each phenotypic class for two pairs of alleles will
+reveal the maximum and minimum number of functional units that may be
+differentially impaired between the two alleles. For example, if one phenotypic
+class shows the two alleles to be semidominant, whereas the other class shows
+one allele to be dominant over the other, the most parsimonious explanation is
+that there are at least two functional units encoded within the gene and which
+are affected by this allelic set. On the other hand, another hypothesis may posit
+that there is a single functional unit which is dominant in some specific context
+but semidominant in another. Thus, there may be 1--2 functional units in the gene
+under study. This number may be more exactly determined by studying many more
+alleles that affect the sequences required for these functions.
+
+To quantify this dominance, we implemented and maximized a Bayesian model (see
+\nameref{sec:methods}; see also the
+\href{https://wormlabcaltech.github.io/med-cafe/notebook/dominance.html}{Dominance
+Notebook}). Briefly, for each transcript within a given class, we asked how the
+logarithm-transformed fold-change (which we refer to as a $\beta$ coefficient)
+measured for each homozygote should be weighted to best predict the observed
+$\beta$ values observed for the \emph{trans}-heterozygote, subject to the
+constraint that the weights added up to 1 (see \nameref{subsec:dominance}). We
+reasoned that for modular phenotypes controlled by a single functional unit
+encoded within the gene of interest, then a plot of the predicted $\beta$ values
+from the optimized model against the observed $\beta$ values of the heterozygote
+for each transcript should show the data falling along a line with slope equal
+to unity. Systematic deviations from linear behavior would indicate that the
+transcripts plotted are not part of a modular phenotypic class controlled by a
+functional unit.
+
+% To
+% perform an allelic series analysis using transcriptome profiling, we needed to
+% identify transcriptional modules that corresponded to different phenotypes, and,
+% subsequently, test the alleles for dominance or semidominance at these modules.
+% We reasoned that these modules would represent phenotypic classes that directly
+% correspond to potentially observable phenotypes associated with any two alleles
+% for a given gene.
+
+% For arbitrary alleles, it is possible to imagine that two alleles impact exactly
+% the same set of phenotypes; impact entirely disjoint phenotypes; or share
+% some phenotypes but not others. It is also possible to imagine that the alleles
+% share dominance relationships that may or may not be the same for each genotype.
+% The results for any allelic series can be hypothesized and represented as a
+% Venn diagram (see Fig.~\ref{fig:framework}), where the circles represent
+% transcripts that are differentially expressed in one genotype relative to the
+% wild type control, and overlaps between circles represent the fact that a set of
+% transcripts is differentially expressed in the overlapping genotypes relative to
+% the wild type. Crucially, different genetic scenarios may be expected to
+% generate a specific number of phenotypic classes.
+
+% Although the diagrams can be drawn for each genetic scenario, differential
+% expression analyses always have a number of false positive and false negative
+% hits. After idealizing a number of genetic scenarios, we asked what the effect
+% of statistical noise would be on the number of classes. In every case,
+% statistical artifacts lead to the creation of more phenotypic classes than would
+% be expected. In some cases, the statistically artifactual classes can outnumber
+% the real number of classes by a factor of 6. Since each class can be interpreted
+% in terms of functional units, failure to identify artifactual classes could
+% contribute disproportionally to the inferred complexity of the gene under study.
+% For example, if two alleles were genetically identical, statistical artifacts
+% would still be expected to generate 6 artifactual classes, each containing a
+% few genes, if the two homozygotes and the \emph{trans}-heterozygote were
+% sequenced simultaneously. Instead of concluding that the alleles are genetically
+% identical, we might conclude that the alleles have a shared core activity, but
+% that they differ in their specific activities for small, yet highly specific,
+% set of genes. This pitfall highlights the importance of signal-to-noise analyses
+% that can accurately identify classes that have high noise. These analyses should
+% also ideally be able to distinguish the contribution of false positive hits,
+% which tend to create classes that must be ignored entirely, from false negative
+% hits, which tend to create classes that could safely be re-classified into
+% the correct categories.
+%
+% We developed a conceptual method, which we call false hit analysis, that is
+% in theory capable of identifying classes with low signal-to-noise ratios and
+% that can identify whether the noise contribution is mainly from false positive
+% or false negative hits. Briefly, to perform a false hit analysis, an idealized
+% Venn diagram must be derived. The problem of selecting an appropriate Venn
+% diagram is not solved generally. After selecting a hypothesized Venn diagram,
+% the sizes of each class are estimated from the data. These sizes can then be
+% used to re-calculate the sizes of classes due to the estimated false positive
+% and false negative rates. If the size of a class from the false hits is
+% similar to the size of the equivalent observed class, then this class should be
+% considered artifactual.
+
+
+% \begin{figure*}
+%   \centering{}
+%   \includegraphics[width=.9\textwidth]{../figs/AllelicAnalysis_With_Het}
+%   \caption{
+%   The expected Venn diagrams for two alleles, \emph{a} and
+%   \emph{b}, if the two homozygotes and a \emph{trans}-heterozygote are
+%   sequenced for various possible scenarios. The circles represent the transcripts
+%   that are differentially expressed in a given genotype relative to a wild type
+%   control. In all scenarios, we assume the
+%   \emph{a} allele is recessive to \emph{b}, and we do not consider the
+%   possibility of gene dosage for simplicity. In theory, different scenarios
+%   should have a different number of phenotypic classes, but statistical artifacts
+%   (false positive and negative hits) always inflate the observed number of
+%   classes.
+%   }
+% \label{fig:framework}
+% \end{figure*}
+
+\subsection*{RNA-seq analysis of an allelic series of a Mediator subunit}
+\subsubsection*{Strong and weak loss-of-function alleles of \gene{mdt-12} show
              different transcriptomic profiles}
 We sequenced in triplicate cDNA synthesized from mRNA extracted from
 \emph{sy622} homozygotes, \emph{bx93} homozygotes,
@@ -401,7 +571,7 @@ differentially expressed genes in the \emph{sy622} homozygote transcriptome
 \href{https://wormlabcaltech.github.io/med-cafe/notebook/basic.html}{Basic
 Statistics Notebook}).
 
-\subsection*{Transcriptome profiling of \gene{mdt-12}
+\subsubsection*{Transcriptome profiling of \gene{mdt-12}
              \emph{trans}-heterozygotes}
 We also sequenced \emph{trans}-heterozygotic animals with genotype
 \gene{dpy-6(e14) bx93/+ sy622}. This \emph{trans}-heterozygote appears
@@ -412,213 +582,204 @@ had \transn{} differentially expressed genes (see the
 Statistics Notebook}).
 
 \subsection*{False hit analysis identifies four phenotypic classes}
-Overlapping three sets of differentially expressed genes from different
-genotypes can generate at most seven categories. Each of these seven categories
-could be interpreted biologically if the population is believed to arise from
-real effects. If these populations are small, however, there is a real chance
-that they represent statistical noise, and are not biologically meaningful.
-If that is the case, these populations may consist largely of genes that are
-mis-classified and belong to a different cluster, in which case they should be
-re-classified into the most likely cluster, if it can be determined.
+% Overlapping three sets of differentially expressed genes from different
+% genotypes can generate at most seven categories. Each of these seven categories
+% could be interpreted biologically if the population is believed to arise from
+% real effects. If these populations are small, however, there is a real chance
+% that they represent statistical noise, and are not biologically meaningful.
+% If that is the case, these populations may consist largely of genes that are
+% mis-classified and belong to a different cluster, in which case they should be
+% re-classified into the most likely cluster, if it can be determined.
 
-We identified three categories of genes that were most likely to be influenced
-by statistical noise due to their small size. These populations were those that
-encompassed genes differentially expressed in  \emph{bx93} homozygotes and one
-other genotype, as well as genes that were differentially expressed specifically
-in \emph{bx93} homozygotes.
+% We identified three categories of genes that were most likely to be influenced
+% by statistical noise due to their small size. These populations were those that
+% encompassed genes differentially expressed in  \emph{bx93} homozygotes and one
+% other genotype, as well as genes that were differentially expressed specifically
+% in \emph{bx93} homozygotes.
+%
+% These three categories stand out as candidates for statistical noise not just
+% because of their small size, but also because of the extraordinary biological
+% interpretations required to make sense of them. For example, if there truly is
+% a population of genes that is only perturbed in homozygotes of either allele but
+% not in the \emph{trans}-heterozygote, then this means that the two alleles are
+% somehow intragenically complementing to produce wild-type function. Given the
+% molecular nature of the mutations, this interpretation is unlikely to be correct.
 
-These three categories stand out as candidates for statistical noise not just
-because of their small size, but also because of the extraordinary biological
-interpretations required to make sense of them. For example, if there truly is
-a population of genes that is only perturbed in homozygotes of either allele but
-not in the \emph{trans}-heterozygote, then this means that the two alleles are
-somehow intragenically complementing to produce wild-type function. Given the
-molecular nature of the mutations, this interpretation is unlikely to be correct.
+% To perform a false hit analysis, we imagined an idealized scenario where the
+% perturbations in \emph{bx93} homozygotes were present in all thre genotypes. We
+% also imagined that in this scenario the \emph{trans}-heterozygote did not exhibit
+% any perturbations not present the \emph{sy622} homozygote. In this simplified
+% scenario, we could model where false positive and false negative hits were most
+% likely to fall (see Fig.~\ref{fig:false_hit}). Next, we present the results of
+% our hit analysis for each perturbation category.
 
-To perform a false hit analysis, we imagined an idealized scenario where the
-perturbations in \emph{bx93} homozygotes were present in all thre genotypes. We
-also imagined that in this scenario the \emph{trans}-heterozygote did not exhibit
-any perturbations not present the \emph{sy622} homozygote. In this simplified
-scenario, we could model where false positive and false negative hits were most
-likely to fall (see Fig.~\ref{fig:false_hit}). Next, we present the results of
-our hit analysis for each perturbation category.
+% \begin{figure}
+%   \includegraphics[width=0.5\textwidth]{../figs/false_hit_analysis.pdf}
+%   \caption{False hit analysis. To assess the extent to which statistical
+%   artifacts could affect the interpretation of certain intersections, we
+%   first idealized the Venn diagram and asked whether false positive and
+%   false negative results could distort the diagram back to its original
+%   shape. We estimated the false negative rate at 15\% and used a false positive
+%   rate of 10\%. For simplicity, only false hit analysis for \emph{bx93} groups
+%   is shown. False hits can explain the existence of a groups of genes that
+%   are differentially expressed in \emph{bx93} homozygotes only, in \emph{bx93}
+%   homozygotes and \emph{trans}-heterozygotes, and in \emph{bx93} homozygotes
+%   and \emph{sy622} homozygotes. Genes that are solely expressed in \emph{bx93}
+%   homozygotes are unlikely to exist, whereas genes that are differentially
+%   expressed in \emph{bx93} homozygotes and one other genotype are probably
+%   mis-classified and should be differentially expressed in all genotypes. The
+%   \emph{trans}-heterozygote specific class cannot be explained by statistical
+%   artifacts.
+%   }
+% \label{fig:false_hit}
+% \end{figure}
 
-\begin{figure}
-  \includegraphics[width=0.5\textwidth]{../figs/false_hit_analysis.pdf}
-  \caption{False hit analysis. To assess the extent to which statistical
-  artifacts could affect the interpretation of certain intersections, we
-  first idealized the Venn diagram and asked whether false positive and
-  false negative results could distort the diagram back to its original
-  shape. We estimated the false negative rate at 15\% and used a false positive
-  rate of 10\%. For simplicity, only false hit analysis for \emph{bx93} groups
-  is shown. False hits can explain the existence of a groups of genes that
-  are differentially expressed in \emph{bx93} homozygotes only, in \emph{bx93}
-  homozygotes and \emph{trans}-heterozygotes, and in \emph{bx93} homozygotes
-  and \emph{sy622} homozygotes. Genes that are solely expressed in \emph{bx93}
-  homozygotes are unlikely to exist, whereas genes that are differentially
-  expressed in \emph{bx93} homozygotes and one other genotype are probably
-  mis-classified and should be differentially expressed in all genotypes. The
-  \emph{trans}-heterozygote specific class cannot be explained by statistical
-  artifacts.
-  }
-\label{fig:false_hit}
-\end{figure}
+% We identified 78 genes that are differentially expressed exclusively in
+% \emph{bx93} homozygotes. At a false positive rate of 10\% (our defined cut-off)
+% we expect 48 genes to be falsely called as differentially expressed in
+% \emph{bx93} homozygotes. The probability that such a false positive is also
+% differentially expressed in another genotype is 20\% (4,392 transcripts
+% identified between the two other genotypes divided by 21,954 the total number of
+% transcripts that were successfully sequenced). Thus, on average we expect 39
+% false positive hits to be classified into the \emph{bx93}-specific class. On
+% average, half of all genes in the \emph{bx93}-specific class would be expected
+% to be the result of statistical artifacts. Statistical noise is therefore a
+% major contributor towards the existence of this class. Since the biological
+% interpretation of this class is unclear and requiring extraordinary evidence, we
+% find the most parsimonious explanation to be that the \emph{bx93}-specific class
+% does not exist.
+%
+% We estimated that statistical noise could account for $>80$\% of the genes that
+% were differentially expressed in both \emph{bx93} and \emph{sy622} homozygotes
+% and not differentially expressed in the \emph{trans}-heterozygote. Further, we
+% estimated that statistical artifacts could explain $>80$\% of the transcripts
+% that were differentially expressed in the \emph{trans}-heterozygote and
+% \emph{bx93} homozygotes but not in \emph{sy622} homozygotes. For both of these
+% populations, we estimate that the majority of the false hits emerge from false
+% negative results. In other words, most of the noise in these populations is the
+% result of mis-classification. Finally, the biological interpretation of either
+% population is implausible given the molecular nature of the alleles. Taken
+% together, a false hit analysis of these two categories strongly suggests that
+% they contain genes that have been mis-classified and which most likely are
+% differentially expressed in all three genotypes.
 
-We identified 78 genes that are differentially expressed exclusively in
-\emph{bx93} homozygotes. At a false positive rate of 10\% (our defined cut-off)
-we expect 48 genes to be falsely called as differentially expressed in
-\emph{bx93} homozygotes. The probability that such a false positive is also
-differentially expressed in another genotype is 20\% (4,392 transcripts
-identified between the two other genotypes divided by 21,954 the total number of
-transcripts that were successfully sequenced). Thus, on average we expect 39
-false positive hits to be classified into the \emph{bx93}-specific class. On
-average, half of all genes in the \emph{bx93}-specific class would be expected
-to be the result of statistical artifacts. Statistical noise is therefore a
-major contributor towards the existence of this class. Since the biological
-interpretation of this class is unclear and requiring extraordinary evidence, we
-find the most parsimonious explanation to be that the \emph{bx93}-specific class
-does not exist.
-
-We estimated that statistical noise could account for $>80$\% of the genes that
-were differentially expressed in both \emph{bx93} and \emph{sy622} homozygotes
-and not differentially expressed in the \emph{trans}-heterozygote. Further, we
-estimated that statistical artifacts could explain $>80$\% of the transcripts
-that were differentially expressed in the \emph{trans}-heterozygote and
-\emph{bx93} homozygotes but not in \emph{sy622} homozygotes. For both of these
-populations, we estimate that the majority of the false hits emerge from false
-negative results. In other words, most of the noise in these populations is the
-result of mis-classification. Finally, the biological interpretation of either
-population is implausible given the molecular nature of the alleles. Taken
-together, a false hit analysis of these two categories strongly suggests that
-they contain genes that have been mis-classified and which most likely are
-differentially expressed in all three genotypes.
-
-A false hit analysis identified four non-overlapping phenotypic classes (see
-Fig.~\ref{fig:venn}). We use the term allele- or genotype-specific to refer to
-groups of transcripts that are solely perturbed in a single genotype. On the
-other hand, we use the term allele-associated to refer to those groups of
-transcripts that are perturbed in at least two genotypes. We identified a
-\emph{sy622}-associated phenotypic class, which consisted of 720 genes
-differentially expressed in \emph{sy622} homozygotes and in
+We applied our false hit analysis to identify four non-overlapping phenotypic
+classes (see Fig.~\ref{fig:venn}). We use the term allele- or genotype-specific
+to refer to groups of transcripts that are solely perturbed in a single
+genotype. On the other hand, we use the term allele-associated to refer to those
+groups of transcripts that are perturbed in at least two genotypes. We
+identified a \textbf{\emph{sy622}-associated} phenotypic class, which consisted of 720
+genes differentially expressed in \emph{sy622} homozygotes and in
 \emph{trans}-heterozygotes, but which were not differentially expressed in
-\emph{bx93} homozygotes. We also identified a \emph{bx93}-associated phenotypic
-class. Following the argument of the previous paragraph, this class included all
+\emph{bx93} homozygotes. We also identified a \textbf{\emph{bx93}-associated} phenotypic
+class. The false hit analysis suggested that this class should include all
 genes that were differentially expressed in \emph{bx93} homozygotes and at least
-one other genotype, since it is likely that of these genes should actually be
-differentially expressed in all genotypes. As a result, this class contains 403
-genes. We also identified a \emph{sy622}-specific phenotypic class (1,841 genes)
-and a \emph{trans}-heterozygote-specific phenotypic class (1,226 genes;
-see the
+one other genotype, since it is likely that these genes represented false
+negative hits in the missing genotype. After re-classification, this class
+contains 403 genes. We also identified a \textbf{\emph{sy622}-specific} phenotypic class
+(1,841 genes) and a \textbf{\emph{trans}-heterozygote-specific} phenotypic class (1,226
+genes; see the
 \href{https://wormlabcaltech.github.io/med-cafe/notebook/phenotypic_classes.html}{
-Phenotypic Classes Notebook
-}).
-Having
-identified these phenotypic classes, we set out to confirm whether each class
-actually behaved as an independent phenotypic module in an allelic series and
-whether each class could be interpreted biologically to shed light on the
-functions of \dpy{}.
+Phenotypic Classes Notebook}).
+% Having identified these phenotypic classes, we
+% set out to confirm whether each class actually behaved as an independent
+% phenotypic module in an allelic series and whether each class could be
+% interpreted biologically to shed light on the functions of \dpy{}.
 
 
 \begin{figure}
-  \includegraphics[width=0.5\textwidth]{../figs/exploded_venn.pdf}
+  \includegraphics[width=0.4\textwidth]{../figs/venn_diagrams.pdf}
   \caption{
   Transcripts under the control of \dpy{} belong to distinct phenotypic
-  classes. Exploded Venn diagram highlighting the four identified phenotypic
   classes.
+  \textbf{A} Venn diagram of genes differentially expressed in each sequenced
+  genotype relative to wild type before false hit analysis.
+  \textbf{B} Exploded Venn diagram highlighting the four identified phenotypic
+  classes after a false hit analysis.
   }
 \label{fig:venn}
 \end{figure}
 
-\subsection*{Different phenotypic classes behave differently in an
-            \emph{sy622} homozygote}
-We asked whether these classes had perturbation distributions distinct from each
-other within a single homozygote. Specifically, we wanted to test whether these
-sets behaved as randomly selected sets. If this were the case, then within a
-single genotype, each class would be expected to have the same distribution of
-perturbations (see Fig.~\ref{fig:classes}). We found that that the $\beta$
-coefficients of isoforms within the \emph{bx93}-associated phenotype on average
-had the largest absolute value (mean: $1.2$). The \emph{sy622}-associated
-phenotype had a smaller range of perturbations compared to the
-\emph{bx93}-associated phenotype (95th percentiles of the two distributions: 2.9
-versus 3.2, respectively), and a statistically smaller median (0.91 vs 1.2,
-respectively, $p < 10^{-6}$, non-parametric boostrap). The medians of the
-\emph{sy622}-specific and -associated classes were the same ($p=0.15$). There
-are systematic differences between the behaviors of each class. This rejects the
-null hypothesis that the transcripts in each class were randomly selected
-(see the
-\href{https://wormlabcaltech.github.io/med-cafe/notebook/phenotypic_classes.html}{
-Phenotypic Classes Notebook
-})
+% \subsection*{Different phenotypic classes behave differently in an
+%             \emph{sy622} homozygote}
+% We asked whether these classes had perturbation distributions distinct from each
+% other within a single homozygote. Specifically, we wanted to test whether these
+% sets behaved as randomly selected sets. If this were the case, then within a
+% single genotype, each class would be expected to have the same distribution of
+% perturbations (see Fig.~\ref{fig:classes}). We found that that the $\beta$
+% coefficients of isoforms within the \emph{bx93}-associated phenotype on average
+% had the largest absolute value (mean: $1.2$). The \emph{sy622}-associated
+% phenotype had a smaller range of perturbations compared to the
+% \emph{bx93}-associated phenotype (95th percentiles of the two distributions: 2.9
+% versus 3.2, respectively), and a statistically smaller median (0.91 vs 1.2,
+% respectively, $p < 10^{-6}$, non-parametric boostrap). The medians of the
+% \emph{sy622}-specific and -associated classes were the same ($p=0.15$). There
+% are systematic differences between the behaviors of each class. This rejects the
+% null hypothesis that the transcripts in each class were randomly selected
+% (see the
+% \href{https://wormlabcaltech.github.io/med-cafe/notebook/phenotypic_classes.html}{
+% Phenotypic Classes Notebook
+% })
+%
+% % to make figure span two columns in twocolumn mode, use figure*
+% \begin{figure*}
+%   \centering{}
+%   \includegraphics[width=0.75\textwidth]{../figs/dpy22_classes.pdf}
+%   \caption{
+%     Within the \emph{sy622} homozygote mutant, transcripts whose differential
+%     expression pattern places them in different phenotypic classes have
+%     statistically different distributions. The lines within the boxes show the
+%     25\textsuperscript{th}, 50\textsuperscript{th}, and 75\textsuperscript{th}
+%     percentiles. Whiskers show the 0\textsuperscript{th} and
+%     100\textsuperscript{th} percentiles, with the exception of outliers
+%     (diamonds). Diagrams show what genotypes each gene class is expressed in,
+%     but the magnitude of the perturbation plotted always corresponds to the
+%     \emph{sy622} mutant. The x-axis shows the absolute magnitude of the
+%     perturbation for each transcript in \emph{sy622} homozygotes,
+%     $|\beta_{sy622}|$. The medians of the \emph{sy622}-specific and the
+%     \emph{sy622}-associated classes were statistically significantly different
+%     from the median of the \emph{bx93}-specific class, as assessed by a
+%     non-parametric bootstrap test.
+%   }
+% \label{fig:classes}
+% \end{figure*}
 
-% to make figure span two columns in twocolumn mode, use figure*
-\begin{figure*}
-  \centering{}
-  \includegraphics[width=0.75\textwidth]{../figs/dpy22_classes.pdf}
-  \caption{
-    Within the \emph{sy622} homozygote mutant, transcripts whose differential
-    expression pattern places them in different phenotypic classes have
-    statistically different distributions. The lines within the boxes show the
-    25\textsuperscript{th}, 50\textsuperscript{th}, and 75\textsuperscript{th}
-    percentiles. Whiskers show the 0\textsuperscript{th} and
-    100\textsuperscript{th} percentiles, with the exception of outliers
-    (diamonds). Diagrams show what genotypes each gene class is expressed in,
-    but the magnitude of the perturbation plotted always corresponds to the
-    \emph{sy622} mutant. The x-axis shows the absolute magnitude of the
-    perturbation for each transcript in \emph{sy622} homozygotes,
-    $|\beta_{sy622}|$. The medians of the \emph{sy622}-specific and the
-    \emph{sy622}-associated classes were statistically significantly different
-    from the median of the \emph{bx93}-specific class, as assessed by a
-    non-parametric bootstrap test.
-  }
-\label{fig:classes}
-\end{figure*}
+\subsection*{Measurement of a dominance hierarchy}
+% \subsubsection*{The \emph{sy622}-specific class expression phenotype of the
+%                 \emph{sy622} homozygote is complemented to wild-type levels by
+%                 the presence of a \emph{bx93} allele}
+% Since our previous testing showed that the transcript expression of genes in
+% this class was dysregulated in \emph{sy622} homozygotes, and wild-type in both
+% \emph{bx93} homozygotes and \emph{trans}-heterozygotes we can conclude that
+% these transcripts are complemented to their wild-type levels by the presence of
+% the \emph{bx93} allele. Applying the Bayesian model yields identical results
+% ($d_{bx93} = 1$). Thus, there is a module that has wild-type functionality in
+% the \emph{bx93} allele but is partially or completely deleted in the
+% \emph{sy622} allele. This functionality must require protein encoded between the
+% amino acid position 1,698 where the \emph{sy622} protein product truncates
+% prematurely, and the position 2,549 where the \emph{bx93} protein product ends.
 
-\subsection*{Dominance can be quantified in transcriptomic phenotypes}
-Dominance relationships between alleles are phenotype-specific. In other words,
-an allele can be dominant over another for one phenotype, yet not for others. An
-example is the \gene{let-23} allelic series---nulls of \gene{let-23} are
-recessive lethal (Let) and presumably also recessive vulvaless (Vul) relative to
-the wild-type allele. The \emph{sy1} allele of \gene{let-23} is dominant viable
-relative to null alleles, but is recessive Vul~\cite{Aroian1991} to the
-wild-type allele. Above, we postulated that there are four phenotypic classes,
-three of which are composed of genes whose expression is significantly perturbed
-in the \emph{sy622} homozygote. If these classes are indeed modular phenotypes,
-then the dominance relationships within each class should be the same from gene
-to gene. In other words, a single dominance coefficient should be sufficient to
-explain the gene expression in the \emph{trans}-heterozygote for every gene
-within a class.
+To dissect these alleles, establishment of a dominance hierarchy is required for
+each allele at each phenotypic class. Since the \emph{sy622}-specific class is
+perturbed only in the \emph{sy622} homozygotes, we conclude that the
+\emph{sy622} allele is recessive to the \emph{bx93} allele, which has wild-type
+functionality for this phenotypic class. Therefore, there is a  module that is
+partially or completely deleted in the \emph{sy622} allele but  retains
+wild-type functionality in the \emph{bx93} allele. This functionality requires
+protein encoded between the amino acid position 1,698 where the \emph{sy622}
+protein product truncates prematurely, and the position 2,549 where the
+\emph{bx93} protein product ends.
 
-To quantify this dominance, we implemented and maximized a Bayesian model (see
-\nameref{sec:methods}; see also the
-\href{https://wormlabcaltech.github.io/med-cafe/notebook/dominance.html}{Dominance
-Notebook}). Briefly, we asked what the linear combination of $\beta$
-coefficients from each homozygote would best predict the observed $\beta$ values
-of the heterozygote, subject to the constraint that the coefficients added up to
-1 (see \nameref{subsec:dominance}). We reasoned that if this was a modular
-phenotype controlled by a single functional unit encoded within the gene of
-interest, then a plot of the predicted $\beta$ values from the optimized model
-against the observed $\beta$ values of the heterozygote for each transcript
-should show the data falling along a line with slope equal to unity. Systematic
-deviations from linear behavior would indicate that the transcripts plotted are
-not part of a modular phenotypic class controlled by a functional unit.
+The \emph{sy622}-associated class contains genes with perturbed expression
+levels in both \emph{sy622} homozygotes and in \emph{trans}-heterozygotes.
+Interpretation of this class requires a dominance analysis. The \emph{sy622} and
+\emph{bx93} alleles are semidominant ($d_{bx93} = 0.51$) to each other within
+this phenotypic class. This suggests that there is a structure requiring amino
+acids 1--2,549. Semidominance further indicates that the functionality encoded
+in this gene is dosage-dependent within the relevant activity levels of these
+alleles.
 
-\subsubsection*{The \emph{sy622}-specific class expression phenotype of the
-                \emph{sy622} homozygote is complemented to wild-type levels by
-                the presence of a \emph{bx93} allele}
-Since our previous testing showed that the transcript expression of genes in
-this class was dysregulated in \emph{sy622} homozygotes, and wild-type in both
-\emph{bx93} homozygotes and \emph{trans}-heterozygotes we can conclude that
-these transcripts are complemented to their wild-type levels by the presence of
-the \emph{bx93} allele. Applying the Bayesian model yields identical results
-($d_{bx93} = 1$). Thus, there is a module that has wild-type functionality in
-the \emph{bx93} allele but is partially or completely deleted in the
-\emph{sy622} allele. This functionality must require protein encoded between the
-amino acid position 1,698 where the \emph{sy622} protein product truncates
-prematurely, and the position 2,549 where the \emph{bx93} protein product ends.
-
-\subsubsection*{The \emph{bx93} allele is dominant over \emph{sy622} for the
-                \emph{bx93}-associated phenotype}
-We explored how expression levels of transcripts within the
+We also explored how expression levels of transcripts within the
 \emph{bx93}-associated phenotypic class were controlled by these two alleles.
 Transcripts in this class are differentially expressed in homozygotes of either
 allele. Moreover, transcripts in this class are more perturbed in \emph{sy622}
@@ -626,8 +787,8 @@ homozygotes than in \emph{bx93} homozygotes. This is consistent with a single
 functional unit that is impaired in the \emph{bx93} allele, and even more
 impaired in the \emph{sy622} allele (see Fig.~\ref{fig:bx93_associated}).
 
-If a single functional unit is being impaired, then we would expect these
-alleles to form a quantitative allelic series for this phenotypic class. In a
+If a single functional unit was impaired, then we would expect these alleles to
+form a quantitative allelic series for this phenotypic class. In a
 quantitative series, alleles exhibit semidominance. We quantified the dominance
 coefficient for this class and found that the \emph{bx93} allele is largely but
 not completely dominant over the \emph{sy622} allele ($d_{bx93}=0.81$; see
@@ -637,6 +798,29 @@ protein produced from the \emph{bx93} allele has an intact functional unit that
 is deleted in protein product from the \emph{sy622} allele. Mixed evidence for
 quantitative and qualitative allelic series at this phenotypic class precludes a
 definitive conclusion.
+
+
+% \subsubsection*{The \emph{bx93} allele is dominant over \emph{sy622} for the
+%                 \emph{bx93}-associated phenotype}
+% We explored how expression levels of transcripts within the
+% \emph{bx93}-associated phenotypic class were controlled by these two alleles.
+% Transcripts in this class are differentially expressed in homozygotes of either
+% allele. Moreover, transcripts in this class are more perturbed in \emph{sy622}
+% homozygotes than in \emph{bx93} homozygotes. This is consistent with a single
+% functional unit that is impaired in the \emph{bx93} allele, and even more
+% impaired in the \emph{sy622} allele (see Fig.~\ref{fig:bx93_associated}).
+%
+% If a single functional unit is being impaired, then we would expect these
+% alleles to form a quantitative allelic series for this phenotypic class. In a
+% quantitative series, alleles exhibit semidominance. We quantified the dominance
+% coefficient for this class and found that the \emph{bx93} allele is largely but
+% not completely dominant over the \emph{sy622} allele ($d_{bx93}=0.81$; see
+% Fig.~\ref{fig:bx93_associated}). Dominance in the context of an allelic series
+% indicates a qualitative allelic series, which is evidence that \protein{MDT-12}
+% protein produced from the \emph{bx93} allele has an intact functional unit that
+% is deleted in protein product from the \emph{sy622} allele. Mixed evidence for
+% quantitative and qualitative allelic series at this phenotypic class precludes a
+% definitive conclusion.
 
 \begin{figure}
   \centering{}
@@ -658,15 +842,15 @@ definitive conclusion.
 \label{fig:bx93_associated}
 \end{figure}
 
-\subsubsection*{The \emph{bx93} allele is semidominant with \emph{sy622} for the
-                \emph{sy622}-associated phenotypic class}
-We quantified the relative dominance of \emph{bx93} and \emph{sy622} on the
-expression level of transcripts that belonged to the \emph{sy622}-associated
-class. We found that both alleles are semidominant ($d_{bx93} = 0.51$). This
-suggests that there is a structure requiring amino acids 1--2,549.
-Since the two alleles are semidominant for transcript expression in this class,
-the functionality encoded in this gene must be dosage-dependent for this model
-to hold.
+% % \subsubsection*{The \emph{bx93} allele is semidominant with \emph{sy622} for the
+% %                 \emph{sy622}-associated phenotypic class}
+% We quantified the relative dominance of \emph{bx93} and \emph{sy622} on the
+% expression level of transcripts that belonged to the \emph{sy622}-associated
+% class. We found that both alleles are semidominant ($d_{bx93} = 0.51$). This
+% suggests that there is a structure requiring amino acids 1--2,549.
+% Since the two alleles are semidominant for transcript expression in this class,
+% the functionality encoded in this gene must be dosage-dependent for this model
+% to hold.
 
 \subsection*{The \emph{sy622}-specific class is strongly enriched for a Dpy
              transcriptional signature}
@@ -683,25 +867,27 @@ To test this hypothesis, we derived a Dpy signature from two Dpy mutants
 (\gene{dpy-7} and \gene{dpy-10}, DAA, CPR and PWS \emph{unpublished}) consisting
 of 628 genes. We used this gene set to look for a transcriptional Dpy signature
 in each phenotypic class using a hypergeometric probabilistic model
-(see~\nameref{sec:methods}). We found that the \emph{sy622}-specific and
+(see~\nameref{sec:methods}). The \emph{sy622}-specific and
 -associated classes were enriched in genes that are transcriptionally associated
-with a Dpy phenotype. The \emph{bx93}-associated class also showed significant
-enrichment (fold-change = 2.2, $p=4\cdot10^{-10}$, 68 genes observed). The
-enrichment was of considerably greater magnitude in the \emph{sy622}-specific
-class (fold-change enrichment = 3, $p=2\cdot 10^{-40}$, $167$ genes observed)
-than the enrichment in the \emph{sy622}-associated class (fold-change = 1.9,
-$p=9\cdot10^{-9}$, 82 genes observed) or in the \emph{bx93}-associated class.
-Correlation analysis showed that a majority of the genes in the
-\emph{sy622}-specific class were strongly correlated between the expression
-levels in the Dpy signature and the expression levels in \emph{sy622}
-homozygotes, while 25\% of the genes were anti-correlated (Spearman R = 0.42,
-$p=6\cdot10^{-15}$, see Fig.~\ref{fig:dpy_phenotype}). If the anti-correlated
-values are excluded from the Spearman regression, the statistical value of the
-regression improves significantly (Spearman R = 0.94, $p=2\cdot10^{-108}$).
-Taken together, this suggests that the \emph{sy622}-specific phenotypic class
-contains a transcriptional signature that can be associated with the
-morphological Dpy phenotype
-(see the
+with a Dpy phenotype (fold-change enrichment = 3, $p=2\cdot 10^{-40}$,
+$167$ genes observed; fold-change = 1.9, $p=9\cdot10^{-9}$, 82 genes observed).
+The \emph{bx93}-associated class also showed significant
+enrichment (fold-change = 2.2, $p=4\cdot10^{-10}$, 68 genes observed). The class
+that showed the most extreme deviation from random was the \emph{sy622}-specific
+class, consistent with our hypothesis. Plotting the perturbation levels in the
+\emph{sy622} homozygotes versus the perturbation levels in the \emph{dpy-7}
+mutants revealed that 75\% of the transcripts were strongly correlated in both
+genotypes.
+% Correlation analysis showed that a majority of the transcripts in the
+% \emph{sy622}-specific class were strongly correlated between the expression
+% levels in the Dpy signature and the expression levels in \emph{sy622}
+% homozygotes, while 25\% of the genes were anti-correlated (Spearman R = 0.42,
+% $p=6\cdot10^{-15}$, see Fig.~\ref{fig:dpy_phenotype}).
+% If the anti-correlated
+% values are excluded from the Spearman regression, the statistical value of the
+% regression improves significantly (Spearman R = 0.94, $p=2\cdot10^{-108}$).
+Therefore, the \emph{sy622}-specific phenotypic class contains a transcriptional
+signature associated with morphological Dpy phenotype (see the
 \href{https://wormlabcaltech.github.io/med-cafe/notebook/enrichment.html}{
 Enrichment Notebook}).
 
@@ -715,7 +901,7 @@ $p=9\cdot10^{-55}$, 186 genes observed). However, there was no correlation
 between the expression levels of these genes in \dpy{} genotypes and the
 expression levels expected from the hypoxia response. Although the hypoxia gene
 battery can be found in \dpy{} mutants, these genes are not used to deploy a
-hypoxia response, and the animals do not have a hypoxic-response phenotype.
+\gene{hif-1}-dependent hypoxia phenotype.
 
 \begin{figure}
   \centering{}
@@ -748,43 +934,47 @@ hypoxia response, and the animals do not have a hypoxic-response phenotype.
              functional units of a gene}
 We have shown that whole-organism transcriptomic phenotypes can be analyzed in
 the context of an allelic series to partition the transcriptomic effects of a
-large, pleiotropic gene into separable classes. Analysis of these modules can
-inform structure/function predictions at the molecular level, and enrichment
-analysis of each class can be subsequently correlated with other morphologic or
-behavioral phenotypes. This method shows promise for analyzing pathways that
+large, pleiotropic gene into separable phenotypic classes that would otherwise
+be difficult if not impossible to identify using other methods. Analysis of
+these modules can inform structure/function predictions, and enrichment analysis
+of each class can be used to associate transcriptional modules with morphologic
+or behavioral phenotypes. This method shows promise for analyzing pathways that
 have major effects on gene expression in an organism, and which do not have
 complex, antagonistic tissue-specific effects on expression. Given the
 importance of allelic series for fully characterizing genetic pathways, we are
 optimistic that this method will be a useful addition towards making full use of
-the potential of these molecular phenotypes. Specifically, allelic series
-coupled with false hit analyses show great promise to identify distinct
-phenotypic classes that would be difficult or impossible to measure using
-standard methods. The sensitivity and quantitative nature of transcriptomic
-phenotypes makes identification of these phenotypes considerably more feasible.
-Once the phenotypic classes have been identified, dominance and enrichment
-analyses can be performed easily with significant statistical power. These
-properties highlight the power of coupling the genetical properties of \cel{}
-with next-generation sequencing methods.
+the potential of these molecular phenotypes. Once the phenotypic classes have
+been identified, dominance and enrichment analyses can be performed easily with
+significant statistical power.
+% These properties highlight the power of coupling
+% the genetical properties of \cel{} with next-generation sequencing methods.
 
 \subsection*{A structure/function diagram of \dpy{}}
-Our results strongly suggest the existence of various functional units in \dpy{}
-that control distinct phenotypic classes (see Fig.~\ref{fig:domains}). The
-\emph{sy622}-specific class of transcripts is regulated normally in the presence
-of the \emph{bx93} allele, indicating that the mutated protein product retains
-wild-type functionality for regulating these genes. This functionality is
-decreased or absent in \protein{mdt-12} produced from the \emph{sy622} allele.
-Therefore, the functional unit that controls this class, functional unit 1 (FC1),
-must require sequence between amino-acid position 1,689 and position 2,549.
+Our results suggest the existence of various functional units in \dpy{}
+that control distinct phenotypic classes (see Fig.~\ref{fig:domains}). It seems
+likely that the \emph{sy622}-specific phenotypic class is controlled by a single
+functional unit, functional unit 1 (FC1), whereas the \emph{sy622}-associated
+phenotypic class is controlled by a second functional unit, functional unit 2
+(FC2). Although possible, it is highly unlikely that these functional units are
+the same because the dominance behaviors are different among the two phenotypic
+classes.
+% The
+% \emph{sy622}-specific class of transcripts is regulated normally in the presence
+% of the \emph{bx93} allele, indicating that the mutated protein product retains
+% wild-type functionality for regulating these genes. This functionality is
+% decreased or absent in \protein{mdt-12} produced from the \emph{sy622} allele.
+% Therefore, the functional unit that controls this class, functional unit 1 (FC1),
+% requires sequence between amino-acid position 1,689 and position 2,549.
 
-A similar argument can be made for a functional unit that controls
-\emph{sy622}-associated transcripts, functional unit 2 (FC2). These genes are
-strongly perturbed in \emph{sy622} homozygotes and they are also perturbed in
-\emph{bx93/sy622} \emph{trans}-heterozygotes, albeit to a lesser degree. For
-this argument to hold, however, the functional unit must work in a
-dosage-dependent manner, since the \emph{bx93} allele is semidominant with the
-\emph{sy622} allele, and this unit is likely intact in the protein product made
-by the \emph{bx93} allele. This is in contrast to FC1, which is not
-dosage-dependent.
+% A similar argument can be made for a functional unit that controls
+% \emph{sy622}-associated transcripts, functional unit 2 (FC2). These genes are
+% strongly perturbed in \emph{sy622} homozygotes and they are also perturbed in
+% \emph{bx93/sy622} \emph{trans}-heterozygotes, albeit to a lesser degree. For
+% this argument to hold, however, the functional unit must work in a
+% dosage-dependent manner, since the \emph{bx93} allele is semidominant with the
+% \emph{sy622} allele, and this unit is likely intact in the protein product made
+% by the \emph{bx93} allele. This is in contrast to FC1, which is not
+% dosage-dependent.
 
 Evidence in favor of a \emph{bx93}-associated functional unit was mixed.
 Although dominance analysis suggested that the \emph{bx93} allele was largely
@@ -792,20 +982,21 @@ dominant over the \emph{sy622} allele for expression levels of genes in this
 class, the expression of these genes deviated from wild-type levels in both
 alleles. The latter suggests that the \emph{bx93}-associated module is perturbed
 quantitatively in both alleles, whereas dominance analyses favor an
-interpretation where the module is present in one allele but not in the other.
+interpretation where a module is present in one allele but not in the other.
 One possibility is that the \emph{bx93}-associated function we observed is the
 joint activity of two distinct effectors, functional units 3 and 4 (FC3, FC4,
 see Fig.~\ref{fig:domains}). In this model, FC4 loses partial function in the
 \emph{bx93} allele, whereas the FC3 retains its complete activity. This leads to
 non-wild-type expression levels of the \emph{bx93}-associated class of
 transcripts. In the \emph{sy622} allele, FC4 is further impaired, causing an
-increase in the severity of the observable phenotype. A rigorous examination of
-this model requires studying alleles that mutate the region between Q1689 and
-Q2549 using homozygotes and \emph{trans}-heterozygotes. Future work should be
-able to establish how many modules exist in total, and how they may
-interact to drive gene expression. The phenotypic classes identified here could
-be compared against transcriptomic signatures from other transcription factors
-to identify candidate cofactors.
+increase in the severity of the observable phenotype. FC3 could be the same unit
+as FC2, since neither unit behaves in a dosage sensitive manner. A rigorous
+examination of this model requires studying alleles that mutate the region
+between Q1689 and Q2549 using homozygotes and \emph{trans}-heterozygotes. Future
+work should be able to establish how many modules exist in total, and how they
+may interact to drive gene expression. The phenotypic classes identified here
+could be compared against transcriptomic signatures from other transcription
+factors to identify candidate cofactors.
 
 \begin{figure}
   \centering{}
@@ -824,7 +1015,6 @@ to identify candidate cofactors.
 \label{fig:domains}
 \end{figure}
 
-
 \subsection*{Controlling statistical artifacts}
 Transcriptomic phenotypes generate large amounts of information that can be used
 to determine functional units. However, due to the large number of tests
@@ -833,8 +1023,8 @@ create populations of transcripts that have anomalous behaviors. It is necessary
 to identify what modules or populations are most at risk of these events and to
 what extent these modules may be polluted by false signals to prevent
 over-interpretation. In our experiment, we can estimate statistical noise in
-each population. There is a rich literature in genomics devoted to controlling
-and estimating false positive rates~\cite{Storey2003,Benjamini1995}, but false
+each population. There is a rich literature in genomics devoted to estimating and
+controlling false positive rates~\cite{Storey2003,Benjamini1995}, but false
 negative rates have largely been ignored because they do not create spurious
 signal in simple experimental designs and because there is ample signal in most
 RNA-seq experiments. For allelic series experiments to be successful, systematic
@@ -842,17 +1032,21 @@ algorithms to estimate and control false negative rates, and to identify the
 populations most at risk for enrichment of false hits, must be developed,
 because false negative hits can create populations of genes that have
 fantastical biological behaviors (such as contrived examples of intragenic
-complementation or dosage models).
+complementation or dosage models). As a general rule, small clusters or classes
+should be viewed with skepticism, particularly if the biological interpretation
+is complex. We expect these conclusions will be of broad significance to genomics
+research where highly multiplexed measurements are often compared to identify
+similarities and differences in the genome-wide behavior of a single variable
+under multiple conditions.
 
-We performed a false hit analysis, estimating the false negative rate at 15\%,
-to identify the clusters or classes of genes most at risk for statistical noise.
-As a general rule, small clusters or classes should be viewed with skepticism,
-particularly if the biological interpretation is complex. To perform a
-false hit analysis, we found it crucial is to appropriately idealize the shape
-of the Venn diagram. This idealized Venn diagram can then be ``squeezed'' with
-false negative and false positive rates to observe how it deforms. The deformed
-diagram can then be compared with reality to estimate the contribution of false
-hits to the existence of each class.
+% We performed a false hit analysis, estimating the false negative rate at 15\%,
+% to identify the clusters or classes of genes most at risk for statistical noise.
+% To perform a
+% false hit analysis, we found it crucial is to appropriately idealize the shape
+% of the Venn diagram. This idealized Venn diagram can then be ``squeezed'' with
+% false negative and false positive rates to observe how it deforms. The deformed
+% diagram can then be compared with reality to estimate the contribution of false
+% hits to the existence of each class.
 
 \subsection*{The \emph{trans}-heterozygote specific phenotypic class is not a
              statistical artifact}
@@ -891,11 +1085,11 @@ appropriate dosage of \dpy{}, two cells that would typically collaborate to form
 a phenotype now act antagonistically, pushing \emph{trans}-heterozygotes into a
 different state from the homozygotes. If this is the case, whole-organism
 RNA-seq may have limited resolution to identify what tissues or cells are being
-perturbed. Single-cell sequencing of \cel{} has recently been reported. As this
-technique becomes more widely adopted, and with decreasing cost, single-cell
-profiling of these genotypes may provide information that complements the
-whole-organism expression phenotypes, perhaps explaining the mysterious origin
-of this phenotype.
+perturbed. Single-cell sequencing of \cel{} has recently been
+reported~\cite{Cao2017}. As this technique becomes more widely adopted, and with
+decreasing cost, single-cell profiling of these genotypes may provide
+information that complements the whole-organism expression phenotypes, perhaps
+explaining the mysterious origin of this phenotype.
 
 \subsection*{Analysis of allelic series using transcriptome-wide measurements}
 % TODO: hughes, o'shea
@@ -911,26 +1105,27 @@ Additionally, if an allelic series includes more than two alleles, the number of
 experimental outcomes and the number of possible outcomes rapidly become large.
 
 % TODO:Clustering citations
-The general problem of partitioning a set of genes into phenotypic classes is a
-common problem in bioinformatics. This problem has been tackled through
-clustering, matrix-based methods such as PCA or non-negative
-matrix factorization, or through q-value-based classification (as we have done
-here). Although these methods can classify genes or transcripts into clusters,
-by themselves they cannot ascertain the probability that any one cluster is real.
-For allelic series studies, this represents a major problem, since each cluster
-can in theory represent a new, independent functional unit within the molecular
-structure of the gene under study. Failure to identify clusters that are the
-result of statistical artifacts in general will cause researchers to identify
-inflated numbers of functional units within a molecular structure that appear to
-behave in a biologically spectacular fashion. We attempted to solve this problem
-for our series by estimating contributions of statistical noise to each class,
-although a challenge is that we do not know the false negative rate in our
-experiment. For our analysis, we exploited the molecular structure of our
-alleles (nested truncations) to create an idealized version of how gene clusters
-should behave. We then used our false positive rate and an estimated false
-negative rate to estimate the signal/noise ratio for each class. This method
-allows us to identify false classes, and in so doing it also reduces the apparent
-complexity of the molecular structure of the gene under study.
+% The general problem of partitioning a set of genes into phenotypic classes is a
+% common problem in bioinformatics. This problem has been tackled through
+% clustering, matrix-based methods such as PCA or non-negative
+% matrix factorization, or through q-value-based classification (as we have done
+% here). Although these methods can classify genes or transcripts into clusters,
+% by themselves they cannot ascertain the probability that any one cluster is real.
+% For allelic series studies, this represents a major problem, since each cluster
+% can in theory represent a new, independent functional unit within the molecular
+% structure of the gene under study. Failure to identify clusters that are the
+% result of statistical artifacts in general will cause researchers to identify
+% inflated numbers of functional units within a molecular structure that appear to
+% behave in a biologically spectacular fashion. We attempted to solve this problem
+% for our series by estimating contributions of statistical noise to each class,
+% although a challenge is that we do not know the false negative rate in our
+% experiment.
+% For our analysis, we exploited the molecular structure of our
+% alleles (nested truncations) to create an idealized version of how gene clusters
+% should behave. We then used our false positive rate and an estimated false
+% negative rate to estimate the signal/noise ratio for each class. This method
+% allows us to identify false classes, and in so doing it also reduces the apparent
+% complexity of the molecular structure of the gene under study.
 
 A challenge for allelic series studies will be the biological interpretation of
 unexpected classes, such as the \emph{trans}-heterozygote specific class in our
@@ -1056,7 +1251,10 @@ Raw and processed reads will be deposited in the Gene Expression Omnibus. Script
 for the entire analysis can be found with version control in our Github
 repository, \url{https://github.com/WormLabCaltech/med-cafe}. A user-friendly,
 commented website containing the complete analyses can be found at
-\url{https://wormlabcaltech.github.io/med-cafe/}.
+\url{https://wormlabcaltech.github.io/med-cafe/}. Raw reads and quantified
+abundances for each sample were deposited at the NCBI Gene Expression Omnibus
+(GEO)~\cite{Edgar2002} under the accession code GSE107523
+(\url{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSExxx}).
 
 \section*{Acknowledgements}
 This work was supported by HHMI with whom PWS was an investigator, by the
@@ -1065,8 +1263,8 @@ Institute of Technology, and by the NIH grant U41 HG002223. This article
 would not be possible without help from Dr.\ Igor Antoshechkin and Dr.\ Vijaya
 Kumar who performed the library preparation and sequencing. We would like to
 thank Carmie Puckett Robinson for the unpublished Dpy transcriptional
-signature. Han Wang, Hillel Schwartz, Erich Schwarz and Porfirio Quintero
-provided valuable input throughout the project.
+signature. Han Wang, Hillel Schwartz, Erich Schwarz, Porfirio Quintero and
+Carmie Puckett Robinson provided valuable input throughout the project.
 
 %This is where your bibliography is generated.
 \bibliography{citations}
