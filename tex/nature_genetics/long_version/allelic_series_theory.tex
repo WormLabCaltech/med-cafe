@@ -127,47 +127,36 @@ Pasadena, CA, 91125, USA}
   \begin{@twocolumnfalse}
     \maketitle
     % \section*{Abstract}
-    \textbf{Expression profiling holds great promise for genetics because of its
-    ability to measure thousands of genes quantitatively. Although
-    transcriptomes have recently been used to perform epistasis analyses for
-    pathway reconstruction, there has not been a systematic effort to understand
-    how expression profiles will vary among distinct mutants of the same gene.
-    Here, we study an allelic series in \cel{} consisting of one wild type and
-    two mutant alleles of \dpy{}, a highly pleiotropic gene whose gene product
-    is a subunit of Mediator complex, which is essential for transcriptional
-    regulation in eukaryotes. We developed a false hit analysis to identify
-    which populations of genes commonly differentially expressed with respect to
-    the wild type are likely the result of statistical artifact. We concluded
-    that expression perturbations caused by these alleles split into four
-    distinct modules called phenotypic classes. To understand the dominance
-    relationship between the two mutant alleles, we developed a dominance
-    analysis for transcriptional data. Dominance analysis of these phenotypic
-    classes support a model where \dpy{} has multiple functional units that
-    function independently to target the Mediator complex to specific genetic
-    loci.
+    \textbf{Although transcriptomes have recently been used to perform epistasis
+    analyses, they are not yet used to study intragenic function/structure
+    relationships. We developed a theoretical framework to study allelic
+    series using transcriptomic phenotypes. As a proof-of-concept, we apply our
+    methods to an allelic series of \dpy{}, a highly pleiotropic Mediator subunit
+    gene in \emph{Caenorhabditis~elegans}. Our methods identify functional units
+    within \dpy{} that modulate Mediator activity upon various genetic modules.
     }
     \vspace{3mm}
 
-    \mybox{red}{
-    \section*{Author Summary}
-    Expression profiling is a way to quickly and quantitatively measure the
-    expression level of every gene in an organism. As a result, these profiles
-    could be used as phenotypes with which to perform epistasis analyses or with
-    which to dissect the functional units contained within a single gene. To
-    perform these analyses, we must extend genetic methods, developed for scalar
-    phenotypes, to multiple dimensions. We developed new concepts and methods
-    to study allelic series using expression profiling techniques. Briefly,
-    allelic series are an important aspect of genetics because different alleles
-    encode different versions of a gene. By studying phenotypic similarities and
-    differences among these different versions, we can make statements about how
-    function is encoded within the sequence of a gene. We apply our methods to
-    the \dpy{} gene, which encodes a subunit of the Mediator complex. Though we
-    know it is essential for all transcriptional activity in eukaryotes, we
-    understand very little about how Mediator generates both general and
-    specific phenotypes. We show that transcriptomic phenotypes renders the
-    study of general factors such as \dpy{} feasible.
-    }
-  \vspace{3mm}
+  %   \mybox{red}{
+  %   \section*{Author Summary}
+  %   Expression profiling is a way to quickly and quantitatively measure the
+  %   expression level of every gene in an organism. As a result, these profiles
+  %   could be used as phenotypes with which to perform epistasis analyses or with
+  %   which to dissect the functional units contained within a single gene. To
+  %   perform these analyses, we must extend genetic methods, developed for scalar
+  %   phenotypes, to multiple dimensions. We developed new concepts and methods
+  %   to study allelic series using expression profiling techniques. Briefly,
+  %   allelic series are an important aspect of genetics because different alleles
+  %   encode different versions of a gene. By studying phenotypic similarities and
+  %   differences among these different versions, we can make statements about how
+  %   function is encoded within the sequence of a gene. We apply our methods to
+  %   the \dpy{} gene, which encodes a subunit of the Mediator complex. Though we
+  %   know it is essential for all transcriptional activity in eukaryotes, we
+  %   understand very little about how Mediator generates both general and
+  %   specific phenotypes. We show that transcriptomic phenotypes renders the
+  %   study of general factors such as \dpy{} feasible.
+  %   }
+  % \vspace{3mm}
 
   \end{@twocolumnfalse}
 ]
@@ -175,97 +164,84 @@ Pasadena, CA, 91125, USA}
 
 \linenumbers{}
 \section*{Introduction}
-An `allelic series' refers to a set of alleles with different phenotypes
-and can be used to understand the functions of a single locus.
-Allelic series are historically important for genetics~\cite{McClintock1944}. In
-early pioneering work, McClintock studied a deficiency of the tail end of
-chromosome 9 of maize by generating \emph{trans}-heterozygotes with mutants of
-various genes that she knew existed near the end of chromosome 9. Her work
-allowed her to infer that the deficiency was modular, effectively generating a
-double mutant that behaved as a single allele in terms of its Mendelian
-inheritance pattern, but which could participate phenotypically in two distinct
-allelic series. From this study, McClintock inferred that deletions could span
-multiple genes, which behaved as independent modules, and which were identified
-via complementation assays. This work set the foundations for later observations
-in yeast that showed two mutant alleles of the same genetic unit, when placed in
-\emph{trans} to each other, could complement and generate a wild-type
-phenotype~\cite{FINCHAM1957}. Allelic series have also been used to study the
-dose response curve of a phenotype for a particular gene and to infer null
-phenotypes from hypomorphs. In \cel{}, the \gene{let-23}, \gene{lin-3} and
-\gene{lin-12} allelic series stand out as
+An `allelic series' refers to a set of alleles with different phenotypes and can
+be used to understand the functions encoded within a single gene regardless of
+the molecular nature of the alleles used. Briefly, in an allelic series a set of
+alleles are used to generate a set of homozygotes. These genotypes are used to
+explore the number and severity of phenotypes encoded by the alleles in
+question. Using the homozygote genotypes, the alleles can be ordered by severity
+of effect relative to the wild type allele for each measured phenotype. Then,
+\emph{inter se} \emph{trans}-heterozygotes are used to establish dominance
+(complementation) hierarchies within the allele set for each phenotype in
+question. Together, the severity and dominance hierarchies are used to infer
+intragenic functional units. Allelic series can be quantitative, in which case
+all alleles are semidominant to each other, indicating a single functional unit
+that is dosage-dependent in activity range relevant to the alleles studied;
+alternatively, an allelic series can be qualitative, in which case some alleles
+are entirely dominant over the others, indicating that some alleles have
+wild-type functionality that complements the mutant functionality of the
+recessive alleles. Allelic series have been used to study the dose response
+curve of a phenotype for a particular gene and to infer null phenotypes from
+hypomorphs. In \emph{Caenorhabditis~elegans}, the \gene{let-23}, \gene{lin-3}
+and \gene{lin-12} allelic series stand out as
 examples~\cite{Aroian1991,Ferguson1985a,Greenwald1983}.
 
-Over the last decade, biology has moved from expression measurements of single
-genes towards genome-wide measurements. Expression profiling via
-RNA-sequencing~\cite{Mortazavi2008} (RNA-seq) is a popular method because it
-enables the simultaneous measurement of transcript levels for all genes in a
-genome. These measurements can now be made on a whole-organism scale and on
-single cells~\cite{Tang2009}. Although initially expression profiles had a
-qualitative purpose as descriptive methods to identify genes that are downstream
-of a perturbation, these profiles are now being used as phenotypes for genetic
-analysis. As a result, transcriptomes have been successfully used to identify
-new cell or organismal states~\cite{Angeles-Albores2017,Villani2017}. Genetic
-pathways have been reconstructed via sequencing cDNA from single cells (see for
-example~\cite{Dixit2016}) or by sequencing transcripts from
-whole-organisms~\cite{AngelesAlboresHIF}. However, to fully characterize a
+Biology has moved from expression measurements of single genes towards
+genome-wide measurements. Expression profiling via
+RNA-sequencing~\cite{Mortazavi2008} (RNA-seq) enables simultaneous
+measurement of transcript levels for all genes in a genome. These measurements
+can be made on a whole-organism scale or on single
+cells~\cite{Tang2009,Schwarz2012}. Transcriptomes have been successfully used to
+identify new cell or organismal states~\cite{Angeles-Albores2017,Villani2017}
+and  both methods can be used for genetic
+analysis~\cite{Dixit2016,AngelesAlboresHIF}. However, to fully characterize a
 genetic pathway, it is often necessary to build allelic series to explore
 whether independent functional units within a gene mediate different aspects of
-the phenotypes associated with a pathway or gene, and to identify what aspects of
-the pathway are sensitive to gene dosage. To address this problem, we developed
-a conceptual framework that enables us to count the number of phenotypes exhibited
-by an ensemble of alleles and their genotypes, perform dominance and
-complementation tests on these phenotypes to establish a dominance and
-complementation hierarchy, and which ultimately allows us to make inferences
-about the functional units contained within a gene and the sequence requirements
-for each unit.
+the phenotypes associated with a pathway or gene, and to identify what aspects
+of the pathway are sensitive to gene dosage. Here, we show how to perform an
+allelic series analysis by counting phenotypic classes (the transcriptomic
+equivalent of observable phenotypes), and generating a dominance hierarchy
+between the alleles in question for each class to draw conclusions about the
+function/structure relationship of the gene under study.
 
-As a proof of principle, we selected a subunit of the Mediator complex in
-\cel{}, \dpy{} (previously known as \gene{dpy-22}~\cite{Bourbon2004}), for
-genetic analysis. We explored three alleles, including the wild-type allele, of
-this highly pleiotropic gene because its biological roles are poorly understood.
-The mutant alleles were generated in previous
-screens~\cite{Zhang2000,Moghal2003}, where they were associated with specific
-phenotypes in the male tail and in the vulva. Mediator is a macromolecular
+% developed a conceptual framework that enables us to count the number of
+% phenotypes exhibited by an ensemble of alleles and their genotypes, perform
+% dominance and complementation tests on these phenotypes to establish a dominance
+% and complementation hierarchy, and which ultimately allows us to make inferences
+% about the functional units contained within a gene and the sequence requirements
+% for each unit.
+
+As a proof of principle, we selected three alleles~\cite{Zhang2000,Moghal2003}
+of a Mediator complex subunit in \cel{}, \dpy{}. Mediator is a macromolecular
 complex that contains approximately 25 subunits~\cite{Jeronimo2017} and which
-globally regulates RNA polymerase II (Pol II)~\cite{Allen2015,Takagi2006}.
-Mediator is a versatile regulator, a quality often associated with its variable
-subunit composition~\cite{Allen2015}, and it can promote transcription as well
-as inhibit it. The Mediator complex consists of four modules: the Head, Middle
-and Tail modules and a CDK-8-associated Kinase Module (CKM). The CKM can
-associate reversibly with Mediator. Certain models propose that the CKM
-functions as a molecular switch, which inhibits Pol II activity by sterically
-preventing its interaction with the other Mediator
-modules~\cite{Knuesel2009,Elmlund2006}. Other models propose that the CKM
-negatively modulates interactions between Mediator and
-enhancers~\cite{VandePeppel2005}. In \cel{}, the CKM consists of
+globally regulates RNA polymerase II (Pol II)~\cite{Allen2015,Takagi2006}. The
+Mediator complex consists of four biochemical modules: the Head, Middle and Tail
+modules and a CDK-8-associated Kinase Module (CKM). The CKM can associate
+reversibly with the other modules, and it appears to inhibit
+transcription~\cite{Knuesel2009,Elmlund2006}. In \cel{}, the CKM consists of
 \protein{cdk-8}, \protein{mdt-13}, \protein{cic-1} and
-\protein{DPY-22}~\cite{Grants2015}. Since \gene{dpy-22} is orthologous to the
-human Mediator subunits \gene{MED-12} and \gene{MED-12L}~\cite{Zhang2000}, we
-will henceforth refer to this gene as \dpy{}. \dpy{} has been studied in the
-context of the male tail~\cite{Zhang2000}, where it was found to interact with
-the Wnt pathway. It has also been studied in the context of vulval
-formation~\cite{Moghal2003a}, where it was found to be an inhibitor of the Ras
-pathway. Loss of \dpy{} is lethal in XO animals\cite{Hodgkin1979,Meneely1987},
-and developmental studies have relied on reduction-of-function alleles to
-understand the role of this gene in development. Studies of the male tail were
-carried out using an allele, \gene{dpy-22(bx93)}, that generates a truncated
-\protein{dpy-22} protein missing its C-terminal 949 amino acids as a result of a
-premature stop codon, Q2549STOP~\cite{Zhang2000}. In spite of the premature
-truncation, animals carrying this allele grossly appear phenotypically
-wild-type. In contrast, the allele used to study the role of \dpy{} in the
-vulva, \gene{dpy-22(sy622)}, is a premature stop codon, Q1698STOP, that
-predicted to remove 1,800 amino acids from the C-terminus~\cite{Moghal2003} (see
-Fig.~\ref{fig:dpy22}). Animals carrying this mutation are severely dumpy (Dpy),
-have egg-laying defects (Egl) and have a low penetrance multivulva (Muv)
-phenotype. These alleles could form a single quantitative series, affecting the
-same sets of target genes but to different degrees, in which case the
-\emph{trans}-heterozygote would exhibit a single dosage-dependent phenotype
-intermediate to the two homozygotes. Alternatively, they could form a single
-qualitative series, in which case the \emph{trans}-heterozygote should have the
-same phenotype as the homozygote of the \emph{bx93} allele, since this allele
-encodes the longer protein. These alleles could also form a mixed series, in
-which case multiple separable phenotypes would appear that have qualitative or
-quantitative behaviors in the \emph{trans}-heterozygote.
+\protein{DPY-22}~\cite{Grants2015}. Loss of \dpy{} is lethal in XO
+animals\cite{Hodgkin1979,Meneely1987}. \dpy{} acts in the formation of the male
+tail~\cite{Zhang2000}, where it interacts with the Wnt pathway, and in vulval
+formation~\cite{Moghal2003a}, where it inhibits the Ras pathway. Studies in the
+male tail were carried out using allele \gene{dpy-22(bx93)}, which generates a
+truncated \protein{dpy-22} protein as a result of a premature stop codon,
+Q2549Amber~\cite{Zhang2000}. However, animals homozyguous for
+this allele grossly appear phenotypically wild-type. In contrast, animals
+homozyguous for the \gene{dpy-22(sy622)} allele, which encodes a premature stop
+codon, Q1698Amber~\cite{Moghal2003} (see Fig.~\ref{fig:dpy22}), are severely
+dumpy (Dpy), have egg-laying defects (Egl) and a low penetrance multivulva
+(Muv) phenotype. Due to its pleiotropic effects, a conclusive allelic series
+analysis has not previously been performed.
+% These alleles could form a single quantitative series, affecting the
+% same sets of target genes but to different degrees, in which case the
+% \emph{trans}-heterozygote would exhibit a single dosage-dependent phenotype
+% intermediate to the two homozygotes. Alternatively, they could form a single
+% qualitative series, in which case the \emph{trans}-heterozygote should have the
+% same phenotype as the homozygote of the \emph{bx93} allele, since this allele
+% encodes the longer protein. These alleles could also form a mixed series, in
+% which case multiple separable phenotypes would appear that have qualitative or
+% quantitative behaviors in the \emph{trans}-heterozygote.
 
 \begin{figure}
   \centering{}
@@ -280,118 +256,120 @@ quantitative behaviors in the \emph{trans}-heterozygote.
 \end{figure}
 
 Expression profiles have the potential to facilitate dissection of molecular
-structures within genes. For the \dpy{} allelic series, we found that the
-perturbations caused by the weak loss-of-function allele, \emph{bx93}, are
-entirely contained within the perturbations caused by the strong
-loss-of-function allele, \emph{sy622}. Further, we found three phenotypic
-classes affected by \dpy{}. For one class, termed the \emph{sy622}-specific
-class, the \emph{bx93} homozygote, but not the \emph{sy622} homozygote, shows
-wild-type functionality. In a \emph{trans}-heterozygote of \emph{sy622/bx93}
-these perturbations are suppressed to wild-type levels from the \emph{sy622}
-levels, which shows that \emph{bx93} is wild-type dominant for this phenotype. A
-second class, called the \emph{sy622}-associated class, similarly shows
-wild-type functionality in the \emph{bx93} homozygote but not in the
-\emph{sy622} homozygote, yet in the \emph{trans}-heterozygote these
-perturbations are modulated in a gene-dosage dependent manner. Finally, we
-identified a third class, called the \emph{bx93}-specific class, which contained
-genes that were altered in both homozygotes, but which showed an expression
-level most similar to the \emph{bx93} homozygote, showing that \emph{bx93} has a
-dominant mutant phenotype for this subset. For each class, we were able to
-quantitatively measure the dominance level of each allele.
+structures within genes, but the high dimensionality of these phenotypes make
+analysis challenging. We developed a set of conceptual and
+algorithmic methods to analyze allelic series using transcriptomic phenotypes
+and applied our methods to an allelic series involving the MDT12 ortholog in
+\cel{}, \dpy{}. Our analysis revealed a number of functional units that act
+independently to modulate Mediator activity at thousands of genetic loci.
+% perturbations caused by the weak loss-of-function allele, \emph{bx93}, are
+% entirely contained within the perturbations caused by the strong
+% loss-of-function allele, \emph{sy622}. Further, we found three phenotypic
+% classes affected by \dpy{}. For one class, termed the \emph{sy622}-specific
+% class, the \emph{bx93} homozygote, but not the \emph{sy622} homozygote, shows
+% wild-type functionality. In a \emph{trans}-heterozygote of \emph{sy622/bx93}
+% these perturbations are suppressed to wild-type levels from the \emph{sy622}
+% levels, which shows that \emph{bx93} is wild-type dominant for this phenotype. A
+% second class, called the \emph{sy622}-associated class, similarly shows
+% wild-type functionality in the \emph{bx93} homozygote but not in the
+% \emph{sy622} homozygote, yet in the \emph{trans}-heterozygote these
+% perturbations are modulated in a gene-dosage dependent manner. Finally, we
+% identified a third class, called the \emph{bx93}-specific class, which contained
+% genes that were altered in both homozygotes, but which showed an expression
+% level most similar to the \emph{bx93} homozygote, showing that \emph{bx93} has a
+% dominant mutant phenotype for this subset. For each class, we were able to
+% quantitatively measure the dominance level of each allele.
 
 
 \section*{Results}
 \subsection*{A conceptual framework for analyzing allelic series}
 Allelic series offer a way to study the functional units within a gene without
 requiring prior knowledge about the molecular structure of the mutations
-involved. In an allelic series, a set of alleles are selected. Then, a set of
-homozygotes of each allele is created, the phenotypes of each homozygote are
-enumerated and their severity scored to order the alleles by loss (or gain) of
-function relative to the wild-type phenotype. Next, alleles are placed in
+involved. In an allelic series, a set of alleles are selected. Then, homozygotes
+of each allele are generated (if possible), the phenotypes of each homozygote
+are enumerated and their severity scored to order the alleles by loss (or gain)
+of function relative to the wild-type allele. Finally, alleles are placed in
 \emph{trans} to each other to check whether one allele is dominant or
-semidominant over the other for each phenotype. In this way, alleles are ordered
-into a dominance hierarchy. This dominance hierarchy can be used to identify
-functional units and their sequence requirements within a gene (see
+semidominant over the other for each phenotype, resulting in an ordered
+dominance hierarchy. This dominance hierarchy can be used to identify functional
+units and their sequence requirements within a gene (see
 Fig.~\ref{fig:flowchart}).
 
 \begin{figure*}
+  \centering{}
   \includegraphics[width=\textwidth]{../figs/flowchart.pdf}
-  \caption{Flowchart for an analysis of arbitrary allelic series. A set of 2 or
-  more alleles is selected, and the corresponding genotypes are generated
-  sequenced to generate observable data. The number of phenotypes is estimated,
-  correcting for statistical artifacts. For each phenotype, the alleles are
-  ordered in a dominance/complementation hierarchy. The resulting dominance
-  hierarchy can then be interpreted in terms of functional units within the
-  genes in question.}
+  \caption{Flowchart for an analysis of arbitrary allelic series. A set of
+  alleles is selected, and the corresponding genotypes are sequenced. The number
+  of phenotypes is estimated, correcting for statistical artifacts. For each
+  phenotype, the alleles are ordered in a dominance/complementation hierarchy.
+  The resulting dominance hierarchy can then be interpreted in terms of
+  functional units within the genes in question.}
 \label{fig:flowchart}
 \end{figure*}
 
 \subsection*{Counting phenotypes in RNA-seq data}
-In theory, a gene could act along distinct pathways that alter the expression of
-distinct modules or clusters in different ways. These functions could be
-independent of one another, and could be encoded in different sites along a
-gene. To parse the functions contained within a gene from gene expression data,
-it is therefore crucial to enumerate the phenotypes a given set of alleles can
-generate. For two different alleles, we reasoned that the number of independent
+In theory, a gene could encode multiple independent functions along its
+sequence. To parse the separate functions contained within a gene from gene
+expression data, this data must be broken up into phenotypic classes, and each
+class associated with the genotypes that perturb them. For two different
+alleles, we reasoned that the number of independent
 phenotypes should be equal to the number of intersection classes occurring in a
-Venn diagram of the two homozygotes and the \emph{trans}-heterozygote in
-question. Thus, to enumerate the independent phenotypes associated with a set of
-(two) alleles, in a noiseless experiment it is sufficient to sequence a
-wild-type control, the homozygotes of the mutant alleles and the corresponding
-\emph{trans}-heterozygote, label which genotypes perturb the expression of each
-transcript in the genome, and count the number of combinations of labels, which
-we call phenotypic classes, that occur. For a comparison involving 3 genotypes,
-the maximum number of phenotypes that can be identified is 7. In general, for a
-comparison involving $N$ genotypes, the maximum number of phenotypes that can be
-identified is $2^N-1$.
+Venn diagram of differentially expressed genes (relative to a wild type control)
+of the mutant homozygotes and the \emph{inter se} \emph{trans}-heterozygotes.
+In general, for a comparison involving $N$ genotypes, the maximum number of
+phenotypes that can be identified is $2^N-1$.
 
-The presence of noise in an experiment complicates matters substantially. We
-envision a case where homozygotes of two different null alleles of a gene are
-sequenced and their transcriptomes are compared to each other. In the absence of
-noise, we expect the two transcriptomes to match exactly. When false positive
-and false negative rates are non-zero, however, the two transcriptomes will no
-longer contain exactly the same genes. In fact, if the false positive and the
-false negative rate are 10\%, we should expect the two transcriptomes to overlap
-approximately at $60\%$ of the genes that are differentially expressed in either
-genotype relative to a wild-type control. To appropriately count the number of
-phenotypes detected in this thought experiment, it would be necessary to ask
-whether each of the three classes contains a number of genes significantly
-greater than the number expected from statistical artifacts. Failure to account
-for this would determine the number of phenotypes to be three, an error rate of
-200\%. Importantly, the two null alleles would be determined to differ in their
-molecular functions, which constitutes a major qualitative error. In general,
-noise will make genetic interactions and genetic functions appear much more
-complex by increasing the number of seemingly different phenotypes that are
-detected.
+The presence of noise in an experiment complicates matters. We envision a case
+where homozygotes of two different null alleles of a gene are sequenced and
+their transcriptomes are compared to each other. In the absence of noise, the
+list of differentially expressed genes and its perturbation are equal between
+the two homozygotes. When false positive and false negative rates are non-zero,
+however, the lists differentially expressed genes will diverge. If the false
+positive and the false negative rate are 10\%, we should expect the two
+lists to overlap at $60\%$ of the genes in either list. To accept the hypothesis
+that these two alleles are different in nature, it is necessary to test whether
+each of the three classes contains a number of genes significantly
+different from the number expected from statistical artifacts. Failure to account
+for this would lead to the conclusion that both alleles are not identical and at
+least one of them is not a null allele, a major qualitative error. Noise will
+make genetic interactions and genetic functions appear more complex by
+increasing the number of seemingly different phenotypes detected.
 
 We addressed the problem of phenotype counting by developing a false hit
-analysis algorithm (see Fig.~\ref{fig:false_hit}). Briefly, the purpose of a
-false hit analysis is to identify those gene classes that are likely to be
-statistical artifacts and remove or re-classify them into the correct classes.
-To identify these classes, we first defined a minimal model as the gene class
-that is altered in all genotypes studied relative to the wild-type control.
-Subsequently, the noise generated by that minimal model is simulated from known
-or estimated false positive and negative rates. The noising process will
-generate additional classes not contained in the minimal model. Then, a
-signal-to-noise ratio can be estimated by comparing the observed size of each
-class with the size of of the class generated by the noising process. Classes
-that have a signal-to-noise greater than an arbitrary threshold are accepted and
-the minimal model is expanded to include those classes that have a high
-signal-to-noise ratio. The algorithm stops once the classes contained in the
-model have converged. A beneficial aspect of this algorithm is that the noising
-process can be split up into false positive and false negative components. False
-negative hits will tend to break up a single class into multiple---by estimating
-which classes are the result of false negative hits, and by modeling which class
-the false negative hits are most likely from, we can re-classify spurious
-classes, expanding the size and identity of biologically relevant classes. Once
-the number of phenotypic classes have been accounted for, these classes can be
-interpreted in terms of functional units depending on the genotypes that label
-them (the genotypes that affect these classes).
+analysis (see Fig.~\ref{fig:false_hit}). Briefly, the purpose of a false hit
+analysis is to identify gene classes that are likely to be statistical artifacts
+and remove or re-classify them into the correct classes. To identify these
+classes, we defined a minimal model as the gene class altered in all genotypes
+studied relative to the wild-type control. Subsequently, the noise generated by
+that minimal model is simulated from known or estimated false positive and
+negative rates. The noising process will generate additional classes not
+contained in the minimal model. A signal-to-noise ratio can be estimated by
+comparing the observed size of each class with the size of of the class
+generated by the noising process. Classes that have a signal-to-noise greater
+than an arbitrary threshold are accepted and the minimal model is expanded to
+include them. The algorithm stops once the classes contained in the model have
+converged. The simulation of the noising process can be split up into false
+positive and false negative components. False negative hits will tend to break
+up a single class into multiple classes---by estimating which classes are the
+result of false negative hits, and by modeling which class the false negative
+hits are most likely from, we can re-classify spurious classes, expanding the
+size and identity of biologically relevant classes. Once the number of
+phenotypic classes have been accounted for, these classes can be interpreted in
+terms of functional units depending on the genotypes that label them (the
+genotypes affecting these classes). Because certain classes can become
+artificially enriched in false positives, whereas others will become depleted of
+false positive hits (and \emph{vice versa} for false negative hits), false hit
+analysis can significantly reduce the effective false positive rate within a
+study. This is important, because although setting more stringent $q$-value
+thresholds leads to fewer false positives, it will inevitably increase the false
+negative rate, which in turn will create certain classes at the expense of
+others. Additionally, smalller classes will suffer from decreased statistical
+power, limiting their ability to detect small effects.
 
 \begin{figure}
   \centering
   \includegraphics[width=0.5\textwidth]{../figs/false_hit_analysis.pdf}
-  \caption{Simplified schematic of a false hit algorithm. For data from an
+  \caption{Schematic of a false hit analysis. For data from an
   arbitrary experimental design, a minimal model is inferred. Typically, the
   minimal model should be the intersection of all the groups measured. A noising
   process simulates the sizes of all the other classes expected if only the
@@ -403,61 +381,65 @@ them (the genotypes that affect these classes).
 \end{figure}
 
 \subsection*{Establishing a dominance hierarchy between alleles}
-Dominance relationships between alleles are phenotype-specific. In other words,
-an allele can be dominant over another for one phenotype, yet not for others. An
-example is the \gene{let-23} allelic series---nulls of \gene{let-23} are
-recessive lethal (Let) and presumably also recessive vulvaless (Vul) relative to
-the wild-type allele. The \emph{sy1} allele of \gene{let-23} is dominant viable
-relative to null alleles, but is recessive Vul~\cite{Aroian1991} to the
-wild-type allele. For gene expression data, after enumerating the phenotypic
-classes, which presumably reflect gene modules that are regulated independently
-from one another, a dominance or complementation hierarchy between the set of
-alleles must be derived for each phenotypic class. For some classes, this can be
-done immediately. Here, we briefly explain the logic for an allelic series
-containing three alleles ($+$, $a$, and $b$). Importantly, in the following
-text we assume that each phenotypic class reflects the same internal mechanism,
-such that a single dominance coefficient can accurately explain the behavior of
-each transcript within the class.
+% Dominance relationships between alleles are phenotype-specific.
+% An allele can be dominant over another for one phenotype, yet not for others. An
+% example is the \gene{let-23} allelic series---nulls of \gene{let-23} are
+% recessive lethal (Let) and presumably also recessive vulvaless (Vul) relative to
+% the wild-type allele. The \emph{sy1} allele of \gene{let-23} is dominant viable
+% relative to null alleles, but is recessive Vul~\cite{Aroian1991} to the
+% wild-type allele.
+After enumerating the phenotypic classes, which presumably reflect independent
+regulatory mechanisms, a dominance or complementation hierarchy between the set
+of alleles must be derived for each phenotypic class. This hierarchy may then be
+used to identify a minimum and maximum number of functional units affected
+within the allele set.
+% For some classes, this can be
+% done immediately. We briefly explain the logic for an allelic series
+% containing three alleles ($+$, $a$, and $b$).
+In the following text, we assume that each phenotypic
+class reflects the same internal mechanism, such that a single dominance
+coefficient can accurately explain the behavior of each transcript within the
+class.
 
-For example, a phenotypic class that contains genes that are perturbed only in
-one homozygotic genotype ($a/a$) relative to the wild-type control ($+/+$) but
-not in the other homozygotic genotype ($b/b$) or the \emph{trans}-heterozgyotes
-($a/b$) reveals regulation that is impaired in one allele but not in the other
-in a way such that the allele with wild-type functionality can complement the
-impaired allele to wild-type levels. This suggests that the gene contains at
-least one functional unit, impaired in one allele ($a$) but not in the other
-($b$), and that the function of this unit is not dosage-dependent within the
-activity levels relevant to this allelic pair. Interpretation of this class of
-genes ideally does not require a further dominance analysis.
+% For example, a phenotypic class that contains genes that are perturbed only in
+% one homozygotic genotype ($a/a$) relative to the wild-type control ($+/+$) but
+% not in the other homozygotic genotype ($b/b$) or the \emph{trans}-heterozgyotes
+% ($a/b$) reveals regulation that is impaired in one allele but not in the other
+% in a way such that the allele with wild-type functionality can complement the
+% impaired allele to wild-type levels. This suggests that the gene contains at
+% least one functional unit, impaired in one allele ($a$) but not in the other
+% ($b$), and that the function of this unit is not dosage-dependent within the
+% activity levels relevant to this allelic pair. Interpretation of this class of
+% genes ideally does not require a further dominance analysis.
+% On the other hand, a phenotypic class where two genotypes, $a/a$ and $a/b$,
+% exhibit perturbed expression levels requires a dominance analysis for biological
+% interpretation of this class. If the two alleles are semidominant, meaning the
+% perturbation levels in the \emph{trans}-heterozygote ($a/b$) are intermediate
+% between the levels of the two homozygotes, then this means that one functional
+% unit is impaired in one allele but not the other, and the function of this unit
+% is dosage-sensitive within the activity levels relevant to these alleles. On the
+% other hand, if the perturbations associated with the \emph{trans}-heterozygotes
+% are equal to those in the homozygotes $a/a$, then $a$ is dominant negative over
+% $b$. Dominant negative alleles are important biologically because they generate
+% poisonous products that can often be highly informative of gene function.
+% Systematic analysis of each phenotypic class for two pairs of alleles
+% reveals the maximum and minimum number of functional units that may be
+% differentially impaired between two alleles.
+% For example, if one phenotypic
+% class shows the two alleles to be semidominant, whereas the other class shows
+% one allele to be dominant over the other, the most parsimonious explanation is
+% that there are at least two functional units encoded within the gene and which
+% are affected by this allelic set. On the other hand, another hypothesis may posit
+% that there is a single functional unit which is dominant in some specific context
+% but semidominant in another. Thus, there may be 1--2 functional units in the gene
+% under study.
+% This number may be more exactly determined by studying many more
+% alleles that affect the sequences required for these functions.
 
-On the other hand, a phenotypic class where two genotypes, $a/a$ and $a/b$,
-exhibit perturbed expression levels requires a dominance analysis for biological
-interpretation of this class. If the two alleles are semidominant, meaning the
-perturbation levels in the \emph{trans}-heterozygote ($a/b$) are intermediate
-between the levels of the two homozygotes, then this means that one functional
-unit is impaired in one allele but not the other, and the function of this unit
-is dosage-sensitive within the activity levels relevant to these alleles. On the
-other hand, if the perturbations associated with the \emph{trans}-heterozygotes
-are equal to those in the homozygotes $a/a$, then $a$ is dominant negative over
-$b$. Dominant negative alleles are important biologically because they generate
-poisonous products that can often be highly informative of gene function.
-
-Systematic analysis of each phenotypic class for two pairs of alleles will
-reveal the maximum and minimum number of functional units that may be
-differentially impaired between the two alleles. For example, if one phenotypic
-class shows the two alleles to be semidominant, whereas the other class shows
-one allele to be dominant over the other, the most parsimonious explanation is
-that there are at least two functional units encoded within the gene and which
-are affected by this allelic set. On the other hand, another hypothesis may posit
-that there is a single functional unit which is dominant in some specific context
-but semidominant in another. Thus, there may be 1--2 functional units in the gene
-under study. This number may be more exactly determined by studying many more
-alleles that affect the sequences required for these functions.
-
-To quantify this dominance, we implemented and maximized a Bayesian model (see
-\nameref{sec:methods}; see also the
+To quantify dominance for a phenotypic class, we implemented and maximized a
+Bayesian model (see \nameref{sec:methods}; see also the
 \href{https://wormlabcaltech.github.io/med-cafe/notebook/dominance.html}{Dominance
-Notebook}). Briefly, for each transcript within a given class, we asked how the
+Notebook}). For each transcript within a given class, we asked how the
 logarithm-transformed fold-change (which we refer to as a $\beta$ coefficient)
 measured for each homozygote should be weighted to best predict the observed
 $\beta$ values observed for the \emph{trans}-heterozygote, subject to the
@@ -543,7 +525,7 @@ functional unit.
 % \label{fig:framework}
 % \end{figure*}
 
-\subsection*{RNA-seq analysis of an allelic series of a Mediator subunit}
+\subsection*{Proof-of-principle analysis of an allelic series of a Mediator subunit}
 \subsubsection*{Strong and weak loss-of-function alleles of \gene{mdt-12} show
              different transcriptomic profiles}
 We sequenced in triplicate cDNA synthesized from mRNA extracted from
@@ -663,21 +645,24 @@ Statistics Notebook}).
 % they contain genes that have been mis-classified and which most likely are
 % differentially expressed in all three genotypes.
 
-We applied our false hit analysis to identify four non-overlapping phenotypic
+We used a false hit analysis to identify four non-overlapping phenotypic
 classes (see Fig.~\ref{fig:venn}). We use the term allele- or genotype-specific
 to refer to groups of transcripts that are solely perturbed in a single
 genotype. On the other hand, we use the term allele-associated to refer to those
 groups of transcripts that are perturbed in at least two genotypes. We
-identified a \textbf{\emph{sy622}-associated} phenotypic class, which consisted of 720
-genes differentially expressed in \emph{sy622} homozygotes and in
+identified a \textbf{\emph{sy622}-associated} phenotypic class, which consisted
+of 720 genes differentially expressed in \emph{sy622} homozygotes and in
 \emph{trans}-heterozygotes, but which were not differentially expressed in
-\emph{bx93} homozygotes. We also identified a \textbf{\emph{bx93}-associated} phenotypic
-class. The false hit analysis suggested that this class should include all
+\emph{bx93} homozygotes. We also identified a \textbf{\emph{bx93}-associated}
+phenotypic class. False hit analysis suggested that this class should include all
 genes that were differentially expressed in \emph{bx93} homozygotes and at least
 one other genotype, since it is likely that these genes represented false
 negative hits in the missing genotype. After re-classification, this class
-contains 403 genes. We also identified a \textbf{\emph{sy622}-specific} phenotypic class
-(1,841 genes) and a \textbf{\emph{trans}-heterozygote-specific} phenotypic class (1,226
+contains 403 genes. The \textbf{\emph{bx93}-specific} class of transcripts is
+expected to contain on average 39 false positive hits. Therefore, this class is
+most likely artifactual, and we do not consider it for the rest of our analysis.
+We also identified a \textbf{\emph{sy622}-specific} phenotypic class (1,841
+genes) and a \textbf{\emph{trans}-heterozygote-specific} phenotypic class (1,226
 genes; see the
 \href{https://wormlabcaltech.github.io/med-cafe/notebook/phenotypic_classes.html}{
 Phenotypic Classes Notebook}).
@@ -688,7 +673,8 @@ Phenotypic Classes Notebook}).
 
 
 \begin{figure}
-  \includegraphics[width=0.4\textwidth]{../figs/venn_diagrams.pdf}
+  \centering{}
+  \includegraphics[width=0.45\textwidth]{../figs/venn_diagrams.pdf}
   \caption{
   Transcripts under the control of \dpy{} belong to distinct phenotypic
   classes.
@@ -761,43 +747,34 @@ Phenotypic Classes Notebook}).
 
 To dissect these alleles, establishment of a dominance hierarchy is required for
 each allele at each phenotypic class. Since the \emph{sy622}-specific class is
-perturbed only in the \emph{sy622} homozygotes, we conclude that the
-\emph{sy622} allele is recessive to the \emph{bx93} allele, which has wild-type
-functionality for this phenotypic class. Therefore, there is a  module that is
-partially or completely deleted in the \emph{sy622} allele but  retains
-wild-type functionality in the \emph{bx93} allele. This functionality requires
-protein encoded between the amino acid position 1,698 where the \emph{sy622}
-protein product truncates prematurely, and the position 2,549 where the
-\emph{bx93} protein product ends.
+perturbed only in the \emph{sy622} homozygotes, the \emph{sy622} allele is
+recessive to the \emph{bx93} allele, which has wild-type functionality for this
+phenotypic class. Therefore, there is a functional unit that is impaired in the
+\emph{sy622} allele but not in the \emph{bx93} allele. This unit requires
+protein encoded between amino acid position 1,698 where the \emph{sy622} protein
+product truncates prematurely, and position 2,549 where the \emph{bx93} protein
+product ends.
 
 The \emph{sy622}-associated class contains genes with perturbed expression
 levels in both \emph{sy622} homozygotes and in \emph{trans}-heterozygotes.
 Interpretation of this class requires a dominance analysis. The \emph{sy622} and
 \emph{bx93} alleles are semidominant ($d_{bx93} = 0.51$) to each other within
-this phenotypic class. This suggests that there is a structure requiring amino
-acids 1--2,549. Semidominance further indicates that the functionality encoded
-in this gene is dosage-dependent within the relevant activity levels of these
-alleles.
+this phenotypic class. This suggests that there is a functional unit requiring
+amino acids 1--2,549.
 
-We also explored how expression levels of transcripts within the
-\emph{bx93}-associated phenotypic class were controlled by these two alleles.
-Transcripts in this class are differentially expressed in homozygotes of either
-allele. Moreover, transcripts in this class are more perturbed in \emph{sy622}
-homozygotes than in \emph{bx93} homozygotes. This is consistent with a single
-functional unit that is impaired in the \emph{bx93} allele, and even more
-impaired in the \emph{sy622} allele (see Fig.~\ref{fig:bx93_associated}).
-
-If a single functional unit was impaired, then we would expect these alleles to
-form a quantitative allelic series for this phenotypic class. In a
-quantitative series, alleles exhibit semidominance. We quantified the dominance
-coefficient for this class and found that the \emph{bx93} allele is largely but
-not completely dominant over the \emph{sy622} allele ($d_{bx93}=0.81$; see
-Fig.~\ref{fig:bx93_associated}). Dominance in the context of an allelic series
-indicates a qualitative allelic series, which is evidence that \protein{MDT-12}
-protein produced from the \emph{bx93} allele has an intact functional unit that
-is deleted in protein product from the \emph{sy622} allele. Mixed evidence for
-quantitative and qualitative allelic series at this phenotypic class precludes a
-definitive conclusion.
+Transcripts in the \emph{bx93}-associated phenotypic class do not have wild-type
+expression in any genotype except the wild type. Moreover, transcripts in this
+class are more perturbed in \emph{sy622} homozygotes than in \emph{bx93}
+homozygotes. This is consistent with a single functional unit that is impaired
+in the \emph{bx93} allele, and even more impaired in the \emph{sy622} allele
+(see Fig.~\ref{fig:bx93_associated}). If a single functional unit was impaired,
+then we would expect these alleles to form a quantitative allelic series within
+this phenotypic class. In a quantitative series, alleles exhibit semidominance.
+We quantified the dominance coefficient for this class and found that the
+\emph{bx93} allele is largely but not completely dominant over the \emph{sy622}
+allele ($d_{bx93}=0.81$; see Fig.~\ref{fig:bx93_associated}), which indicates
+a qualitative allelic series. These two alleles form a mixed allelic series at
+this phenotype, precluding a definitive conclusion regarding functional units.
 
 
 % \subsubsection*{The \emph{bx93} allele is dominant over \emph{sy622} for the
@@ -936,8 +913,8 @@ We have shown that whole-organism transcriptomic phenotypes can be analyzed in
 the context of an allelic series to partition the transcriptomic effects of a
 large, pleiotropic gene into separable phenotypic classes that would otherwise
 be difficult if not impossible to identify using other methods. Analysis of
-these modules can inform structure/function predictions, and enrichment analysis
-of each class can be used to associate transcriptional modules with morphologic
+these classes can inform structure/function predictions, and enrichment analysis
+of each class can be used to associate transcriptional classes with morphologic
 or behavioral phenotypes. This method shows promise for analyzing pathways that
 have major effects on gene expression in an organism, and which do not have
 complex, antagonistic tissue-specific effects on expression. Given the
@@ -982,10 +959,10 @@ dominant over the \emph{sy622} allele for expression levels of genes in this
 class, the expression of these genes deviated from wild-type levels in both
 alleles. The latter suggests that the \emph{bx93}-associated module is perturbed
 quantitatively in both alleles, whereas dominance analyses favor an
-interpretation where a module is present in one allele but not in the other.
-One possibility is that the \emph{bx93}-associated function we observed is the
-joint activity of two distinct effectors, functional units 3 and 4 (FC3, FC4,
-see Fig.~\ref{fig:domains}). In this model, FC4 loses partial function in the
+interpretation where a module is present in one allele but not in the other. One
+possibility is that the \emph{bx93}-associated function we observed is the joint
+activity of two distinct effectors, functional units 3 and 4 (FC3, FC4, see
+Fig.~\ref{fig:domains}). In this model, FC4 loses partial function in the
 \emph{bx93} allele, whereas the FC3 retains its complete activity. This leads to
 non-wild-type expression levels of the \emph{bx93}-associated class of
 transcripts. In the \emph{sy622} allele, FC4 is further impaired, causing an
@@ -993,10 +970,10 @@ increase in the severity of the observable phenotype. FC3 could be the same unit
 as FC2, since neither unit behaves in a dosage sensitive manner. A rigorous
 examination of this model requires studying alleles that mutate the region
 between Q1689 and Q2549 using homozygotes and \emph{trans}-heterozygotes. Future
-work should be able to establish how many modules exist in total, and how they
-may interact to drive gene expression. The phenotypic classes identified here
-could be compared against transcriptomic signatures from other transcription
-factors to identify candidate cofactors.
+work should be able to establish how many functional units exist in total, and
+how they may interact to drive gene expression. The phenotypic classes
+identified here could be compared against transcriptomic signatures from other
+transcription factors to identify candidate cofactors.
 
 \begin{figure}
   \centering{}
@@ -1008,34 +985,35 @@ factors to identify candidate cofactors.
     so edges are drawn as ragged lines. Thick horizontal lines show the
     limit where each function could end, if known. We postulate that the
     \emph{bx93}-associated class is controlled by two functional units, FC3 and
-    FC4, in the tail region of this gene. Some of the modules shown may
-    represent the same structures. Future experiments are required to make a more
-    complete determination of the number and nature of these modules.
+    FC4, in the tail region of this gene. Some of the units shown may be
+    redundant.
   }
 \label{fig:domains}
 \end{figure}
 
 \subsection*{Controlling statistical artifacts}
 Transcriptomic phenotypes generate large amounts of information that can be used
-to determine functional units. However, due to the large number of tests
-performed, false positive and false negative events occur frequently enough to
-create populations of transcripts that have anomalous behaviors. It is necessary
-to identify what modules or populations are most at risk of these events and to
-what extent these modules may be polluted by false signals to prevent
-over-interpretation. In our experiment, we can estimate statistical noise in
-each population. There is a rich literature in genomics devoted to estimating and
-controlling false positive rates~\cite{Storey2003,Benjamini1995}, but false
-negative rates have largely been ignored because they do not create spurious
-signal in simple experimental designs and because there is ample signal in most
-RNA-seq experiments. For allelic series experiments to be successful, systematic
-algorithms to estimate and control false negative rates, and to identify the
-populations most at risk for enrichment of false hits, must be developed,
-because false negative hits can create populations of genes that have
+to determine functional units. However, false positive and false negative events
+occur frequently enough to create artifactual populations of transcripts.
+Moreover, the distribution of false positive and false negative hits may not be
+uniform when comparing differentially expressed transcripts relative to a
+wild-type control between multiple genotypes. Identifying what classes are most
+at risk of these events and to what extent these classes may be polluted by
+false signals will prevent over-interpretation and
+% Using false hit
+% analyses, we can estimate statistical noise in each class.
+% There is a rich
+% literature in genomics devoted to estimating and controlling false positive
+% rates~\cite{Storey2003,Benjamini1995}, but false negative rates have largely
+% been ignored because they do not create spurious signal in simple experimental
+% designs and because there is ample signal in most RNA-seq experiments.
+may significantly decrease the apparent complexity of
+a gene or a genetic interaction, because artifactual classes can often exhibit
 fantastical biological behaviors (such as contrived examples of intragenic
 complementation or dosage models). As a general rule, small clusters or classes
 should be viewed with skepticism, particularly if the biological interpretation
-is complex. We expect these conclusions will be of broad significance to genomics
-research where highly multiplexed measurements are often compared to identify
+is implausible. These conclusions are of broad significance to chromatin
+research where highly multiplexed measurements are compared to identify
 similarities and differences in the genome-wide behavior of a single variable
 under multiple conditions.
 
@@ -1052,44 +1030,49 @@ under multiple conditions.
              statistical artifact}
 In our study, we found a class of transcripts that were exclusively
 differentially expressed in \emph{trans}-heterozygotes. The size of this class,
-1226 genes, means it cannot be a statistical artifact. As a result, this class
+1226 genes, means it is not statistical artifact. As a result, this class
 must be interpreted either as a legitimate aspect of \dpy{} biology, possibly
-reflecting dosage- or tissue-specific effects, or as a strain-specific artifact.
+reflecting dosage- or tissue-specific effects, or strain-specific artifacts.
 The genotype of the heterozygote includes a mutation at the \gene{dpy-6} locus
 that acts as a cis-marker for the \emph{bx93} mutation. One possibility is that
 the \emph{dpy-6} loss-of-function mutation is not recessive for transcriptomic
 phenotypes and is responsible for the dysregulation of the new genes observed in
 the heterozygote. Another possibility is that the \emph{dpy-6} strain had
 background mutations that affect gene expression levels in a complex manner.
-These issues could be addressed by re-generating the alleles used in this study
-using genome engineering tools like CRISPR Cas9, which have few off-target
-effects in \cel{}~\cite{Chiu2013}. However, even if these issues were addressed,
-the biological interpretation of this class is not straightforward.
+% These issues could be addressed by re-generating the alleles used in this study
+% using genome engineering tools like CRISPR Cas9, which have few off-target
+% effects in \cel{}~\cite{Chiu2013}.
+% However, even if these issues were addressed, the biological interpretation of
+% this class is not straightforward.
 
-Phenotypes that are exacerbated or are unique to \emph{trans}-heterozygotes
-often indicate that the protein products of the two alleles are somehow
-interfering with each other. This interference can often be the result of
-physical interactions such as homodimerization, or through a dosage reduction of
-a toxic product~\cite{Yook2005}. In the case of \dpy{} orthologs, the protein
-products are not known to form oligomers. Instead, \protein{mdt-12} and its
-orthologs are expected to assemble in a monomeric manner into the
-\protein{cdk-8} Kinase Module.
+If the \emph{trans}-heterozygote specific class is not artifactual, its
+biological interpretation is not straightforward. Phenotypes that are
+exacerbated or are unique to \emph{trans}-heterozygotes often indicate that the
+protein products of the two alleles are somehow interfering with each other.
+This interference can often be the result of physical interactions such as
+homodimerization, or through a dosage reduction of a toxic
+product~\cite{Yook2005}. In the case of \dpy{} orthologs, the protein products
+are not known to form oligomers. Instead, \protein{mdt-12} and its orthologs are
+expected to assemble in a monomeric manner into the \protein{cdk-8} Kinase
+Module.
 
-A dosage model could explain the \emph{trans}-heterozygote specific class if the
-dosage curve is bell-shaped. In this model, a switch is only activated at a very
+A dosage model explains the \emph{trans}-heterozygote specific class if the
+response is bell-shaped. In this model, a switch is only activated at a very
 specific \dpy{} activity level. Beyond this threshold, the switch remains off.
 Although such a model explains the data, mechanisms that could generate such a
-dosage curve are not immediately obvious. One possibility is that this switch is
-enacted at the level of cell specification or cell division, and that at the
-appropriate dosage of \dpy{}, two cells that would typically collaborate to form
-a phenotype now act antagonistically, pushing \emph{trans}-heterozygotes into a
-different state from the homozygotes. If this is the case, whole-organism
-RNA-seq may have limited resolution to identify what tissues or cells are being
-perturbed. Single-cell sequencing of \cel{} has recently been
+dosage curve are not apparent.
+% One possibility is that this switch is
+% enacted at the level of cell specification or cell division, and that at the
+% appropriate dosage of \dpy{}, two cells that would typically collaborate to form
+% a phenotype now act antagonistically, pushing \emph{trans}-heterozygotes into a
+% different state from the homozygotes. If this is the case, whole-organism
+% RNA-seq may have limited resolution to identify what tissues or cells are being
+% perturbed.
+Single-cell sequencing of \cel{} has recently been
 reported~\cite{Cao2017}. As this technique becomes more widely adopted, and with
 decreasing cost, single-cell profiling of these genotypes may provide
 information that complements the whole-organism expression phenotypes, perhaps
-explaining the mysterious origin of this phenotype.
+explaining the origin of this phenotype.
 
 \subsection*{Analysis of allelic series using transcriptome-wide measurements}
 % TODO: hughes, o'shea
@@ -1155,17 +1138,16 @@ PS4087 \gene{mdt-12(sy622)},
 PS4187 \gene{mdt-12(bx93)},
 %line break inserted below because \gene{...} doesn't linebreak well
 and PS4176\\ \gene{dpy-6(e14) mdt-12(bx93)/ + mdt-12(sy622)}.
-All lines were grown on standard nematode growth media (NGM) Petri plates seeded
+Lines were grown on standard nematode growth media (NGM) Petri plates seeded
 with OP50 \ecol{} at 20\degree{}C~\cite{Brenner1974}.
 
 \subsection*{Strain synchronization, harvesting and RNA sequencing}
-All strains were synchronized by bleaching
-P$_0$'s into virgin S. basal (no cholesterol or ethanol added) for 8--12 hours.
-Arrested L1 larvae were placed in NGM plates seeded with OP50 at 20\degree{}C
-and allowed to grow to the young adult stage (as assessed by vulval morphology
-and lack of  embryos). RNA extraction was performed as described
-in~\cite{AngelesAlboresHIF} and sequenced using a previously described
-protocol~\cite{Angeles-Albores2017}.
+Strains were synchronized by bleaching P$_0$'s into virgin S. basal (no
+cholesterol or ethanol added) for 8--12 hours. Arrested L1 larvae were placed in
+NGM plates seeded with OP50 at 20\degree{}C and grown to the young adult stage
+(assessed by vulval morphology and lack of embryos). RNA extraction was
+performed as described in~\cite{AngelesAlboresHIF} and sequenced using a
+previously described protocol~\cite{Angeles-Albores2017}.
 
 \subsection*{Read pseudo-alignment and differential expression}
 Reads were pseudo-aligned to the \cel{} genome (WBcel235) using
@@ -1177,43 +1159,45 @@ MultiQC~\cite{Andrews2010,Deluca2012,Langmead2009,Ewels2016}. All libraries had
 good quality scores.
 
 Differential expression analysis was performed using
-Sleuth~\cite{Pimentel2016a}. Briefly, we used a general linear model to identify
+Sleuth~\cite{Pimentel2016a}. We used a general linear model to identify
 genes that were differentially expressed between wild-type and mutant libraries.
-To increase our statistical power, we pooled wild-type replicates from other
-published~\cite{AngelesAlboresHIF,Angeles-Albores2017} and unpublished
-analysis. All wild-type replicates were collected at the same stage (young
-adult). In total, we had 10 wild-type replicates from 4 different batches, which
-heightened our statistical power. Batch effects were smaller than
-between-genotype effects, as assessed by principal component analysis (PCA),
-except when switching between samples constructed by different library methods.
-Wild-type samples constructed using the same library method clustered together
-and away from all other mutant samples. However, clustering wild-type samples by
-themselves revealed that the samples clusters correlated with the person who
-collected them. Therefore, we added batch correction terms to our model to
-account for batch effects from library construction as well as from the person
-who collected the samples.
+To increase our statistical power, we pooled young adult wild-type replicates
+from other published~\cite{AngelesAlboresHIF,Angeles-Albores2017} and unpublished
+analysis adjusting for batch effects.
+% All wild-type replicates were collected at the same stage (young
+% adult). In total, we had 10 wild-type replicates from 4 different batches, which
+% heightened our statistical power. Batch effects were smaller than
+% between-genotype effects, as assessed by principal component analysis (PCA),
+% except when switching between samples constructed by different library methods.
+% Wild-type samples constructed using the same library method clustered together
+% and away from all other mutant samples. However, clustering wild-type samples by
+% themselves revealed that the samples clusters correlated with the person who
+% collected them. Therefore, we added batch correction terms to our model to
+% account for batch effects from library construction as well as from the person
+% who collected the samples.
 
 \subsection*{Non-parametric bootstrap}
 We performed non-parametric bootstrap testing to identify whether two
-distributions had the same mean. Briefly, the two datasets were mixed, and
-samples were selected at random with replacement from the mixed population into
-two new datasets. We calculated the difference in the means of these new
-datasets. We iterated this process $10^6$ times. To calculate a $p$-value that
-the null hypothesis is true, we identified the number of times a difference in
-the means of the simulated populations was greater than or equal to the observed
-difference in the means of the real population. We divided this result by $10^6$
-to complete the calculation for a $p$-value. If an event where the difference in
-the simulated means was greater than the observed difference in the means was
-not observed, we reported the $p$-value as $p<10^{-6}$. Otherwise, we reported
+distributions had the same test statistic using $10^6$ bootstraps.
+% Briefly, the two datasets were mixed,
+% and samples were selected at random with replacement from the mixed population
+% into two new datasets. We calculated the difference in the means of these new
+% datasets. We iterated this process $10^6$ times. To calculate a $p$-value that
+% the null hypothesis is true, we identified the number of times a difference in
+% the means of the simulated populations was greater than or equal to the observed
+% difference in the means of the real population. We divided this result by $10^6$
+% to complete the calculation for a $p$-value.
+If no statistics equal to or greater than the observed statistic was observed,
+we reported the $p$-value as $p<10^{-6}$. Otherwise, we reported
 the exact $p$-value. We chose to reject the null hypothesis that the means of
 the two datasets are equal to each other if $p < 0.05$.
 
 \subsection*{Dominance analysis}
 \label{subsec:dominance}
-We modeled allelic dominance as a weighted average of allelic activity. Briefly,
-our model proposed that $\beta$ coefficients of the heterozygote,
-$\beta_{a/b,i,\text{Pred}}$, could be modeled as a linear combination of the
-coefficients of each homozygote:
+We modeled allelic dominance as a weighted average of allelic activity:
+% our model proposed that $\beta$ coefficients of the heterozygote,
+% $\beta_{a/b,i,\text{Pred}}$, could be modeled as a linear combination of the
+% coefficients of each homozygote:
 \begin{equation}
   \beta_{a/b,i,\text{Pred}}(d_a) = d_a\cdot \beta_{a/a,i} +
                                    (1-d_a)\cdot \beta_{b/b,i},
@@ -1237,25 +1221,25 @@ main text). This equation describes a linear regression which was solved
 numerically.
 
 \subsection*{Code}
-All code was written in Jupyter notebooks~\cite{Perez2007} using the Python
+Code was written in Jupyter notebooks~\cite{Perez2007} using the Python
 programming language. The Numpy, pandas and scipy libraries were used for
 computation~\cite{VanDerWalt2011,McKinney2011,Oliphant2007} and the matplotlib
 and seaborn libraries were used for data visualization~\cite{Hunter2007,Waskom}.
 Enrichment analyses were performed using the WormBase Enrichment
 Suite~\cite{Angeles-Albores2016}. For all enrichment analyses, a $q$-value of
-less than $10^-3$ was considered statistically significant. For gene ontology
+less than $10^{-3}$ was considered statistically significant. For gene ontology
 enrichment analysis, terms were considered statistically significant only if
 they also showed an enrichment fold-change greater than 2.
 
 \subsection*{Data Availability}
-Raw and processed reads will be deposited in the Gene Expression Omnibus. Scripts
+Raw and processed reads were deposited in the Gene Expression Omnibus. Scripts
 for the entire analysis can be found with version control in our Github
 repository, \url{https://github.com/WormLabCaltech/med-cafe}. A user-friendly,
 commented website containing the complete analyses can be found at
 \url{https://wormlabcaltech.github.io/med-cafe/}. Raw reads and quantified
 abundances for each sample were deposited at the NCBI Gene Expression Omnibus
 (GEO)~\cite{Edgar2002} under the accession code GSE107523
-(\url{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSExxx}).
+(\url{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107523}).
 
 \section*{Acknowledgements}
 This work was supported by HHMI with whom PWS was an investigator, by the
