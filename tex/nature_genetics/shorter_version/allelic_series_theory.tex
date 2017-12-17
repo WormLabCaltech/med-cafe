@@ -7,6 +7,7 @@
 \usepackage{nameref}
 \usepackage[switch]{lineno}
 \usepackage{amsmath}
+\usepackage{mathtools} % for \prescript{} command
 \usepackage{booktabs}
 \usepackage[numbers,super]{natbib}
 \usepackage{changepage}
@@ -101,7 +102,7 @@
 \newcommand{\protein}[1]{\mbox{\uppercase{#1}}}
 \newcommand{\ras}{\gene{let-60} (\emph{ras})}
 \newcommand{\rasp}{\protein{let-60}}
-\newcommand{\dpy}[1]{\gene{mdt-12#1}}
+\newcommand{\dpy}[1]{\gene{dpy-22#1}}
 \newcommand{\letgfn}{3,021}
 \newcommand{\letlfn}{857}
 \newcommand{\letgf}{\gene{let-60(gf)}}
@@ -151,7 +152,7 @@ Pasadena, CA, 91125, USA}
 Mutations of a gene can yield a series of alleles with different phenotypes that
 reveal multiple functions encoded by that gene, regardless of the alleles'
 molecular nature. Homozygous alleles can be ordered by their phenotypic
-severity; tehn, phenotypes of \emph{trans}-heterozygotes carrying two alleles
+severity; then, phenotypes of \emph{trans}-heterozygotes carrying two alleles
 can reveal which alleles are dominant for each phenotype. Together, the severity
 and dominance hierarchies show intragenic functional units. In
 \emph{Caenorhabditis~elegans}, these series have helped characterize  genes such
@@ -162,7 +163,7 @@ Biology has moved from expression measurements of single genes towards
 genome-wide measurements. Expression profiling via RNA-seq~\cite{Mortazavi2008}
 enables simultaneous measurement of transcript levels for all genes in a genome,
 yielding a transcriptome. These measurements can be made on whole organisms,
-isolated tissues, or on single cells~\cite{Tang2009,Schwarz2012}. Transcriptomes
+isolated tissues, or single cells~\cite{Tang2009,Schwarz2012}. Transcriptomes
 have been successfully used to identify new cell or organismal
 states~\cite{Angeles-Albores2017,Villani2017}. For mutant genes, transcriptomic
 states can be used for epistasis analysis~\cite{Dixit2016,AngelesAlboresHIF},
@@ -170,19 +171,18 @@ but have not been used to characterize allelic series.
 
 We have devised methods for characterizing allelic series with RNA-seq. To test
 these methods, we selected three alleles~\cite{Zhang2000,Moghal2003} of a \cel{}
-Mediator complex subunit gene, \dpy{}. Mediator is
-a macromolecular complex with $\sim25$ subunits~\cite{Jeronimo2017} that
-globally regulates RNA polymerase II (Pol II)~\cite{Allen2015,Takagi2006}. The
-Mediator complex has at least four biochemically distinct modules: the Head,
-Middle and Tail modules and a CDK-8-associated Kinase Module (CKM). The CKM
-associates reversibly with other modules, and appears to inhibit
-transcription~\cite{Knuesel2009,Elmlund2006}.
-In \cel{} development, the CKM promotes both
-male tail formation~\cite{Zhang2000}, (through interactions with the Wnt pathway),
-and vulval formation~\cite{Moghal2003a}, (through inhibition of the Ras pathway).
+Mediator complex subunit gene, \dpy{}. Mediator is a macromolecular complex with
+$\sim25$ subunits~\cite{Jeronimo2017} that globally regulates RNA polymerase II
+(Pol II)~\cite{Allen2015,Takagi2006}. The Mediator complex has at least four
+biochemically distinct modules: the Head, Middle and Tail modules and a
+CDK-8-associated Kinase Module (CKM). The CKM associates reversibly with other
+modules, and appears to inhibit transcription~\cite{Knuesel2009,Elmlund2006}. In
+\cel{} development, the CKM promotes both male tail formation~\cite{Zhang2000},
+(through interactions with the Wnt pathway), and vulval
+formation~\cite{Moghal2003a}, (through inhibition of the Ras pathway).
 Homozygotes of allele \gene{dpy-22(bx93)}, encoding a premature stop codon
 Q2549Amber~\cite{Zhang2000}, appear grossly wild-type. In contrast, animals
-homozyguous for a more severe allele, \gene{dpy-22(sy622)} encoding another
+homozygous for a more severe allele, \gene{dpy-22(sy622)} encoding another
 premature stop codon, Q1698Amber~\cite{Moghal2003}, are dumpy (Dpy), have
 egg-laying defects (Egl), and have multiple vulvae (Muv). Due to its pleiotropy,
 these alleles have not yet been ordered in a series (see
@@ -190,26 +190,25 @@ Fig.~\ref{fig:flowchart}A).
 
 RNA-seq phenotypes have the potential to reveal functional units within genes,
 but their phenotypic complexity makes this difficult. We developed a
-method for determining allelic series from transcriptomic phenotypes and we used
+method for determining allelic series from transcriptomic phenotypes and used
 the \cel{} \dpy{} gene as a test case. Our analysis revealed functional units
 that act to modulate Mediator activity at thousands of genetic loci.
 
 
-\section*{Results and discussion}
+\section*{Results and Discussion}
 We adapted the allelic series method, previously used for individual phenotypes,
 for use with expression profiles as multidimensional phenotypes (see
-Fig.~\ref{fig:flowchart}).
-As a proof of principle, we carried out RNA-seq on biological triplicates of mRNA
-extracted from \sy{} homozygotes, \bx{} homozygotes and wild type
-controls, and quadruplicates from \emph{trans}-heterozygotes of both alleles at
-a depth of 20 million reads per sample. Reads were pseudoaligned using
-Kallisto~\cite{Bray2016}. We performed a differential expression using a general
-linear model specified in Sleuth~\cite{Pimentel2016a}
-(see~\nameref{sec:methods}). Differential expression with respect to the
-wild type control for each transcript $i$ in a genotype $g$ is measured via a
-coefficient $\beta_{g, i}$, which can be loosely interpreted as the natural
-logarithm of the fold-change. Transcripts were considered to have differential
-expression between wild-type and a mutant if $q\leq 0.1$.
+Fig.~\ref{fig:flowchart}). As a proof of principle, we carried out RNA-seq on
+biological triplicates of mRNA extracted from \sy{} homozygotes, \bx{}
+homozygotes and wild type controls, and quadruplicates from
+\emph{trans}-heterozygotes of both alleles at a depth of 20 million reads per
+sample. Reads were pseudoaligned using Kallisto~\cite{Bray2016}. We performed a
+differential expression using a general linear model specified in
+Sleuth~\cite{Pimentel2016a} (see~\nameref{sec:methods}). Differential expression
+with respect to the wild type control for each transcript $i$ in a genotype $g$
+is measured via a coefficient $\beta_{g, i}$, which can be loosely interpreted
+as the natural logarithm of the fold-change. Transcripts were considered to have
+differential expression between wild-type and a mutant if $q\leq 0.1$.
 
 \begin{figure*}
   \centering{}
@@ -230,33 +229,31 @@ By these criteria, we found \weakn{} genes differentially expressed in
 \sy{} homozygotes (see
 \href{https://wormlabcaltech.github.io/med-cafe/notebook/basic.html}{Basic
 Statistics Notebook}). We also sequenced \emph{trans}-heterozygotes with the
-genotype \gene{dpy-6(e14) mdt-12(bx93)/+ mdt-12(sy622)}, and found \transn{}
+genotype \gene{dpy-6(e14) dpy-22(bx93)/+ dpy-22(sy622)}, and found \transn{}
 differentially expressed genes.
 
 We used a false hit analysis to identify four non-overlapping phenotypic
-classes. We use the term genotype-specific to refer to groups of
-transcripts that perturbed in one mutant. We use the term
-genotype-associated to refer to those groups of transcripts  perturbed in two or
-more mutants. The \textbf{\sy{}-associated} phenotypic class consisted
-of 720 genes differentially expressed in \sy{} homozygotes and in
-\emph{trans}-heterozygotes, but which had wild-type expression in \bx{}
-homozygotes. The \textbf{\bx{}-associated} phenotypic class contains 403
-genes differentially expressed in all genotypes. We also identified a
-\textbf{\sy{}-specific} phenotypic class (1,841 genes) and a
-\textbf{\emph{trans}-heterozygote-specific} phenotypic class (1,226 genes; see
+classes. We use the term genotype-specific to refer to groups of transcripts
+that perturbed in one mutant. We use the term genotype-associated to refer to
+those groups of transcripts  perturbed in two or more mutants. The
+\textbf{\sy{}-associated} phenotypic class consisted of 720 genes differentially
+expressed in \sy{} homozygotes and in \emph{trans}-heterozygotes, but which had
+wild-type expression in \bx{} homozygotes. The \textbf{\bx{}-associated}
+phenotypic class contains 403 genes differentially expressed in all genotypes.
+We also identified a \textbf{\sy{}-specific} phenotypic class (1,841 genes) and
+a \textbf{\emph{trans}-heterozygote-specific} phenotypic class (1,226 genes; see
 the
 \href{https://wormlabcaltech.github.io/med-cafe/notebook/phenotypic_classes.html}{
-Phenotypic Classes Notebook}).
-\todo[inline]{Note: the bx93-associated class is actually 3 classes merged
-together. 2 of these classes aren't DE in all 3 genotypes (only 2 each), but my
-analyses strongly suggest this is the result of false negatives}
+Phenotypic Classes Notebook}). \todo[inline]{Note: the bx93-associated class is
+actually 3 classes merged together. 2 of these classes aren't DE in all 3
+genotypes (only 2 each), but my analyses strongly suggest this is the result of
+false negatives}
 
-We measured allelic dominance for each class. The \sy{} allele is
-completely recessive to the \bx{} for the \sy{}-specific phenotypic
-class. The \sy{} and \bx{} alleles are semidominant ($d_{bx93} =
-0.51$) to each other for the \sy{}-associated phenotypic class. The
-\bx{} allele is largely  dominant over the \sy{} allele
-($d_{bx93}=0.81$; see Table~\ref{tab:dom}).
+We measured allelic dominance for each class. The \sy{} allele is completely
+recessive to the \bx{} for the \sy{}-specific phenotypic class. The \sy{} and
+\bx{} alleles are semidominant ($d_{bx93} = 0.51$) to each other for the
+\sy{}-associated phenotypic class. The \bx{} allele is largely  dominant over
+the \sy{} allele ($d_{bx93}=0.81$; see Table~\ref{tab:dom}).
 
 \begin{table}
   \centering
@@ -317,10 +314,10 @@ We also found a class of transcripts that had perturbed levels in
 \emph{trans}-heterozygotes only; its biologicla significance is unclear.
 Phenotypes unique to \emph{trans}-heterozygotes are often the result of physical
 interactions such as homodimerization, or dosage reduction of a toxic
-product~\cite{Yook2005}. In the case of \dpy{/MDT12} orthologs, how either mechanism
-could operate is not obvious, since the \protein{mdt-12} is expected to assemble
-in a monomeric manner into the CKM.\@ Massive single-cell sequencing of \cel{}
-has recently been reported~\cite{Cao2017}. When this technique becomes
+product~\cite{Yook2005}. In the case of \dpy{/MDT12} orthologs, how either
+mechanism could operate is not obvious, since the \protein{dpy-22} is expected
+to assemble in a monomeric manner into the CKM.\@ Massive single-cell sequencing
+of \cel{} has recently been reported~\cite{Cao2017}. When this technique becomes
 cost-efficient, single-cell profiling of these genotypes may provide information
 that complements the whole-organism expression phenotypes, perhaps explaining
 the origin of this phenotype.
@@ -356,10 +353,10 @@ the paper.
 
 \subsection*{Strains used}
 Strains used were N2 wild-type (Bristol),
-PS4087 \gene{mdt-12(sy622)},
-PS4187 \gene{mdt-12(bx93)},
+PS4087 \sy{},
+PS4187 \bx{},
 %line break inserted below because \gene{...} doesn't linebreak well
-and PS4176\\ \gene{dpy-6(e14) mdt-12(bx93)/ + mdt-12(sy622)}.
+and PS4176\\ \gene{dpy-6(e14) dpy-22(bx93)/ + dpy-22(sy622)}.
 Lines were grown on standard nematode growth media (NGM) Petri plates seeded
 with OP50 \ecol{} at 20\degree{}C~\cite{Brenner1974}.
 
@@ -381,10 +378,10 @@ MultiQC~\cite{Andrews2010,Deluca2012,Langmead2009,Ewels2016}. All libraries had
 good quality scores.
 
 Differential expression analysis was performed using
-Sleuth~\cite{Pimentel2016a}. We used a general linear model to identify
-genes that were differentially expressed between wild-type and mutant libraries.
-To increase our statistical power, we pooled young adult wild-type replicates
-from other published~\cite{AngelesAlboresHIF,Angeles-Albores2017} and unpublished
+Sleuth~\cite{Pimentel2016a}. We used a general linear model to identify genes
+that were differentially expressed between wild-type and mutant libraries. To
+increase our statistical power, we pooled young adult wild-type replicates from
+other published~\cite{AngelesAlboresHIF,Angeles-Albores2017} and unpublished
 analysis adjusting for batch effects.
 % All wild-type replicates were collected at the same stage (young
 % adult). In total, we had 10 wild-type replicates from 4 different batches, which
@@ -417,17 +414,54 @@ analysis adjusting for batch effects.
 \subsection*{False hit analysis}
 To accurately count phenotypes, we developed a false hit algorithm (see
 Algorithm~\ref{alg:false}). We implemented this algorithm for three-way
-comparisons. We set our signal-to-noise threshold, $\alpha$, to 4 after random
-benchmarking showed that this threshold performs well when false positive
-and negative rates are close to 10\%. Using this threshold, the algorithm can
-correctly identify genotype-specific classes with 75\% accuracy if the classes
-contain $>800$ transcripts. Our method can identify when genotype-specific
-classes are empty with extremely high precision. Determining whether a
-genotype-specific class is real is most difficult when the class contains
-50--500 transcripts. False negative rates for genotype-associated classes are
-extremely low using this method for classes with any number of transcripts.
-However, false positive rates are on the order of 30\%. 
+comparisons in Python. Although experimentally restricted, a three-way
+comparison can result in $>5,000$ possible sets (ignoring
+size). This large number of models necessitates an algorithmic approach that can
+at least restrict the possible number of models. Our algorithm uses a noise
+function that assumes single error events are dominant, and errors resulting
+from multiple false positive and false negative events in different genotypes
+are negligible to determine the average noise flux between phenotypic classes,
+given false positive and false negative rates.
 
+To benchmark our algorithm, we generated one thousand Venn diagrams at random.
+For each Venn diagram, we calculated the average false positive and false
+negative flux matrices. Then, we added noise to each phenotypic class in the
+Venn diagram, assuming that fluxes were normally distributed with mean and
+standard deviation equal to the flux coefficient calculated. We input the noised
+Venn diagram into our false hit analysis and collected classification
+statistics. For a given signal-to-noise cutoff, $\lambda$, classification
+accuracy varied significantly with changes in the total error rate. In the
+absence of false negative hits, false hit analysis can accurately identify
+non-empty genotype-associated phenotypic classes, but identifying
+genotype-specific classes becomes difficult if the experimental false positive
+rate is high. On the other hand, even moderate false negative rates ($~10\%$)
+rapidly degrade signal from genotype-associated classes. For classes that are
+associated with three genotypes, an experimental false negative rate of 30\% is
+enough on average to prevents this class from being observed.
+
+We selected $\lambda=3$ because classification using this threshold was high
+across a range of false positive and false negative combinations. A challenge to
+applying this algorithm to our data is the fact that the false negative rate for
+our experiment is unknown. Although there has been significant progress in
+controlling and estimating false positive rates, we know of no such attempts for
+false negative rates. It is unlikely that the false negative rate for our study
+is lower than the false positive rate, because all genotypes except the controls
+are likely underpowered. We used false negative rates between 10--20\% for false
+hit analysis. When the false negative rate was set at 15\% or higher, the
+algorithm converged on the same five classes shown above. For false negative
+rates between 10--15\%, the algorithm output the same five classes, but also
+accepted the (\sy{},\bx{})-associated class. We selected the model corresponding
+to false negative rates of 15--20\% because this model had lower $\chi^2$ values
+than the model selected with a false negative rate of 10--15\% (4,212 versus
+100,650).
+
+We asked whether re-classification of some classes into others could improve
+model fit. We manually re-classified the (\sy{},\bx{})-associated and the (\bx,
+\emph{trans-heterozygote})-associated classes into the \emph{bx93}-associated
+class (which is associated with all genotypes), and we compared $\chi^2$
+statistics between a re-classified reduced model and a reduced model. The
+re-classified model had a lower $\chi^2$ (181). Thus, we concluded that the
+re-classified reduced model is the most likely model to give rise to our data.
 
 \begin{algorithm}[H]
 \label{alg:false}
@@ -467,9 +501,15 @@ However, false positive rates are on the order of 30\%.
   } % end begin
 
   \emph{Return the reduced model}\;
-  \Return{$\mathbf{K}$}
-
-  \caption{False Hit Algorithm}
+  $\mathbf{M}_{reduced} = \mathbf{K}$\;
+  \Return{$\mathbf{M}_{reduced}$}\;
+  \BlankLine{}\;
+  \caption{False Hit Algorithm. Briefly, the algorithm initializes a reduced
+  model with the phenotypic class or classes labelled by the largest number of
+  genotypes. This reduced model is used to estimate noise fluxes, which in
+  turn can be used to estimate a signal-to-noise metric between observed and
+  modelled classes. Classes that exhibit a high signal-to-noise are incorporated
+  into the reduced model.}
 \end{algorithm}
 
 \subsection*{Dominance analysis}
