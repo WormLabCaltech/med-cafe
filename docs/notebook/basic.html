@@ -14602,7 +14602,6 @@ div#notebook {
 <span class="kn">import</span> <span class="nn">pretty_table</span> <span class="k">as</span> <span class="nn">pretty</span>
 
 <span class="c1"># plotting settings</span>
-<span class="kn">import</span> <span class="nn">os</span>
 <span class="n">rc</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="n">usetex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">rc</span><span class="p">(</span><span class="s1">&#39;text.latex&#39;</span><span class="p">,</span> <span class="n">preamble</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\usepackage</span><span class="si">{cmbright}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span> <span class="s1">&#39;sans-serif&#39;</span><span class="p">,</span> <span class="s1">&#39;sans-serif&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Helvetica&#39;</span><span class="p">]})</span>
@@ -14647,7 +14646,7 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">strains</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;PS4187&#39;</span><span class="p">,</span> <span class="s1">&#39;PS4087&#39;</span><span class="p">,</span> <span class="s1">&#39;PS4176&#39;</span><span class="p">]</span>  <span class="c1"># strains to be analyzed</span>
-<span class="n">q</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># q-value cutoff</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># q-value cutoff</span>
 
 <span class="n">strain_dict</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">strains</span><span class="p">):</span>
@@ -14798,9 +14797,9 @@ Total genes identified in all genotypes: 15121
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Genotype                      Strain                        DEG                           
-dpy22.bx93                    PS4187                        481                           
-dpy22-sy622                   PS4087                        2863                          
-dpy22-transhet-sy622-bx93     PS4176                        2214                          
+dpy22.bx93                    PS4187                        205                           
+dpy22-sy622                   PS4087                        1562                          
+dpy22-transhet-sy622-bx93     PS4176                        848                           
 </pre>
 </div>
 </div>
@@ -14834,7 +14833,7 @@ dpy22-transhet-sy622-bx93     PS4176                        2214
         
         <span class="c1"># find the overlap between the two:</span>
         <span class="n">size1</span> <span class="o">=</span> <span class="n">tidy</span><span class="p">[(</span><span class="n">tidy</span><span class="o">.</span><span class="n">genotype</span> <span class="o">==</span> <span class="n">g1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tidy</span><span class="o">.</span><span class="n">qval</span> <span class="o">&lt;</span> <span class="n">q</span><span class="p">)]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">size2</span> <span class="o">=</span> <span class="n">tidy</span><span class="p">[(</span><span class="n">tidy</span><span class="o">.</span><span class="n">genotype</span> <span class="o">==</span> <span class="n">g1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tidy</span><span class="o">.</span><span class="n">qval</span> <span class="o">&lt;</span> <span class="n">q</span><span class="p">)]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">size2</span> <span class="o">=</span> <span class="n">tidy</span><span class="p">[(</span><span class="n">tidy</span><span class="o">.</span><span class="n">genotype</span> <span class="o">==</span> <span class="n">g2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tidy</span><span class="o">.</span><span class="n">qval</span> <span class="o">&lt;</span> <span class="n">q</span><span class="p">)]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         
         <span class="n">n_iso</span> <span class="o">=</span> <span class="n">genes2</span><span class="p">[</span><span class="n">genes2</span><span class="o">.</span><span class="n">target_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">genes1</span><span class="o">.</span><span class="n">target_id</span><span class="p">)]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="k">if</span> <span class="n">n_iso</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">size1</span><span class="p">,</span> <span class="n">size2</span><span class="p">])</span> <span class="o">&gt;</span> <span class="o">.</span><span class="mi">0</span><span class="p">:</span>
@@ -14855,13 +14854,26 @@ dpy22-transhet-sy622-bx93     PS4176                        2214
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>pair                                              shared GENES                                      internalization                                   
-dpy22.bx93---dpy22-sy622                          350                                               72%                                               
-dpy22.bx93---dpy22-transhet-sy622-bx93            301                                               62%                                               
-dpy22-sy622---dpy22-transhet-sy622-bx93           985                                               33%                                               
+dpy22.bx93---dpy22-sy622                          148                                               71%                                               
+dpy22.bx93---dpy22-transhet-sy622-bx93            128                                               62%                                               
+dpy22-sy622---dpy22-transhet-sy622-bx93           425                                               48%                                               
 </pre>
 </div>
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
 </div>
 </div>
 
