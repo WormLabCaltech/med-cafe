@@ -112,3 +112,9 @@ geo_submission/
 
 *.fastq.gz
 
+
+*.sketch
+
+useful_notes/.Rhistory
+
+*.sketch
