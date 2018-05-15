@@ -118,3 +118,17 @@ geo_submission/
 useful_notes/.Rhistory
 
 *.sketch
+
+model.csv
+filtered.csv
+lrt.csv
+
+*.tsv
+
+*.json
+
+*.tsv
+
+sleuth_strains/
+sleuth_batches/
+raw_reads/

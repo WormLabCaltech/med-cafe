@@ -41,23 +41,45 @@ def label(strain1, strain2):
                                 genvar.fancy_mapping[strain2])
 
 
-def find_overlap(genotypes, df, q=0.1, col='strain'):
-    """Given a list of genotypes, df and a q-value, find DEG common to all."""
-    # find only DE genes:
-    sig = df[(df[col].isin(genotypes)) & (df.qval < q)]
-    grouped = sig.groupby('target_id')
-    genes = []
-    for target, group in grouped:
-        # make sure the group contains all desired genotypes
-        all_in = (len(group[col].unique()) == len(genotypes))
-        if all_in:
-            genes += [target]
-    return genes
-
-
-def find_STP(single_muts, double_mut, df, q=0.1):
+def find_overlap(df, genotypes=[], q=0.1, col='strain', tx_col='target_id'):
     """
-    Finds Shared Transcriptomic Phenotype among 2 single and a double mutant.
+    Given a list of genotypes, df and a q-value, find DEG common to all.
+
+    Params:
+    genotypes: list-like, names of the strains or genotypes to search within
+    df: pandas DataFrame, dataframe to extract data from
+    q: float, q-value cutoff
+    col: string, must be a column name in the dataframe. This column must
+         contain the entries in the `genotypes` variable
+    tx_col: string, a column name in the dataframe. This column must contain
+            the unique isoform names that will be returned.
+
+    Output:
+    np.array of transcripts that were commonly differentially expressed in all
+    genotypes provided
+    """
+    # check for uniqueness in the isoform column:
+    for genotype in genotypes:
+        for name, group in df.groupby(col):
+            unique = len(group[tx_col].unique())
+            if unique != len(group):
+                raise ValueError('tx_col does not contain unique identifiers')
+
+    # limit search to desired strains:
+    genos = (df[col].isin(genotypes))
+    # set the q-value cutoff and remove anything above it:
+    qcutoff = (df.qval < q)
+    # count the number of times each isoform occurs:
+    sig = df[genos & qcutoff].groupby(tx_col)[col].agg('count')
+    # find the isoforms that are in both genotypes
+    sig = sig[sig.values == len(genotypes)]
+    return sig.index.values
+
+
+def find_STP(single_muts, double_mut, df, q=0.1,
+             col='strain', tx_col='target_id'):
+    """
+    Find Shared Transcriptomic Phenotype among 2 single and a double mutant.
 
     Given 3 genotypes, find shared DE genes and return sliced dataframes.
 
@@ -77,16 +99,24 @@ def find_STP(single_muts, double_mut, df, q=0.1):
     if type(double_mut) is not str:
         raise ValueError('double_mut must be of type str')
 
-    # find the overlapping gene list
-    genes = find_overlap(single_muts + [double_mut], df)
+    if len(single_muts) != 2:
+        raise ValueError('Please specify exactly two single mutants')
 
-    # extract the dataframes
-    x = df[(df.target_id.isin(genes)) &
-           (df.strain == single_muts[0])]
-    y = df[(df.target_id.isin(genes)) &
-           (df.strain == single_muts[1])]
-    xy = df[(df.target_id.isin(genes)) &
-            (df.strain == double_mut)]
+    for mut in single_muts + [double_mut]:
+        if mut not in df[col].unique():
+            raise ValueError('Some mutant dataframe subsets are empty')
+
+    # find the overlapping gene list
+    genes = find_overlap(df, single_muts + [double_mut])
+
+    # keep only STP genes in the dataframe:
+    df = df[df[tx_col].isin(genes)]
+
+    # single mutants:
+    x = df[(df[col] == single_muts[0])]
+    y = df[(df[col] == single_muts[1])]
+    # double mutant:
+    xy = df[(df[col] == double_mut)]
 
     # return the dataframes
     return x, y, xy
@@ -110,7 +140,6 @@ def perform_odr(add, dev, wadd, wdev, beta0=[0]):
     an ODR object
     """
     linear = odr.Model(f)
-    # mydata = odr.Data(add, dev, wd=1./wadd, we=1./wdev)
     mydata = odr.RealData(add, dev, sx=wadd, sy=wdev)
     myodr = odr.ODR(mydata, linear, beta0=beta0)
     myoutput = myodr.run()
