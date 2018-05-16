@@ -1,5 +1,8 @@
 """
 A module to deal more easily with dataframes containing transcriptome data.
+
+Author: David Angeles-Albores
+Date: May 16, 2018
 """
 import pandas as pd
 import numpy as np
@@ -19,8 +22,10 @@ class fc_transcriptome:
     -----------
     df: DataFrame associated with the object
     tx_col, strain, b, se_b, qval: names of the columns containing the unique
-    transcript identifiers, strain identifiers, log-fold change estimates,
-    standard error of the log-fold-change, and q-values respectively.
+                                   transcript identifiers, strain identifiers,
+                                   log-fold change estimates, standard error of
+                                   the log-fold-change, and q-values
+                                   respectively.
     q: float, the significance threshold. Defaults to 0.1
 
     Functions:
@@ -115,8 +120,8 @@ class fc_transcriptome:
         subset_tx: Boolean. If True, includes only transcripts that are
                    differentially expressed in at least one of the included
                    strains. If False, all transcripts are included.
-        norm: Boolean. If True, normalizes the rows of the matrix by their mean
-              and standard deviation.
+        norm: Boolean. If True, normalizes the rows of the matrix by their
+              mean and standard deviation.
 
         Output:
         -------
@@ -152,6 +157,9 @@ class fc_transcriptome:
             # go back to the original dataframe and subset using these IDs
             temp = temp[temp[self.tx_col].isin(ns)]
 
+        if (np.isnan(temp.b)).any() or (np.isinf(temp.b)).any():
+            warnings.warn('Matrix contains NaN or Inf values.')
+
         # turn df into a matrix
         mat = temp.pivot(index=self.tx_col, columns=col,
                          values=self.b)
@@ -162,9 +170,6 @@ class fc_transcriptome:
             mat = (mat - mat.mean(axis=0))/mat.std(axis=0)
 
         mat = mat.T
-
-        if (np.isnan(mat)).any() or (np.isinf(mat)).any():
-            warnings.warn('Matrix contains NaN or Inf values.')
 
         return mat
 
@@ -259,7 +264,7 @@ class fc_transcriptome:
         Params:
         -------
         selection: str, slice selection.
-        col: str, column to be sliced.
+        col: str, column to perform slicing on.
         sig: None, limit selection to differentially expressed genes at the
              predetermined significance value for this object.
 
