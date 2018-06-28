@@ -8,7 +8,7 @@ The folder structure is as follows:
 ```
 docs         - Files for building the website
 input        - Contains most of the required inputs into the supplementary.
-              The exception are the processed Sleuth files.
+               The exception are the processed Sleuth files.
 output       - Figures output from running the code
 kallisto     - Contains the processed TPM files and run information that was input into Sleuth.
                NOTE: The kallisto files contain a lot of extraneous RNA-seq data to this project,
