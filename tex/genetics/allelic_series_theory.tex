@@ -165,29 +165,23 @@ Pasadena, CA, 91125, USA}
 % \section*{Introduction}
 \lettrine[lines=2]{\color{color2}M}{}utations of a gene can yield a series of
 alleles with different phenotypes that reveal multiple functions encoded by that
-gene, regardless of the alleles' molecular nature. Homozygous alleles can be
-ordered by their phenotypic severity; then, phenotypes of
-\emph{trans}-heterozygotes carrying two alleles can reveal which alleles are
-dominant for each phenotype. Together, the severity and dominance hierarchies
-reveal intragenic functional regions. In \emph{Caenorhabditis~elegans}, these
-series have helped characterize  genes such as \gene{let-23/EGFR},
-\gene{lin-3/EGF} and \gene{lin-12/NOTCH}~\citep{Aroian1991, Ferguson1985a,
-Greenwald1983}. Allelic series provide a powerful way to probe genes where
-biochemical approaches would be difficult, slow or uninformative with regards to
-the biological phenomenon of interest. The power of these allelic series derives
-from the ability to draw broad conclusions about the gene of interest in terms
-of gene dosage and functional units to the extent that these two factors are
-separable without regard to the molecular identity of the mutations that created
-these alleles. Here, gene dosage is defined as the combined effects of
+gene, regardless of the alleles' molecular nature. In
+\emph{Caenorhabditis~elegans}, allelic series have characterized genes such as
+\gene{let-23/EGFR}, \gene{lin-3/EGF} and \gene{lin-12/NOTCH}~\citep{Aroian1991,
+Ferguson1985a, Greenwald1983}. Allelic series provide a way to probe
+genes where biochemical approaches would be difficult, slow or uninformative
+with regards to the biological phenomenon of interest. Their power derives from
+the ability to draw broad conclusions about the gene of interest in terms of
+gene dosage and functional units, to the extent that these two factors are
+separable, without regard to the molecular identity of the mutations that
+created these alleles. Here, gene dosage is defined as the combined effects of
 transcriptional and translational expression, gene product localization, and
-biochemical kinetics of the final gene product \emph{in situ}. Thus, allelic
-series enable geneticists to study alleles with interesting phenotypes,
-typically found through genetic screens. To study an allelic series, we must
-first enumerate the phenotypes each allele affects, and subsequently order the
-alleles into severity and dominance hierarchies per phenotype. The resulting
-hierarchies enable us to better understand how a given gene, which may be highly
-pleiotropic, can give rise to highly specific mutant phenotypes when mutated in
-just the right way.
+biochemical kinetics of the final gene product \emph{in situ}. To study allelic
+series, we must first enumerate the phenotypes each allele affects, and
+subsequently order the alleles into severity and dominance hierarchies per
+phenotype. The resulting hierarchies enable us to better understand how a given
+gene, which may be highly pleiotropic, can give rise to highly specific mutant
+phenotypes when mutated in just the right way.
 
 Biology has moved from expression measurements of single genes towards
 genome-wide measurements. Expression profiling via RNA-seq~\citep{Mortazavi2008}
@@ -195,11 +189,11 @@ enables simultaneous measurement of transcript levels for all genes in a genome,
 yielding a transcriptome. These measurements can be made on whole organisms,
 isolated tissues, or single cells~\citep{Tang2009,Schwarz2012}. Transcriptomes
 have been successfully used to identify new cell or organismal
-states~\citep{Angeles-Albores2017,Villani2017}. For mutant genes, transcriptomic
-states can be used for epistasis analysis~\citep{Dixit2016,AngelesAlboresHIF},
+states~\citep{Angeles-Albores2017,Villani2017}. Transcriptomic states can be
+used to perform epistatic analyses~\citep{Dixit2016,AngelesAlboresHIF},
 but have not been used to characterize allelic series.
 
-We have devised methods for characterizing allelic series with RNA-seq. To test
+We have devised methods for characterizing allelic series using RNA-seq. To test
 these methods, we selected three alleles~\citep{Zhang2000,Moghal2003} of a
 \cel{} Mediator complex subunit gene, \dpy{}. Mediator is a macromolecular
 complex with $\sim25$ subunits~\citep{Jeronimo2017} that globally regulates RNA
@@ -221,18 +215,15 @@ the Muv phenotype of another allele, \emph{sy622}, in a sensitized \emph{let-23}
 background. In contrast, animals homozygous for a more severe allele,
 \gene{dpy-22(sy622)} encoding another premature stop codon,
 Q1698Amber~\citep{Moghal2003}, are dumpy (Dpy), have egg-laying defects (Egl),
-and have multiple vulvae (Muv) (Fig.~\ref{fig:genemodel}). In spite of its
-causative role in a number of neurodevelopmental disorders~\citep{Graham2013},
-the structural and functional features of this gene are poorly understood. In
+and have multiple vulvae (Muv) (Fig.~\ref{fig:genemodel}). In
 humans, \protein{MED12} is known to have a proline-, glutamine- and leucine-rich
 domain that interacts with the WNT pathway~\citep{Kim2006}. However, many
-disease-causing variants fall outside of this domain~\citep{Yamamoto2015}. To
-study these variants and how they interfere with the functionality of
-\gene{MED12}, quantitative and efficient methods are necessary. RNA-seq
-phenotypes have the potential to reveal functional units within genes, but their
-phenotypic complexity required the development of novel methods. Our analysis
-revealed functional regions that act to modulate Mediator activity at thousands
-of genetic loci.
+disease-causing variants fall outside of this domain~\citep{Yamamoto2015}.
+In spite of its causative role in a number of neurodevelopmental
+disorders~\citep{Graham2013}, the structural and functional features of this
+gene are poorly understood, partially because genetic approaches towards
+studying pleiotropic genes have proved difficult in the past, highlighting the
+need for new methods.
 
 \begin{figure}
   \centering{}
@@ -245,27 +236,222 @@ of genetic loci.
 \end{figure}
 
 
-\section*{Results and Discussion}
+\section*{Methods}\label{sec:methods}
+
+\subsection*{Strains used}
+Strains used were N2 wild-type (Bristol)~\citep{Brenner1974},
+PS4087 \sy{}~\citep{Moghal2003},
+PS4187 \bx{}~\citep{Zhang2000},
+%line break inserted below because \gene{...} doesn't linebreak well
+PS4176\\ \gene{dpy-6(e14) dpy-22(bx93)/+ dpy-22(sy622)}~\citep{Moghal2003},
+MT4866 \gene{let-60(n2021)}~\citep{Beitel1990a},
+MT2124 \gene{let-60(n1046gf)}~\citep{Beitel1990a} and
+EW15 \gene{bar-1(ga80)}~\citep{Eisenmann1998}.
+Lines were grown on standard nematode growth media (NGM) Petri plates seeded
+with OP50 \ecol{} at 20\degree{}C~\citep{Brenner1974}.
+
+\subsection*{Strain synchronization, harvesting and RNA sequencing}
+With the exception of strain MT4866, strains were synchronized by bleaching
+P$_0$'s into virgin S. basal (no cholesterol or ethanol added) for 16--18 hours.
+Arrested L1 larvae were placed in NGM plates seeded with OP50 at 20\degree{}C
+and grown to the young adult stage (assessed by vulval morphology and lack of
+embryos). We discovered that MT4866 dies upon L1 starvation for this period of
+time. As a result, we synchronized this strain by double bleaching. Animals were
+picked if they were young adults, regardless of whether any vulval or
+morphological phenotypes were present. RNA extraction and sequencing was
+performed as previously described by~\citet{AngelesAlboresHIF,
+Angeles-Albores2017}. Briefly, young adults were placed in 10~$\mu$L of TE
+buffer,  and digested using  Recombinant Proteinase K PCR Grade (Roche Lot 656
+No. 03115 838001) incubated with 1\% SDS 657 and 1.25~$\mu$L RNA Secure (Ambion
+AM7005). Total RNA was extracted using the Zymo Research Directzol RNA MicroPrep
+Kit (Zymo Research, SKU R2061).\@ mRNA was subsequently purified using a NEBNext
+Poly(A) mRNA Magnetic Isolation Module (New England Biolabs, NEB, \#E7490).
+Sequencing libraries were generated using the NEBNext Ultra RNA Library Prep Kit
+for Illumina (NEB \#E7530). These libraries were sequenced using an Illumina
+HiSeq2500 machine in single-read mode with a read length of 50 nucleotides.
+
+\subsection*{Read pseudo-alignment and differential expression}
+Reads were pseudo-aligned to the \cel{} genome (WBcel235) using
+Kallisto~\citep{Bray2016}, using 200 bootstraps and with the sequence bias
+(\texttt{--seqBias}) flag. The fragment size for all libraries was set to 200
+and the standard deviation to 40. Quality control was performed on a subset of
+the reads using FastQC, RNAseQC, BowTie and MultiQC~\citep{Andrews2010,
+Deluca2012, Langmead2009, Ewels2016}.
+
+Differential expression analysis was performed using
+Sleuth~\citep{Pimentel2016a}. We used a general linear model to identify genes
+that were differentially expressed between wild-type and mutant libraries. To
+increase our statistical power, we pooled young adult wild-type replicates from
+other published~\citep{AngelesAlboresHIF, Angeles-Albores2017} and unpublished
+analyses adjusting for batch effects. Briefly, batch effects were controlled by
+including the identity of the person who collected the worms and the method
+by which the libraries were generated as covariates.å
+
+\subsection*{False hit analysis}
+To accurately count phenotypes, we developed a false hit algorithm
+(Algorithm~\ref{alg:false}). We implemented this algorithm for comparisons of
+three genotypes using Python. Such an experiment can result in $128$ possible
+combinations of phenotypic classes (ignoring size). This large number
+of models necessitates an algorithmic approach that can restrict the
+number of models. Our algorithm uses a noise function that assumes
+false hit events are non-overlapping (i.e.\ the same gene cannot be the result
+of two false positive events in two or more genotypes) to determine the average
+noise flux between phenotypic classes. These assumptions break down if
+false-positive or negative rates are large (>25\%).
+
+To benchmark our algorithm, we generated one thousand Venn diagrams at random.
+For each Venn diagram, we calculated the average false positive and false
+negative flux matrices. Then, we added noise to each phenotypic class in the
+Venn diagram, assuming that fluxes were normally distributed with mean and
+standard deviation equal to the flux coefficient calculated. We input the noised
+Venn diagram into our false hit analysis and collected classification
+statistics. For a given signal-to-noise cutoff, $\lambda$, classification
+accuracy varied significantly with changes in the total error rate. In the
+absence of false negative hits, false hit analysis can accurately identify
+non-empty genotype-associated phenotypic classes, but identifying
+genotype-specific classes becomes difficult if the experimental false positive
+rate is high. On the other hand, even moderate false negative rates ($>10\%$)
+rapidly degrade signal from genotype-associated classes. For classes that are
+associated with three genotypes, an experimental false negative rate of 30\% is
+enough on average to prevents this class from being observed.
+
+We selected $\lambda=3$ because classification using this threshold was high
+across a range of false positive and false negative combinations. A challenge to
+applying this algorithm to our data is the fact that the false negative rate for
+our experiment is unknown. Although there has been significant progress in
+controlling and estimating false positive rates, we know of no such attempts for
+false negative rates. It is unlikely that the false negative rate for our study
+is lower than the false positive rate, because all genotypes except the controls
+are likely underpowered. We used false negative rates between 10--20\% for false
+hit analysis. All analyses returned the same final model.
+
+We asked whether re-classification of some classes into others could improve
+model fit. We manually re-classified the (\sy{},\bx{})-associated and the (\bx,
+\emph{trans-heterozygote})-associated classes into the \emph{bx93}-associated
+class (which is associated with all genotypes), and compared $\chi^2$ statistics
+between a re-classified reduced model ($\chi^2=72$) and a reduced model
+($\chi^2=130$). Based on the lower $\chi^2$ of the re-classified reduced model,
+we concluded that it is the most likely model given our data.
+
+\begin{algorithm}[H]
+  \DontPrintSemicolon{}
+%
+  \KwData{$\mathbf{M}_{obs} =  \{N_l\}$, an observed set of classes, where each
+  class is labelled by $l\in L$ and is of size $N_l$. $f_p, f_n$, the false
+  positive and negative rates respectively. $\alpha$, the signal-to-noise
+  threshold for acceptance of a class.}
+  \KwResult{$\mathbf{M}_{reduced}$, a reduced model that fits the data.}
+  \BlankLine{}
+  \Begin{
+    \emph{Define a minimal model}, $\mathbf{K}$\;
+
+    \emph{Refine the model until convergence or iterations max out}\; \\
+    $i \leftarrow 0$\; \\
+    $\mathbf{K_{prev}} \leftarrow \emptyset$\; \\
+    \While{$(i < i_{\max})~|~(\mathbf{K_{prev}} \neq \mathbf{K}$)}{
+      $\mathbf{K_{prev}} \leftarrow \mathbf{K}$\;
+
+      \emph{Define a noise function to estimate error flows in
+            $\mathbf{K}$}\;
+      $\mathbf{F} \leftarrow \textrm{noise}(\mathbf{K}, f_p, f_n)$\;
+
+      \For{$l \in L$}{
+          \emph{Calculate signal to noise for each labelled class}\;
+          \emph{False negatives can result in $\lambda < 0$}\;
+          $\lambda_l \leftarrow \mathbf{M}_{obs, l}/F_{l}$\;
+          % \emph{Use classes with high $\lambda_l$ to refine the model}\;
+              \If{$(\lambda > \alpha)~|~(\lambda < 0)$}{
+                $\mathbf{K}_l \leftarrow \mathbf{M}_{obs, l}$\;
+              } %if
+          } % end for
+        $i++$
+    } % end while
+  } % end begin
+
+  $\mathbf{M}_{reduced} = \mathbf{K}$\;
+
+  \Return{$\mathbf{M}_{reduced}$}\;
+  \BlankLine{}\;
+  \caption{
+          False Hit Algorithm. Briefly, the algorithm initializes a reduced
+          model with the phenotypic class or classes labelled by the largest
+          number of genotypes. This reduced model is used to estimate noise
+          fluxes, which in turn can be used to estimate a signal-to-noise metric
+          between observed and modelled classes. Classes that exhibit a high
+          signal-to-noise are incorporated into the reduced model.
+  }
+\label{alg:false}
+\end{algorithm}
+
+\subsection*{Dominance analysis}
+\label{subsec:dominance}
+We modeled allelic dominance as a weighted average of allelic activity:
+\begin{equation}
+  \beta_{a/b,i,\text{Pred}}(d_a) = d_a\cdot \beta_{a/a,i} +
+                                   (1-d_a)\cdot \beta_{b/b,i},
+\end{equation}
+where $\beta_{k/k, i}$ refers to the $\beta$ value of the $i$th isoform in a
+genotype $k/k$, and $d_a$ is the dominance coefficient for allele $a$.
+
+To find the parameters $d_a$ that maximized the probability of observing the
+data, we found the parameter, $d_a$, that maximized the equation:
+\begin{equation}
+    P(d_a|D,H,I) \propto \prod_{i \in S}
+                   \exp{-\frac{{(\beta_{a/b,i,\text{Obs}} -
+                                \beta_{a/b,i,\text{Pred}}(d_a))}^2}{
+                                2\sigma_i^2}}
+\end{equation}
+where $\beta_{a/b,i,\text{Obs}}$ was the coefficient associated with the $i$th
+isoform in the \emph{trans}-het $a/b$ and $\sigma_i$ was the standard error of
+the $i$th isoform in the \emph{trans}-heterozygote samples as output by
+Kallisto. $S$ is the set of isoforms that participate in the regression (see
+main text). This equation describes a linear regression which was solved
+numerically.
+
+\subsection*{Code}
+Code was written in Jupyter notebooks~\citep{Perez2007} using the Python
+programming language. The Numpy, pandas and scipy libraries were used for
+computation~\citep{VanDerWalt2011,McKinney2011,Oliphant2007} and the matplotlib
+and seaborn libraries were used for data visualization~\citep{Hunter2007,
+Waskom}. Enrichment analyses were performed using the WormBase Enrichment
+Suite~\citep{Angeles-Albores2016,Angeles-Albores2018}. For all enrichment
+analyses, a $q$-value of less than $10^{-3}$ was considered statistically
+significant. For gene ontology enrichment analysis, terms were considered
+statistically significant only if they also showed an enrichment fold-change
+greater than 2.
+
+\subsection*{Data Availability}
+Raw and processed reads were deposited in the Gene Expression Omnibus. Scripts
+for the entire analysis can be found with version control in our Github
+repository, \url{https://github.com/WormLabCaltech/med-cafe}. A user-friendly,
+commented website containing the complete analyses can be found at
+\url{https://wormlabcaltech.github.io/med-cafe/}. Raw reads and quantified
+abundances for each sample were deposited at the NCBI Gene Expression Omnibus
+(GEO)~\citep{Edgar2002} under the accession code GSE107523
+(\url{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107523}).
+
+\section*{Results}
 \subsection*{RNA-sequencing of three \gene{dpy-22} alleles and two known
              interactor genes}
 We carried out RNA-seq on biological triplicates of mRNA extracted from \sy{}
 homozygotes, \bx{} homozygotes, and wild type controls, along with
 quadruplicates from \emph{trans}-heterozygotes of both alleles with the genotype
 \gene{dpy-6(e14) dpy-22(bx93)/+ dpy-22(sy622)}. We also sequenced mRNA extracted
-from \gene{bar-1(ga80)} (a Wnt ortholog), \gene{let-60(n2021)} and
-\gene{let-60(n1046gf)} (Ras ortholog) mutants in triplicate because these genes
-have been previously described to interact with \dpy{} to form the
-vulva~\citep{Moghal2003} and the male tail~\citep{Zhang2000}. Sequencing was
-performed at a depth of 20 million reads per sample. Reads were pseudoaligned
-using Kallisto~\citep{Bray2016}. We performed a differential expression using a
-general linear model specified using Sleuth~\citep{Pimentel2016a}
-(see~\hyperref[sec:methods]{Methods}). Differential expression with respect to
-the wild type control for each transcript $i$ in a genotype $g$ is measured via
-a coefficient $\beta_{g, i}$, which can be loosely interpreted as the natural
-logarithm of the fold-change. Transcripts were considered to have differential
-expression between wild-type and a mutant if the false discovery rate, $q$, was
-less than or equal to 10\%. We used this method to identify the differentially
-expressed genes associated with each mutant (Table~\ref{tab:numbers};
+from \gene{bar-1(ga80)} (the $\beta$-catenin ortholog in \cel{}),
+\gene{let-60(n2021)} and \gene{let-60(n1046gf)} (the Ras ortholog in \cel{})
+mutants in triplicate because these genes have been previously described to
+interact with \dpy{} to form the vulva~\citep{Moghal2003} and the male
+tail~\citep{Zhang2000}. Sequencing was performed at a depth of 20 million reads
+per sample. Reads were pseudoaligned using Kallisto~\citep{Bray2016}. We
+performed a differential expression using a general linear model specified using
+Sleuth~\citep{Pimentel2016a} (see~\hyperref[sec:methods]{Methods}). Differential
+expression with respect to the wild type control for each transcript $i$ in a
+genotype $g$ is measured via a coefficient $\beta_{g, i}$, which can be loosely
+interpreted as the natural logarithm of the fold-change. Transcripts were
+considered to have differential expression between wild-type and a mutant if
+their false discovery rate, $q$, was less than or equal to 10\%. We used this
+method to identify the differentially expressed genes associated with each
+mutant (Table~\ref{tab:numbers};
 \href{https://wormlabcaltech.github.io/med-cafe/notebook/basic.html}{Basic
 Statistics Notebook}) Supplementary File 1 contains all the beta values
 associated with this project. We have also generated a website containing
@@ -315,29 +501,27 @@ PCA identifies the vectors along which there is most variation in the data.
 These vectors can be used to project the data into lower dimensions to assess
 whether samples cluster, though interpreting the biological reasons for this
 clustering can be challenging. To perform PCA, we selected only those
-transcripts that were differentially in at least one genotype, and used the
-$\beta$ coefficients associated with these genes to perform PCA.\@ Projecting
-the data into two dimensions maintains 65\% of the variation. The first
-dimension separates the gain and loss of function \gene{let-60} mutants. The
-second dimension separates the \dpy{} mutants (Fig.~\ref{fig:pca}). On the
+transcripts that were differentially expressed in at least one genotype, and
+used the $\beta$ coefficients associated with these genes to perform PCA.\@
+Projecting the data into two dimensions maintains 65\% of the variation. The
+first dimension separates the gain and loss of function \gene{let-60} mutants.
+The second dimension separates the \dpy{} mutants (Fig.~\ref{fig:pca}). On the
 PCA plot, the \emph{trans}-heterozygote mutants appear to phenocopy the \bx{}
 mutants, recapitulating previous experiments that showed the \bx{} allele to be
 dominant over the \sy{} allele.
 
 \subsection*{Three \dpy{} genotypes have shared transcriptomic
              phenotypes}
-Although the two dimensional PCA plot suggests strongly that the \bx{} allele is
-dominant over the \sy{} allele, we would like to understand the degree and
-nature of the dominance that is occurring. To construct a severity and dominance
-hierarchy, we must establish how many transcriptomic phenotypes are
-represented among the three \dpy{} genotypes, and of those phenotypes, how many
-of them are shared transcriptomic phenotypes (STPs). Shared transcriptomic
-phenotypes are defined as the set of genes that are commonly differentially
-expressed in two mutant genotypes relative to a wild-type control, regardless
-of the direction of change, as defined previously~\citep{AngelesAlboresHIF}. We
-use the term in the plural version, because the shared genes may represent
-multiple independent modules that formally constitute different phenotypic
-classes.
+We would like to understand the degree and nature of the dominance
+between these \dpy{} alleles. To construct a severity and dominance hierarchy,
+we must establish how many transcriptomic phenotypes are represented among the
+three \dpy{} genotypes, and of those phenotypes, how many of them are shared
+transcriptomic phenotypes (STPs). Shared transcriptomic phenotypes are defined
+as the set of genes that are commonly differentially expressed in two mutant
+genotypes relative to a wild-type control, regardless of the direction of
+change, as defined previously~\citep{AngelesAlboresHIF}. We use the term in the
+plural version, because the shared genes may represent multiple independent
+modules that formally constitute different phenotypic classes.
 
 We identified significant pairwise STPs between all \dpy{} mutants. The
 transcripts that were differentially expressed in \bx{} homozygotes were almost
@@ -384,16 +568,14 @@ thought experiment highlights the need to assess which groups have sufficient
 statistical support to consider as phenotypic classes.
 
 We developed a method to assess whether groups in a Venn diagram are likely to
-be the result of statistical artifacts. Briefly, the algorithm works by assuming
-all of the data is the result of false positive and false negative hits except
-for the group of transcripts that is differentially expressed in the maximum
-number of genotypes. Then, using estimates for the false positive and negative
-response, we calculate the expected sizes of all the groups after adding noise
-under this model. If an observed group is much larger than expected by noise, we
-refine the data model to accept the group. After accepting new groups into the
-model, we calculate the noise again, and refine the model once more. This
-process continues until the model converges. We called this method a false hit
-analysis.
+be the result of statistical artifacts. Briefly, the algorithm works by first
+assuming all of the data is the result of false positive and false negative hits
+except for the group of transcripts that is differentially expressed in most
+genotypes. Then, using estimates for the false positive and negative response,
+we calculate the expected sizes of all the groups after adding noise under this
+model. If an observed group is much larger than expected by noise, we refine the
+data model to accept the group. This process is iterated until the data model
+converges. We called this method a false hit analysis.
 
 We used false hit analysis to identify four non-overlapping phenotypic classes
 (Fig.~\ref{fig:flowchart}). We use the term genotype-specific to refer to groups
@@ -468,8 +650,8 @@ We measured allelic dominance for each class using a dominance coefficient
 the contribution of each allele to the total expression level in
 \emph{trans}-heterozygotes. By definition, the \sy{} allele is completely
 recessive to \bx{} for the \sy{}-specific phenotypic class. To determine the
-dominance coefficient for the other phenotypic classes, we first selected the
-transcripts within those classes, and asked what linear combination of the
+dominance coefficient for the remaining phenotypic classes, we first selected
+the transcripts within those classes, and asked what linear combination of the
 homozygotic $\beta$ coefficients best approximated the $\beta$ coefficients of
 the \emph{trans}-heterozygote, subject to the constraint that the sum of the
 weights for the two homozygotes should be equal to unity. We solved this problem
@@ -499,28 +681,24 @@ Table~\ref{tab:dom}) for the \bx{}-associated phenotypic class.
 \label{tab:dom}
 \end{table}
 
-\section*{Phenotypic classes reflect morphological phenotypes}
-Having identified a set of phenotypic classes, we wanted to know whether
-enrichment analysis of anatomical, phenotypic or gene ontology terms revealed
-relevant physiological aspects underlying our data. To this end, we used the
-WormBase Enrichment Suite~\citep{Angeles-Albores2018} to perform enrichment
-analysis of each group.
-
-We found that the \bx{}-associated phenotypic class was enriched in genes
-involved in `immune system processes' (\qval{5}), and was enriched in genes that
-are expressed in the `intestine' (\qval{4}). The \sy{}-associated class on the
-other hand was enriched in genes expressed in the `cephalic sheath cell'
-(\qval{4}). Using gene ontology enrichment analysis from the WormBase Enrichment
-Suite, we found that the \sy{}-associated class is enriched in histones and
-histone-like proteins (`DNA packaging complex' \qval{3}) as well as genes
-involed in `immune system processes' (\qval{5}). The \sy{}-specific class was
-enriched in genes that have expression in the `intestine' (\qval{7}), `muscular
-system' (\qval{3}) and `epithelial system' (\qval{2}). The genes in this class
-are known to cause bacterial lawn avoidance when knocked down or knocked out
-(\qval{2}). Finally, GO enrichment showed that the \sy{}-specific class is
-specifically enriched in `structural constituents of cuticle' (\qval{12}),
-in genes involved in respiration (\qval{6}). This last result recapitulates the
-fact that \sy{} homozygotes show a severe Dumpy phenotype. The
+\subsection*{Phenotypic classes reflect morphological phenotypes}
+We performed enrichment analysis of anatomical, phenotypic and gene ontology
+terms using the WormBase Enrichment Suite~\citep{Angeles-Albores2016,
+Angeles-Albores2018}. The \bx{}-associated phenotypic class was enriched in
+genes involved in `immune system processes' (\qval{5}), and was enriched in
+genes expressed in the `intestine' (\qval{4}). The \sy{}-associated
+class was enriched in genes expressed in the `cephalic sheath
+cell' (\qval{4}). Using ontology enrichment analysis from the WormBase
+Enrichment Suite, we found that the \sy{}-associated class is enriched in
+histones and histone-like proteins (`DNA packaging complex' \qval{3}) as well as
+genes involed in `immune system processes' (\qval{5}). The \sy{}-specific class
+was enriched in genes that have expression in the `intestine' (\qval{7}),
+`muscular system' (\qval{3}) and `epithelial system' (\qval{2}). The genes in
+this class are known to cause bacterial lawn avoidance when knocked down or
+knocked out (\qval{2}). Finally, GO enrichment showed that the \sy{}-specific
+class is specifically enriched in `structural constituents of cuticle'
+(\qval{12}), and in genes involved in respiration (\qval{6}). This last result
+recapitulates the fact that \sy{} homozygotes show a severe Dumpy phenotype. The
 \emph{trans}-heterozygote specific class was enriched in genes expressed in
 `male' animals (\qval{63}) and genes expressed in the `reproductive system'
 (\qval{21}). GO enrichment of genes in the \emph{trans}-heterozygote specific
@@ -533,7 +711,7 @@ remains unclear. The \bx{}-specific class did not show enrichment on any test,
 consistent with our interpretation that this class is the result of random false
 positive hits.
 
-\section*{Predicted interactions of Mediator with Wnt and Ras pathways in
+\subsection*{Predicted interactions of Mediator with Wnt and Ras pathways in
           \cel{}}
 Previous work in \cel{}~\citep{Moghal2003,Zhang2000} has implicated \dpy{} as an
 inhibitor of the Wnt and Ras pathways during the formation of the vulva and the
@@ -545,16 +723,15 @@ hypergeometric enrichment test) with differentially expressed genes in
 \gene{let-60(n1046gf)} mutants, whereas the \bx{}-associated phenotypic class
 would exhibit the most significant overlap with \gene{bar-1(ga80)} mutants.
 
-There was no significant overlap between any of the mutants we tested and the
-genes in the \bx{}-specific class, consistent with our interpretation of this
-class as the result of random false positives (Fig.~\ref{fig:wnt_stps}). All
-other classes showed significant enrichment with genes perturbed in
-\gene{bar-1(ga80)}. Similarly, \gene{let-60(n2021)} showed enrichment in all
-real phenotypic classes, with the exception of the \emph{trans}-heterozygote
-specific class. Contrary to our hypotheses, differentially expressed genes in
-\gene{let-60(n1046gf)} did not show significant overlap with the \sy{}-specific
-phenotype, but they did show significant overlap with all remaining real
-phenotypic classes.
+The \bx{}-specific class did not show a transcriptomic signature associated with
+either the Wnt or the Ras pathway, consistent with our interpretation of this
+class as false positive (Fig.~\ref{fig:wnt_stps}). All other classes showed
+significant enrichment with genes perturbed in \gene{bar-1(ga80)}. Similarly,
+\gene{let-60(n2021)} showed enrichment in all real phenotypic classes, with the
+exception of the \emph{trans}-heterozygote specific class. Contrary to our
+hypotheses, differentially expressed genes in \gene{let-60(n1046gf)} did not
+show significant overlap with the \sy{}-specific phenotype, but they did show
+significant overlap with all remaining real phenotypic classes.
 
 \begin{figure}
   \includegraphics[width=0.5\textwidth]{../figs/stp_pvals.pdf}
@@ -579,29 +756,29 @@ phenotypic classes.
 
 \subsection{A conceptual framework for analyses of allelic series using
 transcriptomic phenotypes}
-Although transcriptomic phenotypes have been previously used for epistatic
-analyses~\cite{Dixit2016,AngelesAlboresHIF,Angeles-Albores2017}, they have not
-been previously used to study gene function in the context of an allelic series.
+Although transcriptomic phenotypes have been used for epistatic
+analyses~\citep{Dixit2016,AngelesAlboresHIF,Angeles-Albores2017}, they have not
+been used to study gene function in the context of an allelic series.
 Outstanding challenges for transcriptomes in allelic series were how to count or
 identify distinct phenotypes within the different transcriptomes, how to order
 alleles in a severity hierarchy and how to order alleles in a dominance
 hierarchy. In this work, we present solutions to these problems, and propose a
 set of unifying concepts that we believe will be useful for future analyses. We
-reanalyzed an allelic series of the Mediator subunit gene \dpy{} that had been
-studied previously~\cite{Moghal2003}, recapitulating and extending previous
+re-analyzed an allelic series of the Mediator subunit gene \dpy{} that had been
+studied previously~\citep{Moghal2003}, recapitulating and extending previous
 results as a proof of principle for our methodology. In our results, we derived
 a set of methods that do not rely on the nature of the mutations. In the
 subsequent discussion, we use the fact that the mutations we used were
-truncations to derive further insights.
+truncations to derive further insights into the functional units present in this
+gene.
 
-To try to interpret the phenotypic classes that we identified in a biological
-context, we investigated whether these phenotypic classes contained Ras and Wnt
-signatures. Our attempts were partially successful, but a more rigorous analysis
-must await the availability of a larger mutant set to establish empirically the
-amount of overlap that is biologically significant, not just statistically
-significant. In part, we reason that some genes may form part of a broad stress
-response that is easily triggered. If that were the case, many mutants may share
-similar transcriptomic signatures.
+To interpret our phenotypic classes in a biological context, we investigated
+whether these phenotypic classes contained Ras and Wnt expression signatures.
+Our attempts were partially successful, but a more rigorous analysis awaits the
+availability of a larger mutant set to establish empirically the overlap that is
+biologically significant. In part, we reason that some genes may form part of a
+broad stress response. If that were the case, many mutants may share similar
+transcriptomic signatures.
 
 \subsection*{Phenotypic classes and their sequence requirements}
 Because the mutations we used are truncations, our results suggest the existence
@@ -610,37 +787,40 @@ functional regions could encode protein domains with biochemical activity, or
 they could encode biochemically active amino acid motifs, such as nuclear
 localization sequences or protein binding sites. These functional regions could
 confer stability to the protein, thereby regulating its levels. As a caveat, we
-note that we have interpreted the functional regions in terms of protein, but in
-some cases, the mutations may impact RNA localization or stability. The
-\sy{}-specific phenotypic class is likely controlled by a single functional
+note that we have interpreted the effects these mutations have in terms of their
+putative effects at the protein level. In the case of our alleles, the relevant
+homozygotes had wild-type \dpy{} mRNA levels, suggesting that these mutations
+do not affect the stability of the mRNA.
+
+The \sy{}-specific phenotypic class is likely controlled by a single functional
 region, functional region 1 (FR1). Sequence necessary for wild-type FR1
-functionality is encoded between amino acid positions 1 and 2,549, since this
-is the sequence that is intact in the \emph{bx93} allele. The
-\sy{}-associated phenotypic class is likely controlled by a second functional
-region, functional region 2 (FR2), and some necessary sequences for wild-type
-function are encoded between amino acid positions 1,698 and 2,549, but
-additional sequence could lie between amino acids 1 and 1,698. We speculate that
-this functional region may be the reason that \emph{bx93} is unable to
-complement the Muv phenotype of \emph{sy622} in a sensitized \emph{let-23}
-background, since \emph{trans}-heterozygotes in this background exhibit a
-semidominant Muv phenotype. It is unlikely that FR1 and FR2 are identical
-because their dominance behaviors are very different. The \bx{} allele was
-largely dominant over the \sy{} allele for the \bx{}-associated class, but gene
-expression in this class was perturbed in both homozygotes. The perturbations
-were greater for \sy{} homozygotes than for \bx{} homozygotes. This behavior can
-be explained if the \bx{}-associated class is controlled jointly by two distinct
-effectors, functional regions 3 and 4 (FR3, FR4, see Fig.~\ref{fig:domains}).
-Such a model would propose that the sequences necessary for FR3 functionality
-are within the interval 1 and 2,549, and some sequences necessary for FR4
-functionality are encoded between positions 2549 and 3499. This model explains
-how expression levels of the \emph{bx93}-associated phenotypic class in the
-\emph{trans}-heterozygote are complemented to the levels of the \emph{bx93}
-homozygote, because FR3 is complemented in \emph{trans}, but FR4 is defective.
-Thus, FR3 encodes a functionality that is not dosage-dependent. One possibility
-is that FR3 is equivalent to FR2, and FR4 modifies its activity at a subset of
-loci. A rigorous examination of this model will require studying many alleles
-that mutate the region between Q1689 and Q2549 using homozygotes and
-\emph{trans}-heterozygotes.
+functionality is encoded between amino acid positions 1 and 2,549, since this is
+the sequence that is intact in the \emph{bx93} allele. We speculate that this
+functional region may be the reason that \emph{bx93} is unable to complement the
+Muv phenotype of \emph{sy622} in a sensitized \emph{let-23} background, since
+\emph{trans}-heterozygotes in this background exhibit a semidominant Muv
+phenotype.  The \sy{}-associated phenotypic class is likely controlled by a
+second functional region, functional region 2 (FR2), and some necessary
+sequences for wild-type function are encoded between amino acid positions 1,698
+and 2,549, but additional sequence could lie between amino acids 1 and 1,698. It
+is unlikely that FR1 and FR2 are identical because their dominance behaviors are
+very different. The \bx{} allele was largely dominant over the \sy{} allele for
+the \bx{}-associated class, but gene expression in this class was perturbed in
+both homozygotes. The perturbations were greater for \sy{} homozygotes than for
+\bx{} homozygotes. This behavior can be explained if the \bx{}-associated class
+is controlled jointly by two distinct effectors, functional regions 3 and 4
+(FR3, FR4, see Fig.~\ref{fig:domains}). Such a model would propose that the
+sequences necessary for FR3 functionality are within the interval 1 and 2,549,
+and some sequences necessary for FR4 functionality are encoded between positions
+2549 and 3499. This model explains how expression levels of the
+\emph{bx93}-associated phenotypic class in the \emph{trans}-heterozygote are
+complemented to the levels of the \emph{bx93} homozygote, because FR3 is
+complemented in \emph{trans}, but FR4 is defective. Thus, FR3 encodes a
+functionality that is not dosage-dependent. One possibility is that FR3 is
+equivalent to FR1 or FR2, and FR4 modifies activity of either of these regions
+at a subset of loci. A rigorous examination of this model will require studying
+many alleles that mutate the region between Q1689 and Q2549 using homozygotes
+and \emph{trans}-heterozygotes.
 
 \begin{figure}
   \centering{}
@@ -665,61 +845,28 @@ We also found a class of transcripts that had perturbed levels in
 \emph{trans}-heterozygotes only; its biological significance is unclear.
 Phenotypes unique to \emph{trans}-heterozygotes are often the result of physical
 interactions such as homodimerization, or dosage reduction of a toxic
-product~\citep{Yook2005}. In the case of \dpy{/MDT12} orthologs, how either
-mechanism could operate is not obvious, since \protein{dpy-22} is expected to
-assemble in a monomeric manner into the CKM.\@ Massive single-cell RNA-seq of
-\cel{} has recently been reported~\citep{Cao2017}. When this technique becomes
-cost-efficient, single-cell profiling of these genotypes may provide information
-that complements the whole-organism expression phenotypes, perhaps explaining
-the origin of this phenotype. Another possibility is that the cis-marker we used
-for the \emph{bx93} allele, \gene{dpy-6(e14)}, which we assumed would be
-recessive in all phentoypes, actually has dominant transcriptomic phenotype.
-
-\subsection*{Phenotypes, not molecular pathways}
-In an attempt to better dissect interactions between \dpy{} and \gene{let-60}
-(ras) and \gene{bar-1} (wnt), we obtained expression profiles of these mutants
-and looked for enrichment within each phenotypic class. Prior research suggested
-that the \emph{bx93}-associated class should show STPs with \gene{bar-1} mutant
-transcriptomes but not with \gene{let-60} mutant transcriptomes, and the
-\emph{sy622}-specific class should show STPs with gain-of-function \gene{let-60}
-mutants but not with \gene{bar-1} null mutants. Instead, we found that
-\gene{let-60} and \gene{bar-1} loss-of-function mutants had STPs with all the
-phenotypic classes; and \gene{let-60} gain-of-function mutants did not show STPs
-with the \emph{sy622}-associated class. Thus, although we could predict that
-both of these genes are interactors with \dpy{}, our experiments did not enable
-us to predict what functional regions mediate this interaction.
-
-Our failure to predict what functional regions mediate interactions with other
-pathways or to predict the valence of the interactions reflects the fact that we
-are treating expression profiles as phenotypes, and not as a method to read out
-the activity of molecular pathways. Expression profiles as phenotypes have
-advantages, namely that they can be used for genetic analyses, but they also
-come with disadvantages. In our case, we analyzed transcriptomes after
-development had occurred, so the expression levels we observe are the average
-expression levels of all tissues after they have finished forming. Moreover, as
-with any other phenotype, we cannot discriminate between proximal or direct
-effects on gene expression from second order or ripple effects. As with
-morphological phenotypes, it may turn out to be the case that expression
-profiles, like any other phenotype, will often reflect a limited number of
-phenotypic classes. In some cases, these phenotypic classes may be associated
-with a molecular pathway by the use of index sets generated from mutants in
-these pathways. In other cases, they may reflect stresses and insults that the
-animals are suffering as a result of suboptimal activity. The difference between
-these two classes matters, since the conclusions that can be drawn from studying
-each one vary in their scopes; however, it seems reasonable likely that both
-will prove useful.
+product~\citep{Yook2005}. In the case of \dpy{/MDT12} orthologs, these
+explanations seem unlikely since \protein{dpy-22} is a monomeric subunit of the
+CKM.\@ Another possibility is that the \emph{trans}-heterozygote-specific class
+is the result of complex tissue cross-talk. Massive single-cell RNA-seq of
+\cel{} has recently been reported~\citep{Cao2017}, and this tool could provide
+valuable information regarding this hypothesis. Another possibility is that the
+\emph{cis}-marker we used for the \emph{bx93} allele, \gene{dpy-6(e14)}, which
+we assumed to be recessive in all phentoypes, actually has dominant
+transcriptomic phenotype.
 
 \subsection*{Occam's razor}
 Transcriptomic phenotypes generate large amounts of differential gene expression
 data, so false positive and false negative rates can lead to spurious phenotypic
-classes whose putative biological significance is badly misleading. Such
-artifacts are particularly likely for small phenotypic classes, which should be
-viewed with skepticism. Notably, errors of interpretation cannot be avoided by
-setting a more stringent $q$-value cut-off: doing so will decrease the false
-positive rate, but increase the false negative rate, which will in turn produce
-smaller phenotypic classes than expected. Our method tries to avoid this pitfall
-by using total error rate estimates to assess the plausibility of each class.
-These conclusions are of broad significance to research where highly multiplexed
+classes whose putative biological significance is misleading. Such
+artifacts are particularly likely when a phenotypic class is small. Notably,
+errors of interpretation cannot be avoided by setting a more stringent $q$-value
+cut-off: doing so will decrease the false positive rate, but increase the false
+negative rate, which will in turn produce smaller phenotypic classes than
+expected. Our method tries to avoid this pitfall by using total error rate
+estimates to assess the plausibility of each class, though a major drawback is
+that it relies on a subjective estimation of the false negative rate. These
+conclusions are of broad significance to research where highly multiplexed
 measurements are compared to identify similarities and differences in the
 genome-wide behavior of a single variable under multiple conditions.
 
@@ -730,211 +877,6 @@ functional region, and identified sequence requirements for each region. Given
 the importance of allelic series for characterizing gene function and their
 roles in specific genetic pathways, we are optimistic that this method will be a
 useful addition to the geneticist's arsenal.
-
-\section*{Methods}\label{sec:methods}
-
-\subsection*{Strains used}
-Strains used were N2 wild-type (Bristol)~\citep{Brenner1974},
-PS4087 \sy{}~\citep{Moghal2003},
-PS4187 \bx{}~\citep{Zhang2000},
-%line break inserted below because \gene{...} doesn't linebreak well
-PS4176\\ \gene{dpy-6(e14) dpy-22(bx93)/+ dpy-22(sy622)}~\citep{Moghal2003},
-MT4866 \gene{let-60(n2021)}~\citep{Beitel1990a},
-MT2124 \gene{let-60(n1046gf)}~\citep{Beitel1990a} and
-EW15 \gene{bar-1(ga80)}~\citep{Eisenmann1998}.
-Lines were grown on standard nematode growth media (NGM) Petri plates seeded
-with OP50 \ecol{} at 20\degree{}C~\citep{Brenner1974}.
-
-\subsection*{Strain synchronization, harvesting and RNA sequencing}
-With the exception of strain MT4866, strains were synchronized by bleaching
-P$_0$'s into virgin S. basal (no cholesterol or ethanol added) for 8--12 hours.
-Arrested L1 larvae were placed in NGM plates seeded with OP50 at 20\degree{}C
-and grown to the young adult stage (assessed by vulval morphology and lack of
-embryos). We discovered that MT4866 dies upon L1 starvation for this period of
-time. As a result, we synchronized this strain by double bleaching. Animals were
-picked if they were young adults, regardless of whether any vulval or
-morphological phenotypes were present. RNA extraction and sequencing was
-performed as previously described by~\citet{AngelesAlboresHIF,
-Angeles-Albores2017}. Briefly, young adults were placed in 10~$\mu$L of TE
-buffer,  and digested using  Recombinant Proteinase K PCR Grade (Roche Lot 656
-No. 03115 838001) incubated with 1\% SDS 657 and 1.25~$\mu$L RNA Secure (Ambion
-AM7005). Total RNA was extracted using the Zymo Research Directzol RNA MicroPrep
-Kit (Zymo Research, SKU R2061).\@ mRNA was subsequently purified using a NEBNext
-Poly(A) mRNA Magnetic Isolation Module (New England Biolabs, NEB, \#E7490).
-Sequencing libraries were generated using the NEBNext Ultra RNA Library Prep Kit
-for Illumina (NEB \#E7530). These libraries were sequenced using an Illumina
-HiSeq2500 machine in single-read mode with a read length of 50 nucleotides.
-
-\subsection*{Read pseudo-alignment and differential expression}
-Reads were pseudo-aligned to the \cel{} genome (WBcel235) using
-Kallisto~\citep{Bray2016}, using 200 bootstraps and with the sequence bias
-(\texttt{--seqBias}) flag. The fragment size for all libraries was set to 200
-and the standard deviation to 40. Quality control was performed on a subset of
-the reads using FastQC, RNAseQC, BowTie and MultiQC~\citep{Andrews2010,
-Deluca2012, Langmead2009, Ewels2016}.
-
-Differential expression analysis was performed using
-Sleuth~\citep{Pimentel2016a}. We used a general linear model to identify genes
-that were differentially expressed between wild-type and mutant libraries. To
-increase our statistical power, we pooled young adult wild-type replicates from
-other published~\citep{AngelesAlboresHIF, Angeles-Albores2017} and unpublished
-analyses adjusting for batch effects. Briefly, batches were assigned based on
-the a covariate that represented the combination of the person who collected the
-worms, the person who extracted the RNA, the month in which the samples were
-sequenced and the library preparation method.
-
-\subsection*{False hit analysis}
-To accurately count phenotypes, we developed a false hit algorithm
-(Algorithm~\ref{alg:false}). We implemented this algorithm for three-way
-comparisons in Python. Although experimentally restricted, a three-way
-comparison can result in $128$ possible sets (ignoring size). This large number
-of models necessitates an algorithmic approach that can at least restrict the
-possible number of models. Our algorithm uses a noise function that assumes
-false hit events are non-overlapping (i.e.\ the same gene cannot be the result
-of two false positive events in two or more genotypes) to determine the average
-noise flux between phenotypic classes. These assumptions break down rapidly if
-false-positive or negative rates exceed 25\%.
-
-To benchmark our algorithm, we generated one thousand Venn diagrams at random.
-For each Venn diagram, we calculated the average false positive and false
-negative flux matrices. Then, we added noise to each phenotypic class in the
-Venn diagram, assuming that fluxes were normally distributed with mean and
-standard deviation equal to the flux coefficient calculated. We input the noised
-Venn diagram into our false hit analysis and collected classification
-statistics. For a given signal-to-noise cutoff, $\lambda$, classification
-accuracy varied significantly with changes in the total error rate. In the
-absence of false negative hits, false hit analysis can accurately identify
-non-empty genotype-associated phenotypic classes, but identifying
-genotype-specific classes becomes difficult if the experimental false positive
-rate is high. On the other hand, even moderate false negative rates ($>10\%$)
-rapidly degrade signal from genotype-associated classes. For classes that are
-associated with three genotypes, an experimental false negative rate of 30\% is
-enough on average to prevents this class from being observed.
-
-We selected $\lambda=3$ because classification using this threshold was high
-across a range of false positive and false negative combinations. A challenge to
-applying this algorithm to our data is the fact that the false negative rate for
-our experiment is unknown. Although there has been significant progress in
-controlling and estimating false positive rates, we know of no such attempts for
-false negative rates. It is unlikely that the false negative rate for our study
-is lower than the false positive rate, because all genotypes except the controls
-are likely underpowered. We used false negative rates between 10--20\% for false
-hit analysis. When the false negative rate was set at 15\% or higher, the
-algorithm converged on the same five classes shown above. For false negative
-rates between 10--15\%, the algorithm output the same five classes, but also
-accepted the (\sy{},\bx{})-associated class. We selected the model corresponding
-to false negative rates of 15--20\% because this model had lower $\chi^2$ values
-than the model selected with a false negative rate of 10--15\% (4,212 versus
-100,650).
-
-We asked whether re-classification of some classes into others could improve
-model fit. We manually re-classified the (\sy{},\bx{})-associated and the (\bx,
-\emph{trans-heterozygote})-associated classes into the \emph{bx93}-associated
-class (which is associated with all genotypes), and we compared $\chi^2$
-statistics between a re-classified reduced model ($\chi^2=72$) and a reduced
-model ($\chi^2=130$). Based on the lower $\chi^2$ of the re-classified reduced
-model, we concluded that it is the most likely model to given our data.
-
-\begin{algorithm}[H]
-  \DontPrintSemicolon{}
-%
-  \KwData{$\mathbf{M}_{obs} =  \{N_l\}$, an observed set of classes, where each
-  class is labelled by $l\in L$ and is of size $N_l$. $f_p, f_n$, the false
-  positive and negative rates respectively. $\alpha$, the signal-to-noise
-  threshold for acceptance of a class.}
-  \KwResult{$\mathbf{M}_{reduced}$, a reduced model that fits the data.}
-  \BlankLine{}
-  \Begin{
-    \emph{Define a minimal set to initialize the reduced model}\;
-    $\mathbf{K} = \{\min_{l \in L} N_l\}$\;
-
-    \emph{Refine the model until the model converges or iterations max out}\; \\
-    $i \leftarrow 0$\; \\
-    $\mathbf{K_{prev}} \leftarrow \emptyset$\; \\
-    \While{$(i < i_{\max})~|~(\mathbf{K_{prev}} \neq \mathbf{K}$)}{
-      $\mathbf{K_{prev}} \leftarrow \mathbf{K}$\;
-
-      \emph{Define a noise function to estimate error flows in
-            $\mathbf{K}$}\;
-      $\mathbf{F} \leftarrow \textrm{noise}(\mathbf{K}, f_p, f_n)$\;
-
-      \For{$l \in L$}{
-          \emph{Calculate signal to noise for each labelled class}\;
-          \emph{False negatives can result in $\lambda < 0$}\;
-          $\lambda_l \leftarrow \mathbf{M}_{obs, l}/F_{l}$\;
-          % \emph{Use classes with high $\lambda_l$ to refine the model}\;
-              \If{$(\lambda > \alpha)~|~(\lambda < 0)$}{
-                $\mathbf{K}_l \leftarrow \mathbf{M}_{obs, l}$\;
-              } %if
-          } % end for
-        $i++$
-    } % end while
-  } % end begin
-
-  \emph{Return the reduced model}\;
-  $\mathbf{M}_{reduced} = \mathbf{K}$\;
-  \Return{$\mathbf{M}_{reduced}$}\;
-  \BlankLine{}\;
-  \caption{
-          False Hit Algorithm. Briefly, the algorithm initializes a reduced
-          model with the phenotypic class or classes labelled by the largest
-          number of genotypes. This reduced model is used to estimate noise
-          fluxes, which in turn can be used to estimate a signal-to-noise metric
-          between observed and modelled classes. Classes that exhibit a high
-          signal-to-noise are incorporated into the reduced model.
-  }
-\label{alg:false}
-\end{algorithm}
-
-\subsection*{Dominance analysis}
-\label{subsec:dominance}
-We modeled allelic dominance as a weighted average of allelic activity:
-% our model proposed that $\beta$ coefficients of the heterozygote,
-% $\beta_{a/b,i,\text{Pred}}$, could be modeled as a linear combination of the
-% coefficients of each homozygote:
-\begin{equation}
-  \beta_{a/b,i,\text{Pred}}(d_a) = d_a\cdot \beta_{a/a,i} +
-                                   (1-d_a)\cdot \beta_{b/b,i},
-\end{equation}
-where $\beta_{k/k, i}$ refers to the $\beta$ value of the $i$th isoform in a
-genotype $k/k$, and $d_a$ is the dominance coefficient for allele $a$.
-
-To find the parameters $d_a$ that maximized the probability of observing the
-data, we found the parameter, $d_a$, that maximized the equation:
-\begin{equation}
-    P(d_a|D,H,I) \propto \prod_{i \in S}
-                   \exp{-\frac{{(\beta_{a/b,i,\text{Obs}} -
-                                \beta_{a/b,i,\text{Pred}}(d_a))}^2}{
-                                2\sigma_i^2}}
-\end{equation}
-where $\beta_{a/b,i,\text{Obs}}$ was the coefficient associated with the $i$th
-isoform in the \emph{trans}-het $a/b$ and $\sigma_i$ was the standard error of
-the $i$th isoform in the \emph{trans}-heterozygote samples as output by
-Kallisto. $S$ is the set of isoforms that participate in the regression (see
-main text). This equation describes a linear regression which was solved
-numerically.
-
-\subsection*{Code}
-Code was written in Jupyter notebooks~\citep{Perez2007} using the Python
-programming language. The Numpy, pandas and scipy libraries were used for
-computation~\citep{VanDerWalt2011,McKinney2011,Oliphant2007} and the matplotlib
-and seaborn libraries were used for data visualization~\citep{Hunter2007,
-Waskom}. Enrichment analyses were performed using the WormBase Enrichment
-Suite~\citep{Angeles-Albores2016,Angeles-Albores2018}. For all enrichment
-analyses, a $q$-value of less than $10^{-3}$ was considered statistically
-significant. For gene ontology enrichment analysis, terms were considered
-statistically significant only if they also showed an enrichment fold-change
-greater than 2.
-
-\subsection*{Data Availability}
-Raw and processed reads were deposited in the Gene Expression Omnibus. Scripts
-for the entire analysis can be found with version control in our Github
-repository, \url{https://github.com/WormLabCaltech/med-cafe}. A user-friendly,
-commented website containing the complete analyses can be found at
-\url{https://wormlabcaltech.github.io/med-cafe/}. Raw reads and quantified
-abundances for each sample were deposited at the NCBI Gene Expression Omnibus
-(GEO)~\citep{Edgar2002} under the accession code GSE107523
-(\url{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107523}).
 
 \section*{Acknowledgements}
 This work was supported by the NIH grant U41 HG002223, by the Millard and Muriel
