@@ -234,15 +234,9 @@ GEM
       jekyll-feed (~> 0.9)
       jekyll-seo-tag (~> 2.1)
     minitest (5.25.5)
-<<<<<<< HEAD
     net-http (0.9.1)
       uri (>= 0.11.1)
-    nokogiri (1.18.8)
-=======
-    net-http (0.6.0)
-      uri
     nokogiri (1.19.1)
->>>>>>> master
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     octokit (4.25.1)
@@ -276,11 +270,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.8.0)
-<<<<<<< HEAD
     uri (1.1.1)
-=======
-    uri (1.0.4)
->>>>>>> master
     webrick (1.9.1)
 
 PLATFORMS
