@@ -1,1 +1,4 @@
-Sitemap: http://localhost:4000/med-cafe/sitemap.xml
+User-agent: *
+Disallow:
+
+Sitemap: https://wormlabcaltech.github.io/med-cafe/sitemap.xml
